@@ -27,6 +27,7 @@ DEBUG = False
 
 ALLOWED_HOSTS = [
     '8000-angelaanjorin-traveldoc-zctotk6ntvs.ws-eu115.gitpod.io',
+    '.herokuapp.com',
 ]
 
 
