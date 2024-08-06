@@ -1,0 +1,83 @@
+    <!-- Navigation -->
+    {% load static %}
+   
+   <!-- NAVBAR -->
+   <nav class="navbar navbar-expand-lg navbar-light bg-light">
+       <div class="container-fluid">
+           <a class="navbar-brand" href="{% url 'home' %}">Global Doctors | Be a doc and travel the world</a>  
+           <button class="navbar-toggler box-shadow" style="text-align: center;" type="button" data-bs-toggle="collapse"
+               data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+               aria-label="Toggle navigation">
+               <i class="fa fa-bars"></i>
+           </button>
+           <div class="collapse navbar-collapse" id="navbarSupportedContent">
+               <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                   <li class="nav-item">
+                       <a class="nav-link active" aria-current="page" href="/" aria-label="Go to the home page">Home</a>
+                   </li>
+                   <li>
+                       <a class="nav-link active" aria-current="page" href="/about" aria-label="Go to the about page">About</a>
+                   </li>
+                   <li class="nav-item">
+                       <a class="nav-link active" href="/contact" aria-label="Go to the contact page">Contact</a>
+                   </li>
+                   <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Categories
+                    </a>
+                    <div class="dropdown-menu light" aria-labelledby="navbarDropdownMenuLink">
+                      {% for category in category_list %}
+                      <a class="dropdown-item" href="/category/{{ category.name}}">
+                        {{ category.name|title }}
+                      </a>
+                      {% endfor %}
+                    </div>
+                </li>    
+               </ul>
+               {% if user.is_authenticated %}
+               <ul class="d-flex login-box ml-auto">
+                   <!-- User authentication -->
+                   <li class="nav-item display-inline">
+                       <a href="/profile"><p class="post-link">| <i class="fa fa-user" aria-hidden="true"></i> {{ user.username | slice:":10" }}</p></a>
+                   </li>
+                   {% if user.profile.image %}
+                   <li><img class="author-img" src="{{ user.profile.image.url }}" alt="User Image"></li>
+                   {% else %}
+                   <li><img class="author-img" src="{% static 'images/user_profile_placeholder.jpg' %}" alt="User Image"></li>
+                   {% endif %}
+                   <li>
+                       <a class="post-link test-center" href="{% url 'account_logout' %}" aria-label="Go to the logout page"> Logout <i class="fa fa-sign-out" aria-hidden="true"></i>|</a>
+                   </li>
+               </ul>
+               {% else %}
+               <ul class="d-flex logout-box ml-auto">
+                   <li class="nav-item">
+                       <a class="nav-link" href="{% url 'account_signup' %}" aria-label="Go to the signup page">| Register</a>
+                   </li>
+                   <li class="nav-item">
+                       <a class="nav-link" href="{% url 'account_login' %}" aria-label="Go to the login page"> Login |</a>
+                   </li>
+               </ul>
+               {% endif %}
+               
+               <p id="search-box-button" class="btn"><i class="fas fa-search"></i></p>
+           </div>
+       </div>
+   </nav>
+   <!-- END OF NAVBAR -->
+   
+   <!-- ALERT SECTION -->
+   <div id="alert-box">
+       <div class="container">
+           <div class="row">
+               <div class="col-md-8 offset-md-2 text-center">
+                   {% for message in messages %}
+                   <div class="alert {{ message.tags }} alert-dismissible fade show alert-success" id="alert" role="alert">
+                       {{ message | safe }}
+                   </div>
+                   {% endfor %}
+               </div>
+           </div>
+       </div>
+   </div>
+   <!-- END OF ALERT SECTION -->

@@ -32,13 +32,14 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
+
 ALLOWED_HOSTS = [
-    '8000-angelaanjorin-traveldoc-zctotk6ntvs.ws-eu115.gitpod.io',
+    '8000-angelaanjorin-traveldoc-hyp5uk5vkp4.ws-eu115.gitpod.io',
     '.herokuapp.com',
 ]
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://8000-angelaanjorin-traveldoc-zctotk6ntvs.ws-eu115.gitpod.io',
+    'https://8000-angelaanjorin-traveldoc-hyp5uk5vkp4.ws-eu115.gitpod.io',
     "https://*.gitpod.io",
     "https://*.herokuapp.com",
 ]
@@ -59,7 +60,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     # Local
     'accounts.apps.AccountsConfig',
-    'blog/',
+    'blog',
 ]
 
 
