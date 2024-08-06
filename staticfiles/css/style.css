@@ -1,0 +1,144 @@
+
+/* Default styling */
+
+body {
+    background-color: whitesmoke;
+}
+
+.light {
+    background-color: #dbd7d2;
+}
+
+#bg-pic {
+    background-color: silver;
+}
+
+.img-overlay {
+    background-image: linear-gradient(to left, rgba(250,250,250,0), rgba(255,250,250,0.8), rgba(255,250,250,1));
+}
+
+.scale {
+    width: 100%;
+    height: auto;
+}
+
+.navbar {
+    width: 100%;
+    height: 80px;
+    background-color: #fff;
+    z-index: 1500;
+    position: fixed;
+}
+
+.navbar.nav-active {
+    position: fixed;
+    background: -o-linear-gradient(350deg, #2d557d, #9610fd, #fc5404);
+    background: linear-gradient(100deg, #2d557d, #9610fd, #fc5404);
+    -webkit-box-shadow: rgb(1 1 1 / 50%) 1px 10px 10px -1px;
+    box-shadow: rgb(1 1 1 / 50%) 1px 10px 10px -1px;
+    height: 60px;
+}
+
+.nav-link.nav-active {
+    color: #fff !important;
+}
+
+.nav-link {
+    color: black;
+    -webkit-transition: all ease-in 0.3s;
+    -o-transition: all ease-in 0.3s;
+    transition: all ease-in 0.3s;
+}
+
+.login-box {
+    margin-right: -10px;
+    margin-top: 35px;
+}
+
+.login-box .nav-link {
+    padding: 0.5rem 0.5rem;
+}
+
+.logout-box {
+    margin-right: -15px;
+    margin-top: 15px;
+}
+
+.author-img {
+    width: 30px;
+    height: 30px;
+    margin-top: 8px;
+}
+
+#search-box-button {
+    margin-top: 25px;
+}
+
+.navbar-brand {
+    margin-right: -180px !important;
+}
+
+.navbar-brand img {
+    width: 50%;
+}
+
+.navbar-brand img.nav-active {
+    width: 48%;
+}
+
+.navbar .btn {
+    background-color: transparent;
+}
+
+/* Messaging */
+
+.flash-msg {
+    position: fixed;
+    z-index: 1010;
+    top: 3rem;
+    right: 1rem;
+    left: 1rem;
+    text-align: center;
+    margin-top: 1rem;
+}
+
+/* Page navigation styling */
+
+.post-link {
+    color: #373938;
+}
+
+.post-link:hover,
+.page-link {
+    color: #5d9857;
+}
+
+/* Buttons styling */
+
+.btn-signup,
+.btn-edit {
+    background-color: #8d9292;
+    color: #fff;
+    border-color:#2d3636;
+}
+
+.btn-signup:hover,
+.btn-signup:active {
+    background-color: #363535;
+    color: #fefefe;
+    
+}
+
+/* Responsive styling */
+
+/* Media query for large or landscape phones (576px and up) */
+@media screen and (min-width: 576px) {
+    #bg-pic {
+        background-image: url(../images/GMS-employees-sized.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        margin-bottom: 0;
+    }
+
+
+}
