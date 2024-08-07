@@ -41,9 +41,14 @@ body {
 }
 
 /* Buttons styling */
+.btn-delete{
+background-color: red;
+color: #fff;
+border-color: crimson;
+}
 
 .btn-signup,
-.btn-edit {
+.btn-edit{
     background-color: #8d9292;
     color: #fff;
     border-color:#2d3636;
