@@ -31,16 +31,43 @@
         </div>
     </div>
       <!-- Displaying count of comments -->
-  <div class="row">
-    <div class="col-12">
-      <strong class="text-secondary">
-        <i class="far fa-comments"></i> {{ comment_count }}
-      </strong>
-    </div>
-    <div class="col-12">
-      <hr>
-    </div>
-  </div>
+      <div class="row">
+        <div class="col-4">
+            <div class="d-flex flex-row flex-md-column">
+                <!-- Allow logged in users to interact with like icon -->
+                <div>
+                  {% if user.is_authenticated %}
+                  <form class="d-inline" action="{% url 'post_like' post.slug %}" method="POST">
+                      {% csrf_token %}
+                      {% if liked %}
+                      <button type="submit" class="post_like" name="blogpost_id" value="{{ post.slug }}">
+                          <span class="text-secondary text-muted"><i class="fas fa-heart"></i>
+                            {{ post.number_of_likes }}</span>
+                      </button>
+                      {% else %}
+                      <button type="submit" class="post_like" name="blogpost_id" value="{{ post.slug }}">
+                          <span class="text-secondary text-muted"><i class="fas fa-heart"></i>
+                            {{ post.number_of_likes }}</span>
+                          {% endif %}
+                  </form>
+                  {% else %}
+                    <span class="text-secondary text-muted "><i class="fas fa-heart"></i>
+                      {{ post.number_of_likes }}</span>
+                  {% endif %}
+                </div>
+            </div>
+        </div>
+        <!-- Comment icon with comment count for article -->
+        <div class="col-4">
+          {% with comments.count as total_comments %}
+          <strong class="text-secondary text-muted"><i class="far fa-comments"></i>
+              <!-- Our total_comments variable goes before the closing strong tag -->
+              {{ total_comments }}</strong>
+          {% endwith %}  
+        </div>
+        
+      </div>
+ 
   <!-- Displaying Comments -->
   <div class="row">
     <div class="col-md-8 card mb-4  mt-3 ">
