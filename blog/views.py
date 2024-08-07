@@ -111,7 +111,7 @@ def comment_edit(request, slug, comment_id):
             comment.post = post
             comment.approved = False
             comment.save()
-            messages.add_message(request, messages.SUCCESS, 'Comment Updated and awaiting approval!')
+            messages.add_message(request, messages.SUCCESS, 'Comment updated and awaiting approval!')
         else:
             messages.add_message(request, messages.ERROR, 'Error updating comment!')
 
@@ -147,5 +147,6 @@ class PostLike(View):
             post.likes.remove(request.user)
         else:
             post.likes.add(request.user)
+            messages.add_message(request, messages.SUCCESS, 'Thanks for liking the post!')
 
         return HttpResponseRedirect(reverse('post_detail', args=[slug]))
