@@ -3,7 +3,7 @@ from django.views import generic, View
 from django.views.generic import ListView
 from django.contrib import messages
 from django.http import HttpResponseRedirect
-from .models import Post, Comment
+from .models import Post, Comment, Category
 from .forms import CommentForm
 
 # Create your views here.
@@ -150,3 +150,23 @@ class PostLike(View):
             messages.add_message(request, messages.SUCCESS, 'Thanks for liking the post!')
 
         return HttpResponseRedirect(reverse('post_detail', args=[slug]))
+
+
+# Category list view
+def categories_view(request, cats):
+    """
+    Renders the posts filtered by categories
+    """
+    categories_posts = Post.objects.filter(
+        categories__title__contains=cats, status=1)
+    return render(request, 'blog/category.html', {
+        'cats': cats.title(), 
+        'categories_posts': categories_posts}
+        )
+
+
+def categories(request):
+    """
+    Renders the categories page
+    """
+    return render(request, 'blog/category.html')
