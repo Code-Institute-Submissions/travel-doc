@@ -20,7 +20,9 @@
                         {% endif %}
                         <div class="image-flash">
                             <p class="author">Author: {{ post.author }}</p>
-                            <p class="category">Category: {{ post.category }}</p>
+                            <a href="{% url 'category' post.category %}" class="post-link">
+                                <p class="card-title">Category: {{ post.category}}</p>
+                            </a>
                         </div>
                     </div>
                     <a href="{% url 'post_detail' post.slug %}" class="post-link">

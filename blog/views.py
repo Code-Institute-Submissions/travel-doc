@@ -14,6 +14,17 @@ class AddCategoryView(CreateView):
     fields = ('name',)
 
 
+"""def CatListView(request, cat):
+    category = get_object_or_404(Category, name=cat)
+    category_posts = Post.objects.filter(category = category, status=1)
+    return render(
+        request, 'blog/category.html',{
+            'cat': category.name.title(),
+            'category_posts': category_posts
+        }
+    )"""
+
+
 class PostList(generic.ListView):
     """
     Returns all published posts in :model:`blog.Post`
@@ -32,7 +43,13 @@ class PostList(generic.ListView):
     queryset = Post.objects.filter(status=1)
     template_name = "blog/index.html"
     paginate_by = 6
+    cat = Category.objects.all()
 
+    def get_context_data(self, *args, **kwargs):
+        cat_menu = Category.objects.all()
+        context = super(PostList, self).get_context_data(*args, **kwargs)
+        context["cat_menu"] = cat_menu
+        return context
 
 class post_detail(View):
     """
@@ -66,6 +83,7 @@ class post_detail(View):
                 "comment_form": CommentForm(),
             },
         )
+
 
     def post(self, request, slug, *args, **kwargs):
         queryset = Post.objects.filter(status=1)
@@ -120,7 +138,8 @@ def comment_edit(request, slug, comment_id):
         else:
             messages.add_message(request, messages.ERROR, 'Error updating comment!')
 
-    return HttpResponseRedirect(reverse('post_detail', args=[slug]))
+    return HttpResponseRedirect(reverse('post_detail', args=[slug])
+    )
 
 
 def comment_delete(request, slug, comment_id):
@@ -137,7 +156,8 @@ def comment_delete(request, slug, comment_id):
     else:
         messages.add_message(request, messages.ERROR, 'You can only delete your own comments!')
 
-    return HttpResponseRedirect(reverse('post_detail', args=[slug]))
+    return HttpResponseRedirect(reverse('post_detail', args=[slug])
+    )
 
 
 class PostLike(View):
@@ -154,7 +174,8 @@ class PostLike(View):
             post.likes.add(request.user)
             messages.add_message(request, messages.SUCCESS, 'Thanks for liking the post!')
 
-        return HttpResponseRedirect(reverse('post_detail', args=[slug]))
+        return HttpResponseRedirect(reverse('post_detail', args=[slug])
+        )
 
 
 # Category list view
@@ -183,14 +204,9 @@ class CatListView(ListView):
         return content
 
 
-def CategoryView(request, cats):
-    """
-    Renders the categories page
-    """
-    category_posts = Post.objects.filter(category=cats)
-    return render(
-        request, 
-        'blog/catlist.html', 
-        {'cats': cats.title(),
-        'category_posts': category_posts}
-        )
+def category_list(request):
+    category_list = Category.objects.exclude(name='other')
+    context = {
+        "category_list": category_list,
+    }
+    return context
