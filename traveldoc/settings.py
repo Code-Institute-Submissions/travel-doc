@@ -34,12 +34,12 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    '8000-angelaanjorin-traveldoc-kz3p6r1waw5.ws-eu115.gitpod.io',
+    '8000-angelaanjorin-traveldoc-7tnik4okcp7.ws-eu115.gitpod.io',
     '.herokuapp.com',
 ]
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://8000-angelaanjorin-traveldoc-kz3p6r1waw5.ws-eu115.gitpod.io',
+    'https://8000-angelaanjorin-traveldoc-7tnik4okcp7.ws-eu115.gitpod.io',
     "https://*.gitpod.io",
     "https://*.herokuapp.com",
 ]
