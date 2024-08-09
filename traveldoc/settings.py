@@ -15,6 +15,7 @@ import os
 from django.contrib.messages import constants as messages
 import dj_database_url
 
+DEVELOPMENT = os.environ.get('DEVELOPMENT', False)
 
 if os.path.isfile('env.py'):
     import env
@@ -31,7 +32,7 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = DEVELOPMENT
 
 ALLOWED_HOSTS = [
     '8000-angelaanjorin-traveldoc-7tnik4okcp7.ws-eu115.gitpod.io',
@@ -123,17 +124,17 @@ WSGI_APPLICATION = 'traveldoc.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-DATABASES = {
-   'default': {
-       'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
-
-
 #DATABASES = {
-#    'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
+  # 'default': {
+    #   'ENGINE': 'django.db.backends.sqlite3',
+    #    'NAME': BASE_DIR / 'db.sqlite3',
+    #}
 #}
+
+
+DATABASES = {
+    'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
+}
 
 
 # Password validation
