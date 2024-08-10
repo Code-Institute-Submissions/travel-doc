@@ -4,7 +4,7 @@ from django.views.generic import ListView, CreateView
 from django.contrib import messages
 from django.http import HttpResponseRedirect
 from .models import Post, Comment, Category
-from .forms import CommentForm
+from .forms import CommentForm, PostForm
 from django_summernote.admin import SummernoteModelAdmin
 from django.urls import reverse_lazy
 
@@ -18,26 +18,25 @@ from django.urls import reverse_lazy
 
 class AddPostView(CreateView):
     model = Post
+    form_class = PostForm
     template_name = 'blog/add_post.html'
-    fields = ('title', 'category','slug', 'author', 'featured_image','content') 
+    #fields = ('title', 'category','slug', 'author', 'featured_image','content') 
     summernote_fields = ('content',)
     success_url = reverse_lazy('home')
 
     def form_valid(self, form):
-        messages.add_message(self.request, messages.SUCCESS, 'Your post has been submitted and is awaiting approval.')
+        #messages.add_message(self.request, messages.SUCCESS, 'Your post has been submitted and is awaiting approval.')
+        #return super().form_valid(form)
+        form.instance.author = self.request.user
         return super().form_valid(form)
 
+    def form_invalid(self, form):
+        print("Form is invalid")
+        print(form.errors)
 
-"""def CatListView(request, cat):
-    category = get_object_or_404(Category, name=cat)
-    category_posts = Post.objects.filter(category = category, status=1)
-    return render(
-        request, 'blog/category.html',{
-            'cat': category.name.title(),
-            'category_posts': category_posts
-        }
-    )"""
+        messages.error(self.request, "There was an error with your submission. Please check all the fields again.")
 
+        return self.render_to_response(self.get_context_data(form=form))
 
 class PostList(generic.ListView):
     """
