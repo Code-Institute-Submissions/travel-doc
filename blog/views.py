@@ -5,8 +5,10 @@ from django.contrib import messages
 from django.http import HttpResponseRedirect
 from .models import Post, Comment, Category
 from .forms import CommentForm, PostForm
-from django_summernote.admin import SummernoteModelAdmin
+#from django_summernote.admin import SummernoteModelAdmin
 from django.urls import reverse_lazy
+
+from django.contrib.auth.mixins import(UserPassesTestMixin, LoginRequiredMixin)
 
 
 # Create your views here.
@@ -16,27 +18,35 @@ from django.urls import reverse_lazy
     template_name = 'blog/add_category.html'
     fields = ('name',)"""
 
-class AddPostView(CreateView):
+class AddPostView(LoginRequiredMixin, CreateView):
     model = Post
     form_class = PostForm
     template_name = 'blog/add_post.html'
     #fields = ('title', 'category','slug', 'author', 'featured_image','content') 
-    summernote_fields = ('content',)
+    #summernote_fields = ('content',)
     success_url = reverse_lazy('home')
 
     def form_valid(self, form):
         #messages.add_message(self.request, messages.SUCCESS, 'Your post has been submitted and is awaiting approval.')
         #return super().form_valid(form)
         form.instance.author = self.request.user
-        return super().form_valid(form)
+        response = super().form_valid(form)
 
-    def form_invalid(self, form):
-        print("Form is invalid")
-        print(form.errors)
+        if self.object.status == 0:
+            messages.info(
+                self.request, 'Your post has been submitted and is awaiting approval.')
+        
+        return response
 
-        messages.error(self.request, "There was an error with your submission. Please check all the fields again.")
+    
 
-        return self.render_to_response(self.get_context_data(form=form))
+    #def form_invalid(self, form):
+        #print("Form is invalid")
+        #print(form.errors)
+
+        #messages.error(self.request, "There was an error with your submission. Please check all the fields again.")
+
+        #return self.render_to_response(self.get_context_data(form=form))
 
 class PostList(generic.ListView):
     """
