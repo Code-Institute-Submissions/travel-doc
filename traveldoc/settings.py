@@ -70,11 +70,23 @@ INSTALLED_APPS = [
     'blog',
 ]
 
+# django-allatuh config
 
+LOGIN_REDIRECT_URL = "home"
+ACCOUNT_LOGOUT_REDIRECT_URL = "home"
 SITE_ID = 1
-LOGIN_REDIRECT_URL = '/'
-LOGOUT_REDIRECT_URL = '/'
+AUTHENTICATION_BACKENDS = (
+    "django.contrib.auth.backends.ModelBackend",
+    "allauth.account.auth_backends.AuthenticationBackend",
+)
+EMAIL_BACKEND = "django.core.mail.backends.sonsole.EmailBackend"
 
+ACCOUNT_SESSION_REMEMBER = True
+ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE = False
+ACCOUNT_USERNAME_REQUIRED = True
+ACCOUNT_AUTHENTICATION_METHOD = "email"
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_UNIQUE_EMAIL = True
 
 MESSAGE_TAGS = {
         messages.DEBUG: 'alert-info',

@@ -4,14 +4,15 @@
 {% load crispy_forms_tags %}
 
 <div class="container text-center">
-    <h2>Add a New Post</h2>
     <!--enctype for file upload to cloudinary-->
-    <form method="POST" enctype="multipart/form-data" >
+    <form method="POST" enctype="multipart/form-data" class="p-1 w-75 form" >
+        <h2>Add a New Post</h2>
         {% csrf_token %}
         {{ form.media }}
         {{ form|crispy }}
-        <button id="submitButton" type="submit"
-        class="btn btn-signup btn-lg">Submit</button>
+        <div class="text-center">
+            <button id="submitButton" type="submit"class="btn btn-signup btn-lg">Submit</button>
+        </div>
     </form>
     {% if messages %}
     {% for message in messages %}
