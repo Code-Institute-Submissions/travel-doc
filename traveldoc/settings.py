@@ -15,7 +15,7 @@ import os
 from django.contrib.messages import constants as messages
 import dj_database_url
 
-DEVELOPMENT = os.environ.get('DEVELOPMENT', False)
+DEVELOPMENT = os.environ.get('DEVELOPMENT', True)
 
 if os.path.isfile('env.py'):
     import env
@@ -35,14 +35,16 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 DEBUG = DEVELOPMENT
 
 ALLOWED_HOSTS = [
-    '8000-angelaanjorin-traveldoc-7tnik4okcp7.ws-eu115.gitpod.io',
+    '8000-angelaanjorin-traveldoc-3sknvhuccjt.ws-eu115.gitpod.io',
     '.herokuapp.com',
+    '127.0.0.1',
 ]
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://8000-angelaanjorin-traveldoc-7tnik4okcp7.ws-eu115.gitpod.io',
+    'https://8000-angelaanjorin-traveldoc-3sknvhuccjt.ws-eu115.gitpod.io',
     "https://*.gitpod.io",
     "https://*.herokuapp.com",
+    "http://127.0.0.1",
 ]
 
 
@@ -68,6 +70,7 @@ INSTALLED_APPS = [
     'about',
     'accounts.apps.AccountsConfig',
     'blog',
+    'sendemail.apps.SendemailConfig',
 ]
 
 # django-allatuh config
@@ -80,13 +83,15 @@ AUTHENTICATION_BACKENDS = (
     "allauth.account.auth_backends.AuthenticationBackend",
 )
 
-# Email smtp setup
+# Email smtp setup 
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
-EMAIL_HOST = os.environ.get('EMAIL_HOST')
-EMAIL_PORT = int(os.environ.get('EMAIL_PORT'))
+EMAIL_HOST = "smtp.gmail.com"
+EMAIL_PORT = "587"
+EMAIL_USE_TLS  = 'True'
+
+#GMAIL
 EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
-EMAIL_USE_TLS = os.environ.get('EMAIL_USE_TLS', 'True') == 'True'
 DEFAULT_FROM_EMAIL = os.environ.get('DEFAULT_FROM_EMAIL')
 
 ACCOUNT_SESSION_REMEMBER = True
@@ -207,4 +212,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = "accounts.CustomUser"
 
-DEFAULT_FROM_EMAIL = "info@anjorinllc.com"
+#DEFAULT_FROM_EMAIL = "info@anjorinllc.com"
