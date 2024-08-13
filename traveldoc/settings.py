@@ -15,7 +15,7 @@ import os
 from django.contrib.messages import constants as messages
 import dj_database_url
 
-DEVELOPMENT = os.environ.get('DEVELOPMENT', True)
+DEVELOPMENT = os.environ.get('DEVELOPMENT', False)
 
 if os.path.isfile('env.py'):
     import env
@@ -84,15 +84,18 @@ AUTHENTICATION_BACKENDS = (
 )
 
 # Email smtp setup 
-EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
-EMAIL_HOST = "smtp.gmail.com"
-EMAIL_PORT = "587"
-EMAIL_USE_TLS  = 'True'
+#EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+#EMAIL_HOST = "smtp.gmail.com"
+#EMAIL_PORT = "587"
+#EMAIL_USE_TLS  = True
 
 #GMAIL
-EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
-EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
-DEFAULT_FROM_EMAIL = os.environ.get('DEFAULT_FROM_EMAIL')
+#EMAIL_HOST = "smtp.gmail.com"
+#EMAIL_HOST_USER = "angela.anjorin@gmail.com"
+#EMAIL_HOST_PASSWORD = "qucd klbe hquy asnu"
+#EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
+#EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
+#DEFAULT_FROM_EMAIL = os.environ.get('DEFAULT_FROM_EMAIL')
 
 ACCOUNT_SESSION_REMEMBER = True
 ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE = False
@@ -212,4 +215,11 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = "accounts.CustomUser"
 
-#DEFAULT_FROM_EMAIL = "info@anjorinllc.com"
+
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = "smtp.gmail.com"
+EMAIL_HOST_USER = "angela.anjorin@gmail.com"
+EMAIL_HOST_PASSWORD = "qucd klbe hquy asnu"
+EMAIL_PORT = "587"
+EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = "angela.anjorin@gmail.com"

@@ -24,10 +24,10 @@ class ContactView(FormView):
 
         try:
             send_mail(
-                subject = "Received contact form submission",
-                message = full_message,
-                from_email = settings.DEFAULT_FROM_EMAIL,
-                recipient_list = [email],
+                subject="Received contact form submission",
+                message=full_message,
+                from_email=settings.DEFAULT_FROM_EMAIL,
+                recipient_list=[email],
             )
             print("Email sent successfully.")
         except Exception as e:
