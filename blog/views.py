@@ -9,7 +9,8 @@ from .forms import CommentForm, PostForm
 from django.urls import reverse_lazy
 
 from django.contrib.auth.mixins import(UserPassesTestMixin, LoginRequiredMixin)
-
+from django.core.mail import send_mail
+#from traveldoc.settings import EMAIL_HOST_USER
 
 # Create your views here.
 
@@ -32,9 +33,15 @@ class AddPostView(LoginRequiredMixin, CreateView):
         form.instance.author = self.request.user
         response = super().form_valid(form)
 
+
         if self.object.status == 0:
             messages.info(
                 self.request, 'Your post has been submitted and is awaiting approval.')
+        #subject = "New Post is submitted"
+        #message = "Dear" + "" + data['user_name'] + "thank you for submitting your post. It will be reviewed and you will receive an email response soon."
+        #email = data['user_email']
+        #recipient_list = [email]
+        #send_mail(subject, message, EMAIL_HOST_USER, recipient_list, fail_silently=True)
         
         return response
 

@@ -1,10 +1,10 @@
 from django.contrib import admin
 from django.contrib.auth import get_user_model
 from django.contrib.auth.admin import UserAdmin
+from .models import Profile, CustomUser
 
-from .forms import CustomUserCreationForm, CustomUserChangeForm
+from .forms import CustomUserCreationForm, CustomUserChangeForm, ProfileForm
 
-CustomUser = get_user_model()
 
 # Register your models here.
 
@@ -19,4 +19,14 @@ class CustomUserAdmin(UserAdmin):
     ]
 
 
+class ProfileAdmin(admin.ModelAdmin):
+    list_display = (
+        'pk',
+        'user',
+        'user_type',
+        'display_name',
+    )
+
+
 admin.site.register(CustomUser, CustomUserAdmin)
+admin.site.register(Profile, ProfileAdmin)
