@@ -1,0 +1,112 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% load crispy_forms_tags %}
+
+{% block title %}Profile - {{profile.user.username|default:'User' }}{% endblock %}
+
+{% block content %}
+
+<div class="container p-4">
+    <div class="row">
+        {% if profile %}
+        <!-- Profile left side on tablets/large screens -->
+        <div class="col-lg-5">
+            <div class="profile">
+                <div class="profile-info text-center">
+                    <div class="mb-4">
+                        {% if profile.image.url is not none %}
+                        <img class="profile-img rounded-circle" src="{{ profile.image.url }}"
+                            alt="{{ profile.user.username }}'s profile image">
+                        {% else %}
+                        <img class="profile-img rounded-circle" src="{% static 'images/user_profile_placeholder (1).jpg' %}"
+                            alt="user_profile_placeholder">
+                        {% endif %}
+                    </div>
+                    <!-- Edit button for profile -->
+                    {% if request.user == profile.user %}
+                    <button id="myBtn" class="btn edit-button btn btn-link my-2">Edit</button>
+                    {% endif %}
+                    <h1 class="text-center section-title" id="auth">{{ profile.user.username }}</h1>
+                    <p class="section-p"><strong class="profile-strong">Posts:
+                        </strong>{{profile.user.post_posts.count }}</p>
+                    {% if profile.bio is not none %}
+                    <p class="section-title my-2" id="auth-bio">Bio: </p>
+                    <div class="section-p">{{ profile.bio|safe }}</div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        <!-- Profile right side on tablets/large screens, User articles and bookings dashboard -->
+        <div class="col-lg-5 offset-lg-2 text-center mt-5">
+            <h2 class="text-center section-title mb-4" id="">Latest Posts</h2>
+            <div class="profile-posts text-center mb-2 p-2">
+                {% for post in profile.user.blog_posts.all %}
+                <a href="{% url 'post_detail' post.slug %}" class="post-link">
+                    <h3 class="special-anchor-article">{{ post.title }}</h3>
+                </a>
+                <p>{{ post.created_on}}</p>
+                {% endfor %}
+            </div>
+        </div>
+        {% else %}
+        <p class="text-center mx-auto w-50">No profile information available.</p>
+        {% endif %}
+
+    </div>
+
+    <!-- modal code from W3Schools https://www.w3schools.com/howto/howto_css_modal -->
+    <div id="myModal" class="modal mt-5">
+
+        <!-- modal content -->
+        <div class="modal-content container text-center shadow w-75">
+            <span class="close fs-1 pe-2 position-absolute top-0 end-0 font-weight-bold">&times;</span>
+            <form method="POST" action="{% url 'profile_edit' request.user.id %}" class="mb-2 p-2"
+                enctype="multipart/form-data">
+                <h2 class="text-center section-title fs-4 mb-4" id="auth-profile">Edit Profile</h2>
+                {% csrf_token %}
+                {{ form|crispy }}
+                {{ form.media }}
+                <div class="d-flex justify-content-center">
+                    <button type="submit" class="btn btn-custom-form">Save Changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block extra_js %}
+{{ block.super }}
+<!-- Profile edit modal functionality - W3Schools -->
+<script>
+    // Get the modal - W3Schools
+    const modal = document.getElementById("myModal");
+
+    // Get the button that opens the modal
+    const btn = document.getElementById("myBtn");
+
+    // Get the <span> element that closes the modal
+    const span = document.getElementsByClassName("close")[0];
+
+    // When the user clicks on the button, open the modal
+    btn.onclick = function () {
+        modal.style.display = "block";
+    };
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function () {
+        modal.style.display = "none";
+    };
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    };
+</script>
+{% endblock %}
