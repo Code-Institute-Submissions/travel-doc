@@ -33,12 +33,12 @@ class AddJob(LoginRequiredMixin, CreateView,):
 def job_detail(request, slug):
 
     queryset = Job.objects.filter(status=1)
-    post = get_object_or_404(queryset, slug=slug)
+    job = get_object_or_404(queryset, slug=slug)
 
     return render(
         request,
         'jobs/job_detail.html',
-        {'post': post},
+        {'job': job},
     )
 
 
