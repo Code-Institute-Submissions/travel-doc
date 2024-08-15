@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load crispy_forms_tags %}
+
+<div class="container text-center">
+    <!--enctype for file upload to cloudinary-->
+    <form method="POST" enctype="multipart/form-data" class="p-1 w-75 form" >
+        <h2>Add a New Job</h2>
+        {% csrf_token %}
+        {{ form.media }}
+        {{ form|crispy }}
+        <div class="text-center">
+            <button id="submitButton" type="submit"class="btn btn-signup btn-lg">Submit</button>
+        </div>
+    </form>
+    {% if messages %}
+    {% for message in messages %}
+        <div class="alert {% if message.tags %}alert-{{ message.tags }}{% else %}alert-info{% endif %}" role="alert">
+            {{ message }}
+        </div>
+    {% endfor %}
+    {% endif %}
+
+</div>
+{% endblock %}

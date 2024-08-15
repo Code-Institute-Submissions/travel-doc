@@ -1,0 +1,28 @@
+{% extends 'base.html' %} {% block content %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+<div class="masthead">
+    <div class="container">
+        <h2> {{job.title}}</h2>
+    <div class="row">
+        {% for job in speclist.jobs %}
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <a href="{% url 'job_detail' job.slug %}" class="job-link">
+                        <h2 class="card-title">{{ job.location}}</h2>
+                    </a>
+                    <hr>
+                    <p class="card-text text-muted h6">{{ job.created_on}}</p>
+                </div>
+            </div>
+        </div>
+        {% if forloop.counter|divisibleby:6 %}
+    </div>
+    <div class="row">
+        {% endif %}
+        {% endfor %}
+
+    </div>
+{% endblock %}

@@ -71,6 +71,7 @@ INSTALLED_APPS = [
     'blog',
     'profile',
     'sendemail.apps.SendemailConfig',
+    'jobs',
 ]
 
 # django-allatuh config
@@ -143,6 +144,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'blog.views.category_list',
+                'jobs.views.speciality_list',
             ],
         },
     },
