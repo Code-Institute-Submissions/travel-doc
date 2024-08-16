@@ -1,17 +1,18 @@
-from django.shortcuts import render, get_object_or_404, reverse
+from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import ListView, CreateView, UpdateView
 from django.contrib import messages
 #from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.urls import reverse_lazy
 from .models import Job, Speciality
 from .forms import JobForm
 
 
 # Create your views here.
-class AddJob(LoginRequiredMixin, CreateView,):
+# Add Job for employers
+class AddJob(LoginRequiredMixin,UserPassesTestMixin, CreateView,):
     """ Model to submit a job
     """
     model = Job
@@ -25,11 +26,30 @@ class AddJob(LoginRequiredMixin, CreateView,):
 
         if self.object.status == 0:
             messages.info(
-                self.request, """ Your Job was sent successfully <br>
+                self.request, """Your Job was sent successfully <br>
     and is awaiting approval."""
-            )
+                )
         return response
 
+    def test_func(self):
+        return self.request.user.profile.user_type == 'employer'
+
+    def handle_no_permission(self):
+        messages.error(self.request, "You do not have permission to add a job!")
+        return redirect('home')
+
+
+def employer_profile(request):
+    if request.user.profile.user_type != 'employer':
+        messages.error(request, "You do not have permission to view this page.")
+        return redirect('home')
+
+    jobs = Job.objects.filter(author=request.user)
+
+    return render(request, 'profile/employer_profile.html', {'jobs':jobs})
+
+    
+# Job detail view
 def job_detail(request, slug):
 
     queryset = Job.objects.filter(status=1)
@@ -42,6 +62,7 @@ def job_detail(request, slug):
     )
 
 
+#Speciality View
 class SpecialityView(ListView):
     """
     """

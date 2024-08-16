@@ -6,7 +6,7 @@ from django.contrib import messages
 from allauth.account.views import LogoutView
 from .models import Profile
 from blog.models import Post, Comment
-from .forms import ProfileForm, CustomUserChangeForm, CustomUserCreationForm
+from .forms import ProfileForm
 
 # Create your views here.
 class ProfileView(TemplateView):
@@ -15,8 +15,11 @@ class ProfileView(TemplateView):
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        profile = Profile.objects.get(user=self.kwargs["pk"])
-        context['profile'] = profile
+        try:
+            profile = Profile.objects.get(user=self.kwargs["pk"])
+            context['profile'] = profile
+        except Profile.DoesNotExist:
+            raise Http404("Profile does not exist")
         
         return context
 
@@ -25,13 +28,16 @@ class ProfileEdit(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     """edit  profile view """
     form_class = ProfileForm
     model = Profile
+    template_name ='edit_profile.html'
 
     def form_valid(self, form):
         self.object = form.save()
+        messages.success(self.request, "Your progile has been updated successfully!")
         return redirect(self.get_success_url())
 
     def get_success_url(self):
         return reverse_lazy('profile',kwargs={'pk': self.kwargs['pk']})
 
     def test_func(self):
-        return self.request.user == self.get_object().user
+        profile = self.get_object()
+        return self.request.user == profile.user
