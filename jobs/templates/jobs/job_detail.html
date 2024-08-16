@@ -2,177 +2,67 @@
 {% load static %}
 {% block title %}Article - {{job.title}}{% endblock %}
 {% block content %}
-
-<div class="job-detail container">
+{% load crispy_forms_tags %}
+<div class="container">
     <div class="row">
-        <div class="col-lg-8 col-md-7">
-                            <div class="row">
-                <div class="col-6">
-                                                <a class="fire back-arrow" href="javascript:history.back()" data-test-aa="back-to-job-board-click">Back</a>
-                                        </div>
-                <div class="col-6 text-right">
-                    <button class="save-job-btn btn unfavorited fire" data-id="JOB-2975130" data-title="A WA Facility Seeks a Internal Medicine Physician" data-specialty="internal-medicine" data-test-aa="save-job-job-detail">save job</button>
-                    <button data-test-aa="save-job-job-detail" class="save-job-btn btn favorited water" style="display:none" data-id="JOB-2975130" data-title="A WA Facility Seeks a Internal Medicine Physician">saved job</button>
-                </div>
-            </div>
-
-            <h1 class="forza dark-grey">{{job.title}}</h1>
+        <!-- Job Details Column -->
+        <div class="col-lg-8 col-md-7 job-detail">
+            <h1>{{ job.title }}</h1>
             <div class="row">
                 <div class="col-md-4 col-12 quick-fact">
                     <label>Date Posted:</label><br>
-                    <span class="vitesse water">{{ job.created_on}}</span>
+                    <span>{{ job.created_on }}</span>
                 </div>
                 <div class="col-md-4 col-12 quick-fact">
                     <label>Medical Specialty:</label><br>
-                    <span class="vitesse water">{{job.speciality}}</span>
+                    <span>{{ job.speciality }}</span>
                 </div>
-                                    <div class="col-md-4 col-12 quick-fact">
+                <div class="col-md-4 col-12 quick-fact">
                     <label>Location:</label><br>
-                    <span class="vitesse water">{{ job.location}}
-                            </span>
-                </div>
-                                    
-                                                                                                                    <div class="col-md-4 col-12 quick-fact">
-                </div>
-                                </div>
-                                <br>
-                                <br>
-            <h4 class="forza dark-grey">Job Quick Facts</h4>
-            <ul class="vitesse">
-                                        <li>BC required</li>
-                                        <li>Weekdays, Days, No call</li>
-                                        <li>18 patients per day</li>
-                                        <li>Epic proficient is a must</li>
-                                        <li>DEA needed</li>
-                                </ul>
-            <div class="d-md-none">
-                <button class="btn outline sunshine-border sunshine" data-toggle="modal" data-target="#job-detail-modal">apply for this job<div class="btn-arrow">
-                    <span class="left-line sunshine-background"></span>
-                    <span class="right-line sunshine-background"></span>
-                    <span class="center-line sunshine-background"></span>
-                    <span class="d-line1 sunshine-background"></span>
-                    <span class="d-line2 sunshine-background"></span>
-                </div></button>
-            </div>
-            <h4 class="forza dark-grey">Application steps </h4>
-            <div class="job-detail-description">
-                <p>When you’re ready to expand your personal and professional horizons, pick up the phone and call us.</p>
-            </div>
-            <h4 class="forza dark-grey">Our benefits</h4>
-            <ul class="vitesse">
-                                <li>Competitive compensation</li>
-                                <li>Pre-paid travel and housing</li>
-                                <li>Paid AAA-rated claims made malpractice</li>
-                                <li>Licensing assistance and cost reimbursement</li>
-                                <li>Member of NALTO</li>
-                            </ul>
-                                <div class="hline d-none d-sm-block"></div>
-                            <!-- Bottom Apply button - hidden on desktop-->
-            <div class="row bottom-apply d-md-none fire-background topography-background">
-                <div class="col-12">
-                    <button class="btn white-background fire" data-toggle="modal" data-target="#job-detail-modal">apply for this job</button>
+                    <span>{{ job.location }}</span>
                 </div>
             </div>
+
+            <br>
+            <h4>Job Quick Facts</h4>
+            <div>{{ job.description }}</div>
+
+            <br>
+            <h4 class="forza dark-grey">Application Steps</h4>
+            <div>
+                <p>When you’re ready to expand your personal and professional horizons, <br>pick up the phone and call us.</p>
+            </div>
+
+            <br>
+            <h4>Our Benefits</h4>
+            <ul class="benefits-list">
+                <li>Competitive compensation</li>
+                <li>Pre-paid travel and housing</li>
+                <li>Paid AAA-rated claims made malpractice</li>
+                <li>Licensing assistance and cost reimbursement</li>
+                <li>Member of NALTO</li>
+            </ul>
         </div>
+
+        <!-- Form Column -->
         <div class="col-lg-4 col-md-5 d-none d-md-block pl-5 form-column">
-            <div class="form-container dark-grey-background">
-                                            
-<h2 class="white thirsty text-center">Nex<span>t</span> s<span>t</span>ep:</h2>
-<p class="white vitesse text-center">Fill out this form to<br>apply for this job.</p>
-
-
-        
-
-<form method="POST" data-toggle="validator" role="form" data-disable="3000" target="" id="oneColumnForm66be1abb90c02" name="oneColumnForm66be1abb90c02" class="job-detail" enctype="multipart/form-data"><input name="_session_key" type="hidden" value="xeC6VT3JdrLp2C6Ov0Rprd8pHKoTNvisx410K6tx"><input name="_token" type="hidden" value="sPhHKjz25Pk0Ekol4cvMshsW3vy3cSeuziqiKuv1">
-
-
-    <div class="form-wrapper">
-            <input type="hidden" name="formname" value="oneColumnForm66be1abb90c02uploadTrg">
-
-
-
-    
-    <input type="hidden" name="job_international" value="1" data-chg="international-radio-btn">
-    <input type="hidden" name="job_domestic" value="0" data-chg="domestic-radio-btn">
-
-
-    
-    
-            <input type="hidden" name="employer_organization" value="">
-    
-            <div class="form-group active">
-            <span class="form-label">Enter first name</span>
-            <input name="contact_first_name" class="on-dark" value="" type="text" validation="name" error-if-blank="First Name is required" error-if-invalid="Please enter a valid First Name" data-test="first-name" data-test-aa="job-apply-initiated">
+            <div class="form-container">
+                <h2 class="text-center">Nex<span>t</span> s<span>t</span>ep:</h2>
+                <p class="text-center">Fill out this form to<br>apply for this job.</p>
+                <form method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ form|crispy }}
+                    <div class="text-center">
+                        <button id="submitButton" type="submit" class="btn btn-signup btn-lg">
+                            Submit <i class="fa fa-stethoscope"></i>
+                        </button>
+                    </div>
+                </form>
+            </div>
+            <h3 class="text-center">Or give us a call at 
+                <a class="text-center h3 m-auto" href="#">0800.608.1407</a>
+            </h3>
         </div>
-    
-    <div style="position:absolute; left:-6574px; top: -7343px;">
-        <input name="middle_name" value="" tabindex="15" autocomplete="new-password">
-    </div>
-
-                <div class="form-group active">
-            <span class="form-label">Enter last name</span>
-            <input name="contact_last_name" class="on-dark" value="" type="text" validation="name" error-if-blank="Last Name is required" error-if-invalid="Please enter a valid Last Name" data-test="last-name">
-        </div>
-    
-
-
-
-
-               <div class="form-group active">
-            <span class="form-label">Email address</span>
-            <input class="on-dark" type="email" name="contact_email" value="" validation="email" data-test="email">
-        </div>
-    
-                <div class="form-group active">
-            <span class="form-label">Phone number</span>
-            <input class="on-dark" type="tel" name="contact_phone" value="" pattern="^[0-9()_+\- ]+$" minlength="10" validation="phone" data-test="phone">
-        </div>
-    
-    
-            <input type="hidden" name="specialty" value="Internal Medicine">
-    
-            <input type="hidden" name="employer_start_date" value="">
-    
-    <input type="hidden" name="ajax" value="true">
-
-    
-                <div class="form-group">
-            <span class="form-label">Comments (optional)</span>
-            <textarea class="comment-box on-dark" name="contact_comments" type="text"></textarea>
-        </div>
-    
-            <div class="js-upload-error heart-background">
-        <label class="white js-type" data-test="attachment-type-error">
-            Sorry, but that file type isn’t supported.<br>
-            Supported types: doc, docx, txt, text, pdf, pages, odt, png, jpg, jpeg, gif.
-        </label>
-        <label class="white js-size" data-test="attachment-size-error">
-            File size is too large.<br>
-            Maximum size is 20 MB
-        </label>
-    </div>
-    <label class="fileUploadLabel d-none d-md-block">
-        <input id="oneColumnForm66be1abb90c02attachment" name="attachment" type="file" onchange="fileNameLabel('#oneColumnForm66be1abb90c02attachment','#oneColumnForm66be1abb90c02fileName');" accept=".doc,.docx,.odt,.pages,.pdf,.png,.text,.txt,.jpg,.jpeg,.gif" data-test="attachment">
-        <span class="white forza pr-2" error="Valid file formats are doc, docx, odt, pages, pdf, png, text, txt, jpg, jpeg, gif" id="oneColumnForm66be1abb90c02fileName">UPLOAD CV/RESUME</span>
-        <span class="white vitesse">(optional)</span>
-    </label>
-    
-
-
-                <div><div class="grecaptcha-badge" data-style="bottomright" style="width: 256px; height: 60px; display: block; transition: right 0.3s; position: fixed; bottom: 14px; right: -186px; box-shadow: gray 0px 0px 5px; border-radius: 2px; overflow: hidden;"><div class="grecaptcha-logo"><iframe title="reCAPTCHA" width="256" height="60" role="presentation" name="a-la7w11j3371z" frameborder="0" scrolling="no" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation allow-modals allow-popups-to-escape-sandbox allow-storage-access-by-user-activation" src="https://www.google.com/recaptcha/api2/anchor?ar=2&amp;k=6LcDbfcUAAAAANCVxdYajLJzIjgyaWhSJh8aQUqd&amp;co=aHR0cHM6Ly9nbWVkaWNhbC5jb206NDQz&amp;hl=en&amp;v=hfUfsXWZFeg83qqxrK27GB8P&amp;size=invisible&amp;cb=7zrben4qzme4"></iframe></div><div class="grecaptcha-error"></div><textarea id="g-recaptcha-response" name="g-recaptcha-response" class="g-recaptcha-response" style="width: 250px; height: 40px; border: 1px solid rgb(193, 193, 193); margin: 10px 25px; padding: 0px; resize: none; display: none;"></textarea></div></div><input type="submit" data-test="inquire-form-submit" value="submit" class="btn sunshine-background white g-recaptcha" data-sitekey="6LcDbfcUAAAAANCVxdYajLJzIjgyaWhSJh8aQUqd" data-callback="onSubmitoneColumnForm66be1abb90c02" data-test-aa="job-apply-submitted">
-    
-
-</div></form>
-
-        <h3 class="white thirsty text-center">Or give us a call a<span>t</span></h3>
-    <div class="text-center">
-                        <!-- international -->
-            <a class="white forza text-center h3 m-auto" href="tel:866.588.5070">866.588.5070</a>
-    </div>
-
-
-                                </div>
-        </div>
-    </div>
-</div>
+    </div>       
+</div>     
 {% endblock %}

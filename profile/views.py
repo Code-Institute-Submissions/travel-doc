@@ -1,17 +1,16 @@
-from django.views.generic import TemplateView, UpdateView, DeleteView
+from django.views.generic import TemplateView, UpdateView
 from django.shortcuts import redirect
 from django.contrib.auth.mixins import UserPassesTestMixin, LoginRequiredMixin
 from django.urls import reverse_lazy
 from django.contrib import messages
-from allauth.account.views import LogoutView
+#from allauth.account.views import LogoutView
 from .models import Profile
-from blog.models import Post, Comment
 from .forms import ProfileForm
 
 # Create your views here.
 class ProfileView(TemplateView):
     """" profile view """
-    template_name = 'profile.html'
+    template_name = 'profile/profile.html'
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

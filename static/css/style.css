@@ -113,7 +113,86 @@ border-color: crimson;
 .post_like{
     border:none;
 }
+/*job detail*/
+.job-detail{
+    margin-top: 10px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+}
 
+.job-detail .quick-fact label {
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+.job-detail .quick-fact span {
+    font-size: 1em;
+    color: #555;
+}
+
+.benefits-list {
+    list-style-type: disc; 
+    padding-left: 20px; 
+    margin-top: 20px; 
+    color: #333; 
+}
+
+.benefits-list li {
+    margin-bottom: 10px;
+    font-size: 1.1em;
+    color: #555; 
+}
+
+.benefits-list li::marker {
+    color: #5d9857; 
+    font-size: 1.2em; 
+}
+
+/*job application form*/
+.form-column{
+    margin-top: 10px;
+}
+
+.form-container{
+    padding: 40px;
+    width: 100%;
+    max-width: 320px;
+    color:#fff;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #54565a;
+}
+
+/*Form Header and Text*/
+.form-container h2 {
+    font-size: 2em;
+    font-weight: bold;
+    color: #fff;
+    margin-bottom: 20px;
+
+}
+
+.form-container p{
+    font-size: 1.2em;
+    color: #ddd;
+}
+
+.text-center{
+    text-align: center;
+}
+
+.h3{
+    font-size: 1.75rem;
+}
+
+.m_auto{
+    margin: auto;
+}
+
+form{
+    margin-top: 20px;
+}
 /* Responsive styling */
 
 /* Media query for large or landscape phones (576px and up) */

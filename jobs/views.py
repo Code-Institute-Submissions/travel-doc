@@ -6,8 +6,8 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.urls import reverse_lazy
-from .models import Job, Speciality
-from .forms import JobForm
+from .models import Job, Speciality, JobApplication
+from .forms import JobAddForm, JobApplicationForm
 
 
 # Create your views here.
@@ -16,7 +16,7 @@ class AddJob(LoginRequiredMixin,UserPassesTestMixin, CreateView,):
     """ Model to submit a job
     """
     model = Job
-    form_class = JobForm
+    form_class = JobAddForm
     template_name = 'jobs/add_job.html'
     success_url = reverse_lazy('home')
 
@@ -50,15 +50,22 @@ def employer_profile(request):
 
     
 # Job detail view
-def job_detail(request, slug):
-
-    queryset = Job.objects.filter(status=1)
-    job = get_object_or_404(queryset, slug=slug)
+def job_detail_view(request, slug):
+    job = get_object_or_404(Job, slug=slug)
+    if request.method == 'POST':
+        form = JobApplicationForm(request.POST, request.FILES, job=job, user=request.user)
+        if form.is_valid():
+            form.save()
+            return redirect('home')
+    else:
+        form = JobApplicationForm(job=job, user=request.user)
 
     return render(
         request,
         'jobs/job_detail.html',
-        {'job': job},
+        {'job': job,
+        'form': form
+        }
     )
 
 

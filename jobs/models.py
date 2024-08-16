@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 from django.urls import reverse
 from datetime import datetime, date
 from django.core.validators import MinValueValidator, MaxValueValidator
+from cloudinary.models import CloudinaryField
 
 
 STATUS = ((0, "Draft"), (1, "Published"))
@@ -53,3 +54,32 @@ class Job(models.Model):
 
     def __str__(self):
         return self.title
+
+
+APPLICATION_STATUS = (
+    (0, "Applied"),
+    (1, "Reviewed"),
+    (2, "Accepted"),
+    (3, "Rejected"),
+)
+
+class JobApplication(models.Model):
+    """job application"""
+    job = models.ForeignKey('Job', on_delete=models.CASCADE, related_name="applications")
+    applicant = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name="applications")
+    applicant_first_name = models.CharField(max_length=100, default=0)
+    applicant_last_name = models.CharField(max_length=100, default=0)
+    applicant_email = models.EmailField(default=0)
+    applicant_phone = models.CharField(max_length=20, default=0)
+    cover_letter = models.TextField(null=True, blank=True)
+    cv = CloudinaryField('file', blank=True)
+    status = models. IntegerField(choices=APPLICATION_STATUS, default=0)
+    applied_on = models.DateTimeField(auto_now_add=True)
+
+
+    class Meta:
+        ordering = ["-applied_on"]
+        unique_together = ("job", "applicant")
+
+    def __str__(self):
+        return f"{self.applicant.username} - {self.job.title}"

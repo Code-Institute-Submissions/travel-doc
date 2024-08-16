@@ -1,10 +1,10 @@
 from django import forms
-from .models import Job
+from .models import Job, JobApplication
 from slugify import slugify
 from django_summernote.widgets import SummernoteWidget
 
 
-class JobForm(forms.ModelForm):
+class JobAddForm(forms.ModelForm):
     """
     Form for Jobsubmission
     """
@@ -38,4 +38,43 @@ class JobForm(forms.ModelForm):
             "start_date": "Start Date",
             "end_date": "End Date",
             "description": "Job Description",
-        }  
+        }
+
+
+class JobApplicationForm(forms.ModelForm):
+    class Meta:
+        model = JobApplication
+        fields = [
+            'applicant_first_name', 
+            'applicant_last_name', 
+            'applicant_email', 
+            'applicant_phone',  
+            'cover_letter', 
+            'cv']
+        widgets = {
+            'cover_letter' : forms.Textarea(attrs={'rows':4}),
+        }
+
+        labels = {
+            'applicant_first_name': "Enter first name", 
+            'applicant_last_name': "Enter last name",
+            'applicant_email': "Email address", 
+            'applicant_phone': "Phone number", 
+            'cover_letter':"Cover letter", 
+            'cv': "UPLOAD CV/RESUME(optional)",
+        }
+        
+    def __init__(self, *args, **kwargs):
+        self.job = kwargs.pop('job', None)
+        self.user = kwargs.pop('user', None)
+        super().__init__(*args, **kwargs)
+        if self.job:
+            self.fields['cv'].required =False
+
+    def save(self, commit=True):
+        instance = super().save(commit=False)
+        if commit:
+            instance.job = self.job
+            instance.applicant = self.user
+            instance.save()
+        return instance
