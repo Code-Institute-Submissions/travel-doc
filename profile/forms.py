@@ -12,14 +12,6 @@ class CustomSignupForm(SignupForm):
 
     user_type = forms.ChoiceField(choices=USER_TYPE_CHOICES, widget=forms.RadioSelect, required=True)
 
-    #class Meta:
-        #model = CustomUser()
-        #fields = (
-            #"email",
-            #"username",
-            #"user_type",
-        #)
-    
 
     def save(self, request):
         user = super(CustomSignupForm, self).save(request)
@@ -29,18 +21,21 @@ class CustomSignupForm(SignupForm):
         return user
 
 
-#class CustomUserChangeForm(UserChangeForm):
-    #class Meta:
-        #model = CustomUser()
-        #fields = (
-            #"email",
-           # "username",
-            #"user_type",
-        #)
+class RegularProfileForm(forms.ModelForm):
+    """ form for regular user profile"""
+    class Meta:
+        model = Profile
+        fields = ['profile_image','display_name', 'bio']
+
+        labels = {
+            "profile_image": "Profile Image",
+            "display_name": "Display Name",
+            "bio": "Bio"
+        }
 
 
-class ProfileForm(forms.ModelForm):
-    """ form for user to create a profile"""
+class EmployerProfileForm(forms.ModelForm):
+    """Form for employer user profile"""
     class Meta:
         model = Profile
         fields = ['profile_image', 'display_name', 'bio']
