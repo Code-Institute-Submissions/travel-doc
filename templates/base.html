@@ -100,7 +100,15 @@
                <ul class="d-flex login-box ml-auto">
                    <!-- User authentication -->
                    <li class="nav-item">
-                       <a class="nav-link active" href="{% url 'profile' request.user.id %}"><i class="fa fa-user" aria-hidden="true"></i> {{ user.username | slice:":10" }}</a>
+                        {% if request.user.profile.user_type == 'employer' %}
+                            <a class="nav-link active" href="{% url 'employer_profile' %}">
+                                <i class="fa fa-user" aria-hidden="true"></i> {{ user.username | slice:":10" }}
+                            </a>
+                        {% else %}
+                            <a class="nav-link active" href="{% url 'regular_profile' user.profile.pk %}">
+                                <i class="fa fa-user" aria-hidden="true"></i> {{ user.username | slice:":10" }}
+                            </a>
+                        {% endif %}
                    </li>
                    <li class="nav-item">
                        <a class="nav-link active" href="{% url 'account_logout' %}" aria-label="Go to the logout page"> Logout <i class="fa fa-sign-out" aria-hidden="true"></i>|</a>
@@ -152,11 +160,11 @@
         <!-- Section: Social media -->
         <div class="mb-1">
           <!-- Facebook -->
-          <a class="btn text-white btn-floating m-1" style="background-color: #3b5998;" href="https://facebook.com" target="_blank" role="button"><i class="fab fa-facebook-f"></i></a>
+          <a class="btn text-white btn-floating m-1" style="background-color: #363535;" href="https://facebook.com" target="_blank" role="button"><i class="fab fa-facebook-f"></i></a>
           <!-- Twitter -->
-          <a class="btn text-white btn-floating m-1" style="background-color: #55acee;" href="https://twitter.com" target="_blank" role="button"><i class="fab fa-twitter"></i></a>    
+          <a class="btn text-white btn-floating m-1" style="background-color: #363535;" href="https://twitter.com" target="_blank" role="button"><i class="fab fa-twitter"></i></a>    
           <!-- Instagram -->
-          <a class="btn text-white btn-floating m-1" style="background-color: #ac2bac;" href="https://instagram.com" target="_blank" role="button"><i class="fab fa-instagram"></i></a>
+          <a class="btn text-white btn-floating m-1" style="background-color: #363535;" href="https://instagram.com" target="_blank" role="button"><i class="fab fa-instagram"></i></a>
         </div>
         <!-- Section: Social media -->
          <!-- Grid container -->
@@ -174,14 +182,14 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
     <script src="{% static 'js/comments.js' %}"></script>
         
-    <script>
+    <!--<script>
         // Settimeout to dismiss the alert box
       setTimeout(function () {
           let messages = document.getElementById('msg');
           let alert = new bootstrap.Alert(messages);
           alert.close();
       }, 2500);
-    </script>
+    </script>-->
 
     {% block extras %}
     {% endblock %}

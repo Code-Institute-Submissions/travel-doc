@@ -39,16 +39,6 @@ class AddJob(LoginRequiredMixin,UserPassesTestMixin, CreateView,):
         messages.error(self.request, "You do not have permission to add a job!")
         return redirect('home')
 
-
-def employer_profile(request):
-    if request.user.profile.user_type != 'employer':
-        messages.error(request, "You do not have permission to view this page.")
-        return redirect('home')
-
-    jobs = Job.objects.filter(author=request.user)
-
-    return render(request, 'profile/employer_profile.html', {'jobs':jobs})
-
     
 # Job detail view
 def job_detail_view(request, slug):
