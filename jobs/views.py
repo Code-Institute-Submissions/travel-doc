@@ -8,6 +8,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.urls import reverse_lazy
 from .models import Job, Speciality, JobApplication
 from .forms import JobAddForm, JobApplicationForm
+from django.db import IntegrityError
 
 
 # Create your views here.
@@ -52,13 +53,22 @@ def employer_profile(request):
 # Job detail view
 def job_detail_view(request, slug):
     job = get_object_or_404(Job, slug=slug)
+
     if request.method == 'POST':
-        form = JobApplicationForm(request.POST, request.FILES, job=job, user=request.user)
+        form = JobApplicationForm(request.POST, request.FILES)
         if form.is_valid():
-            form.save()
-            return redirect('home')
+            try:
+                application = form.save(commit=False)
+                application.job = job
+                application.applicant = request.user
+                application.save()
+                messages.success(request, "Your application has been submitted. We will reach out to you shortly!")
+                return redirect('job_detail', slug=slug)
+            except IntegrityError:
+                messages.error(request, "You have already applied for this job.")
+                return redirect('job_detail', slug=slug)
     else:
-        form = JobApplicationForm(job=job, user=request.user)
+        form = JobApplicationForm()
 
     return render(
         request,
