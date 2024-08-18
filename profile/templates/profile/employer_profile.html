@@ -5,18 +5,23 @@
 {% block title %}Employer Profile - {{ profile.user.username }}{% endblock %}
 
 {% block content %}
-<section class="py-5 text-center container">
-    <div class="row py-lg-5">
+<section class="py-1 text-center container">
+    <div class="row py-lg-1">
         <div class="col-lg-6 col-md-8 mx-auto">
             <h1 class="fw-light">Employer Profile - {{ profile.user.username }}</h1>
             <div class="mb-4">
                 {% if profile.image.url %}
                 <img class="profile-img rounded-circle" src="{{ profile.image.url }}" alt="{{ profile.user.username }}'s profile image">
                 {% else %}
-                <img class="profile-img rounded-circle" style="width: 100px;" src="{% static 'images/user_profile_placeholder.jpg' %}" alt="user_profile_placeholder">
+                <img class="profile-img rounded-circle" style="width: 100px;" src="{% static '/images/user_profile_placeholder (1).jpg' %}" alt="user_profile_placeholder">
                 {% endif %}
             </div>
             <p class="lead text-body-secondary">{{ profile.bio }}</p>
+            <div class="text-center">
+                {% if request.user == profile.user %}
+                <a href="{% url 'profile_edit' profile.pk %}" class="btn btn-signup btn-lg">Edit <i class="fa fa-stethoscope"></i></a>
+                {% endif %}
+            </div>
         </div>
     </div>
 </section>
@@ -24,7 +29,7 @@
 <div class="container">
     <h2 class="text-center">Jobs Posted</h2>
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-        {% for job in jobs_posted %}
+        {% for job in jobs %}
         <div class="col">
             <div class="card shadow-sm">
                 <div class="card-body">
@@ -32,6 +37,14 @@
                         <h3>{{ job.title }}</h3>
                     </a>
                     <p>{{ job.created_on|date:"F d, Y" }}</p>
+                    <div class="d-flex justify-content-between mt-3">
+                        <a href="{% url 'edit_job' job.id %}"><button class="btn btn-edit me_2" >Edit</button></a>
+                        
+                        <form action="{% url 'job_delete' job.id %}" method="post" style="display: inline;">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
@@ -39,7 +52,30 @@
         <p>No jobs posted yet.</p>
         {% endfor %}
     </div>
-
+<!-- Delete confirmation modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1"
+aria-labelledby="deleteModalLabel" aria-hidden="true">
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title"
+        id="deleteModalLabel">Delete comment?</h5>
+      <button type="button" class="btn-close"
+        data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <div class="modal-body">
+      Are you sure you want to delete your comment?
+      This action cannot be undone.
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary"
+        data-bs-dismiss="modal">Close</button>
+      <a id="deleteConfirm" href="#" class="btn
+        btn-danger">Delete</a>
+    </div>
+  </div>
+</div>
+</div>
     <h2 class="text-center mt-5">Latest Posts</h2>
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
         {% for post in posts %}

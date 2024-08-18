@@ -70,12 +70,15 @@ button,
 /* Messaging */
 
 
-.flash-msg {
+#msg {
     position: fixed;
-    z-index: 1010;
-    right: 1rem;
-    left: 1rem;
+    top: 10px;
+    transform: translateX(-59%);
+    z-index: 1050;
+    left: 50%;
     text-align: center;
+    max-width: 80%;
+    opacity: 0.95;
 }
 
 /* Page navigation styling */

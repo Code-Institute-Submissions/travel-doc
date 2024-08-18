@@ -82,7 +82,7 @@
         <!-- We want a for loop inside the empty control tags
           to iterate through each comment in comments -->
         {% for comment in comments %}
-        <div class="p-2 comments {% if not comment.approved and comment.author == user %}faded{% elif not comment.approved %} d-none {% endif %}"">
+        <div class="p-2 comments">
           <p class="font-weight-bold">
             {{ comment.author }}
             <span class="font-weight-normal">
@@ -92,11 +92,6 @@
           <div id="comment{{ comment.id }}">
             {{ comment.body | linebreaks }}
           </div>
-          {% if not comment.approved and comment.author == user %}
-          <p class="approval" style="color: red;">
-            This comment is awaiting approval 
-          </p>
-          {% endif %}
           {% if user.is_authenticated and comment.author == user %}
           <button class="btn btn-delete"comment_id="{{ comment.id }}">Delete</button>
           <button class="btn btn-edit" comment_id="{{ comment.id }}">Edit</button>

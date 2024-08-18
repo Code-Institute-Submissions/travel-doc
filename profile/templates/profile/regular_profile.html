@@ -7,16 +7,19 @@
 
 {% block content %}
 {% if profile %}
-<section class="py-5 text-center container">
-    <div class="row py-lg-5">
+<section class="py-1 text-center container">
+    <div class="row py-lg-1">
         <div class="col-lg-6 col-md-8 mx-auto">
             <div class="profile-info text-center">
-                <h1 class="fw-light">Profile - {{ profile.user.username|default:'User' }}</h1>
+                <h1 class="fw-light">Profile</h1>
+                <h2>{{ profile.display_name }}</h2>
                 <div class="mb-4">
-                    {% if profile.image.url %}
-                    <img class="profile-img rounded-circle" src="{{ profile.image.url }}" alt="{{ profile.user.username }}'s profile image">
-                    {% else %}
+                    {% if "placeholder" in profile.profile.image.url %}
                     <img class="profile-img rounded-circle" style="width: 100px;" src="{% static 'images/user_profile_placeholder (1).jpg' %}" alt="user_profile_placeholder">
+                    {% else %}
+                    <img class="profile-img rounded-circle" style="width: 100px;" src="{{ profile.profile_image.url }}" alt="{{ profile.user.username }}'s profile image">
+                    
+                    
                     {% endif %}
                 </div>
                 {% if profile.bio %}
@@ -32,7 +35,7 @@
     </div>
 </section>
 
-<div class="album py-5 bg-body-tertiary">
+<div class="album py-1 bg-body-tertiary">
     <div class="container">
         <!-- Latest Posts Section -->
         <h3 class="text-center section-title mb-4">Latest Posts</h3>
@@ -56,14 +59,16 @@
         <!-- Job Applications Section -->
         <h3 class="text-center section-title mb-4 mt-5">Job Applications</h3>
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-            {% for application in job_applications %}
+            {% for job_application in job_applications %}
             <div class="col">
                 <div class="card shadow-sm">
                     <div class="card-body">
-                        <a href="{% url 'job_detail' application.job.slug %}" class="post-link">
-                            <h4 class="special-anchor-article">{{ application.job.title }}</h4>
+                        <a href="{% url 'job_detail' job_application.job.slug %}" class="post-link">
+                            <h4>{{ job_application.job.title }}</h4>
                         </a>
-                        <p>Applied on: {{ application.created_on|date:"F d, Y" }}</p>
+                        <p>Applied on: {{ job_application.applied_on|date:"F d, Y" }}</p>
+                        <br>
+                        <p>Status: {{ job_application.get_status_display }}</p>
                     </div>
                 </div>
             </div>

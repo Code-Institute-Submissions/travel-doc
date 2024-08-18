@@ -2,6 +2,7 @@ from allauth.account.forms import SignupForm
 from django import forms
 #from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from .models import Profile, CustomUser
+from cloudinary.forms import CloudinaryInput
 
 
 class CustomSignupForm(SignupForm):
@@ -27,6 +28,10 @@ class RegularProfileForm(forms.ModelForm):
         model = Profile
         fields = ['profile_image','display_name', 'bio']
 
+        widgets = {
+            'profile_image': forms.ClearableFileInput(attrs={'class':'form-control'}),
+        }
+
         labels = {
             "profile_image": "Profile Image",
             "display_name": "Display Name",
@@ -39,6 +44,10 @@ class EmployerProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
         fields = ['profile_image', 'display_name', 'bio']
+
+        widgets = {
+            'profile_image': forms.ClearableFileInput(attrs={'class':'form-control'}),
+        }
 
         labels = {
             "profile_image": "Profile Image",

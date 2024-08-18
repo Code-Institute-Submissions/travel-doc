@@ -25,6 +25,7 @@ class ProfileAdmin(admin.ModelAdmin):
         'user',
         'user_type',
         'display_name',
+        'profile_image',
     )
 
 

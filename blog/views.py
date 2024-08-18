@@ -59,17 +59,7 @@ class PostList(generic.ListView):
     """
     Returns all published posts in :model:`blog.Post`
     and displays them in a page of six posts.
-    **Context**
-
-    ``queryset``
-        All published instances of :model:`blog.Post`
-    ``paginate_by``
-        Number of posts per page.
-
-    **Template:**
-
-    :template:`blog/index.html`
-    """
+    **Context**"""
     queryset = Post.objects.filter(status=1)
     template_name = "blog/index.html"
     paginate_by = 6
@@ -85,14 +75,6 @@ class post_detail(View):
     """
     Display an individual :model:`blog.Post`.
 
-    **Context**
-
-    ``post``
-        An instance of :model:`blog.Post`.
-
-    **Template:**
-
-    :template:`blog/post_detail.html`
     """
     def get (self, request, slug, *args, **kwargs):
         queryset = Post.objects.filter(status=1)
@@ -129,13 +111,16 @@ class post_detail(View):
             comment = comment_form.save(commit=False)
             comment.author = request.user
             comment.post = post
-            comment.save()
+            comment.save() #Saves and publishes comment
             messages.add_message(
                 request, messages.SUCCESS,
-                'Comment submitted and awaiting approval'
+                'Your comment has been posted and you can edit or delete it!'
             )
+            comment_form = CommentForm() #Resets the form after comment submission
         else:
-            comment_form = CommentForm()
+            messages.add_message(
+                request, messages.ERROR, "Error posting your comment."
+            )
 
         return render(
             request,
@@ -162,9 +147,8 @@ def comment_edit(request, slug, comment_id):
         if comment_form.is_valid() and comment.author == request.user:
             comment = comment_form.save(commit=False)
             comment.post = post
-            comment.approved = False
             comment.save()
-            messages.add_message(request, messages.SUCCESS, 'Comment updated and awaiting approval!')
+            messages.add_message(request, messages.SUCCESS, 'Comment updated successfully!')
         else:
             messages.add_message(request, messages.ERROR, 'Error updating comment!')
 
@@ -182,7 +166,7 @@ def comment_delete(request, slug, comment_id):
 
     if comment.author == request.user:
         comment.delete()
-        messages.add_message(request, messages.SUCCESS, 'Comment deleted!')
+        messages.add_message(request, messages.SUCCESS, 'Your comment has been deleted!')
     else:
         messages.add_message(request, messages.ERROR, 'You can only delete your own comments!')
 
@@ -226,12 +210,10 @@ class CatListView(ListView):
     context_object_name = 'catlist'
 
     def get_queryset(self):
-        content = {
-            'cat': self.kwargs['category'],
-            'posts': Post.objects.filter(category__name=self.kwargs[
-                'category']).filter(status=1)
-        }
-        return content
+        category_name = self.kwargs['category']
+        posts = Post.objects.filter(category__name=category_name, status=1)
+
+        return {'cat':category_name, 'posts':posts}
 
 
 def category_list(request):

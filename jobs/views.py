@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from django.views.generic import ListView, CreateView, UpdateView
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from django.contrib import messages
 #from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib import messages
@@ -11,10 +11,10 @@ from .forms import JobAddForm, JobApplicationForm
 from django.db import IntegrityError
 
 
-# Create your views here.
-# Add Job for employers
-class AddJob(LoginRequiredMixin,UserPassesTestMixin, CreateView,):
-    """ Model to submit a job
+
+# Add or edit Job for employers
+class JobCreateOrUpdateView(LoginRequiredMixin,UserPassesTestMixin, CreateView, UpdateView):
+    """ View to add or edit a job for employers
     """
     model = Job
     form_class = JobAddForm
@@ -30,6 +30,9 @@ class AddJob(LoginRequiredMixin,UserPassesTestMixin, CreateView,):
                 self.request, """Your Job was sent successfully <br>
     and is awaiting approval."""
                 )
+        else:
+            messages.success(self.request, "Job updated successfully!")
+
         return response
 
     def test_func(self):
@@ -39,6 +42,25 @@ class AddJob(LoginRequiredMixin,UserPassesTestMixin, CreateView,):
         messages.error(self.request, "You do not have permission to add a job!")
         return redirect('home')
 
+    def get_object(self, get_queryset=None):
+        job_id = self.kwargs.get('pk')
+        if job_id:
+            return Job.objects.get(pk=job_id)
+        return None
+
+
+#Job delete view
+class JobDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+    model = Job
+    success_url = reverse_lazy('profile')
+
+    def test_func(self):
+        job = self.get_object()
+        return self.request.user == job.author
+
+    def delete(self, request, *args, **kwargs):
+        messages.success(self.request, "Job deleted successfully!")
+        return super().delete(request, *args, **kwargs)
     
 # Job detail view
 def job_detail_view(request, slug):
