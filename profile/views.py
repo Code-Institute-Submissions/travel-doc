@@ -46,7 +46,7 @@ def profile_view(request, pk):
     if profile.user_type == 'employer':
         return redirect ('employer_profile')
     else: 
-        return redirect('regular_profile.html', pk=pk)
+        return redirect('regular_profile', pk=pk)
 
 
 """class ProfileView(TemplateView):
@@ -82,8 +82,6 @@ class ProfileEdit(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
         messages.success(self.request, "Your profile has been updated successfully!")
         if form.is_valid():
         	profile = form.save()
-        
-        print(profile.profile_image.url)
         
         return redirect(self.get_success_url())
 

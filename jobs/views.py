@@ -8,7 +8,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.urls import reverse_lazy
 from .models import Job, Speciality, JobApplication
 from .forms import JobAddForm, JobApplicationForm
-from django.db import IntegrityError
+#from django.db import IntegrityError
 
 
 
@@ -49,47 +49,73 @@ class JobCreateOrUpdateView(LoginRequiredMixin,UserPassesTestMixin, CreateView, 
         return None
 
 
-#Job delete view
-class JobDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
-    model = Job
-    success_url = reverse_lazy('profile')
+#Job delete view for employer
+def job_delete_view(request, pk):
+    """ View to delete a job by employer
+    """
+    # Fetch the job using the primary key(pk)
+    job = get_object_or_404(Job, pk=pk, author=request.user)
 
-    def test_func(self):
-        job = self.get_object()
-        return self.request.user == job.author
+    #check if the current user is the author of the job posting
+    if job.author == request.user:
+        job.delete()
+        messages.success(request, "Job deleted successfully!")
+    else:
+        messages.error(request, "You can only delete your own job")
 
-    def delete(self, request, *args, **kwargs):
-        messages.success(self.request, "Job deleted successfully!")
-        return super().delete(request, *args, **kwargs)
+    return redirect('profile', pk=request.user.pk)
+
     
 # Job detail view
 def job_detail_view(request, slug):
     job = get_object_or_404(Job, slug=slug)
+    existing_application = JobApplication.objects.filter(job=job, applicant=request.user).first()
 
     if request.method == 'POST':
-        form = JobApplicationForm(request.POST, request.FILES)
+        #If a jobapplication exists we can update it
+        form = JobApplicationForm(request.POST, request.FILES, instance=existing_application)
         if form.is_valid():
-            try:
-                application = form.save(commit=False)
-                application.job = job
-                application.applicant = request.user
-                application.save()
+            application = form.save(commit=False)
+            application.job = job
+            application.applicant = request.user
+            application.save()
+            if existing_application:
+                messages.success(request, "Your application has been updated.")
+            else:
                 messages.success(request, "Your application has been submitted. We will reach out to you shortly!")
-                return redirect('job_detail', slug=slug)
-            except IntegrityError:
-                messages.error(request, "You have already applied for this job.")
-                return redirect('job_detail', slug=slug)
+            return redirect('job_detail', slug=slug)
+            #except IntegrityError:
+                #messages.error(request, "You have already applied for this job.")
+                #return redirect('job_detail', slug=slug)
     else:
-        form = JobApplicationForm()
+        form = JobApplicationForm(instance=existing_application)
 
     return render(
         request,
         'jobs/job_detail.html',
         {'job': job,
-        'form': form
+        'form': form,
+        'is_editing': bool(existing_application),
         }
     )
 
+
+
+def job_application_delete_view(request, pk):
+    """
+    View to delete a job application.
+    """
+    application = get_object_or_404(JobApplication, pk=pk, applicant=request.user)
+   
+    if application.applicant == request.user:
+        application.delete()
+        messages.success(request, "Your job application has been deleted!")
+    else:
+        messages.error(request, "You can only delete your own job application.")
+
+    # Redirect to the user´s profile using the pk
+    return redirect ('profile', pk=request.user.pk)        
+   
 
 #Speciality View
 class SpecialityView(ListView):
