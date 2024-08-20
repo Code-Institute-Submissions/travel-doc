@@ -49,21 +49,6 @@ def profile_view(request, pk):
         return redirect('regular_profile', pk=pk)
 
 
-"""class ProfileView(TemplateView):
-     profile view 
-    template_name = 'profile/regular_profile.html'
-    
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        try:
-            profile = Profile.objects.get(user=self.kwargs["pk"])
-            context['regular_profile'] = profile
-        except Profile.DoesNotExist:
-            raise Http404("Profile does not exist")
-        
-        return context"""
-
-
 class ProfileEdit(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     """edit  profile view that handles both regular and employer profiles"""
  
