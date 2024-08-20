@@ -74,7 +74,7 @@
                         <div class="mt-3">
                             <!--<a href="{% url 'delete_application' job_application.pk %}"><button class="btn btn-delete" >Delete</button></a>-->
                             <button class="btn btn-delete" data-id="{{ job_application.pk }}">Delete</button>
-                            <a href="{% url 'job_detail' job_application.job.slug %}"><button class="btn btn-edit me_2" >Edit</button></a>
+                            <a href="{% url 'edit_application' job_application.job.slug %}"><button class="btn btn-edit me_2" >Edit</button></a>
                             
                             
                         </div>
