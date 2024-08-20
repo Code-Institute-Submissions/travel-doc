@@ -86,6 +86,7 @@ def job_detail_view(request, slug):
             application = form.save(commit=False)
             application.job = job
             application.applicant = request.user
+            application.speciality = job.speciality
             application.save()
             if existing_application:
                 messages.success(request, "Your application has been updated.")
@@ -95,10 +96,9 @@ def job_detail_view(request, slug):
                 messages.success(request, "Your application has been submitted. We will reach out to you shortly!")
 
             # Redirect back to the speciality view with the list of jobs    
-            return redirect('home')
-            #except IntegrityError:
-                #messages.error(request, "You have already applied for this job.")
-                #return redirect('job_detail', slug=slug)
+    
+            return redirect('speciality_jobs', speciality=job.speciality.name)
+            
     else:
         form = JobApplicationForm(instance=existing_application)
 
