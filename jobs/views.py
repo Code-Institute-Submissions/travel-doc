@@ -22,18 +22,26 @@ class JobCreateOrUpdateView(LoginRequiredMixin,UserPassesTestMixin, CreateView, 
     success_url = reverse_lazy('home')
 
     def form_valid(self, form):
-        form.instance.author = self.request.user
-        response = super().form_valid(form)
+        #Check if this is an update or a new creation
+        if self.get_object(): #If an object exists, It´s an update
+            form.instance.author = self.request.user
+            response = super().form_valid(form)
+            messages.success(self.request, "Job updated successfully!")
 
-        if self.object.status == 0:
-            messages.info(
+            # Redirect to the employer's profile after the update
+            return redirect(reverse_lazy('profile', kwargs={'pk': form.instance.author.profile.pk}))
+
+        else: #If no object exists, it´s a new job creation
+            form.instance.author = self.request.user
+            response = super().form_valid(form)
+            
+            if self.object.status == 0:
+                messages.info(
                 self.request, """Your Job was sent successfully <br>
     and is awaiting approval."""
                 )
-        else:
-            messages.success(self.request, "Job updated successfully!")
-
         return response
+
 
     def test_func(self):
         return self.request.user.profile.user_type == 'employer'
@@ -81,9 +89,13 @@ def job_detail_view(request, slug):
             application.save()
             if existing_application:
                 messages.success(request, "Your application has been updated.")
+
+                return redirect('profile', pk=request.user.pk)
             else:
                 messages.success(request, "Your application has been submitted. We will reach out to you shortly!")
-            return redirect('job_detail', slug=slug)
+
+            # Redirect back to the speciality view with the list of jobs    
+            return redirect('home')
             #except IntegrityError:
                 #messages.error(request, "You have already applied for this job.")
                 #return redirect('job_detail', slug=slug)

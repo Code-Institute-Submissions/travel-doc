@@ -4,7 +4,6 @@ const commentForm = document.getElementById("commentForm");
 const submitButton = document.getElementById("submitButton");
 
 const deleteModal = new bootstrap.Modal(document.getElementById("deleteModal"));
-const deleteButtons = document.getElementsByClassName("btn-delete");
 const deleteConfirm = document.getElementById("deleteConfirm");
 
 /**
@@ -37,10 +36,40 @@ for (let button of editButtons) {
 * - Displays a confirmation modal (`deleteModal`) to prompt 
 * the user for confirmation before deletion.
 */
-for (let button of deleteButtons) {
+for (let button of document.querySelectorAll(".btn-delete[comment_id]")) {
   button.addEventListener("click", (e) => {
     let commentId = e.target.getAttribute("comment_id");
     deleteConfirm.href = `delete_comment/${commentId}`;
     deleteModal.show();
+  });
+}
+
+
+// For job deletion
+for (let button of document.querySelectorAll(".btn-delete[job_id]")) {
+  button.addEventListener("click", (e) => {
+    const jobId = e.target.getAttribute("job_id");
+    console.log('Deleting job with ID: ${jobId');
+    if(jobId){
+      deleteConfirm.href = `/job/${jobId}/delete/`;
+      deleteModal.show();
+    } else {
+        console.log("Job ID is missing or invalid.")
+    }
+  });
+};
+
+
+//For deletion of Job Applications
+for (let button of document.querySelectorAll(".btn-delete[data-id]")) {
+  button.addEventListener("click", (e) => {
+    const appId= e.target.getAttribute("data-id");
+    if (appId) {
+      // Generate the correct URL for deletion
+      deleteConfirm.href = `/job_application/${appId}/delete/`;
+      deleteModal.show();
+    } else {
+      console.error("Application ID is missing or invalid.");
+    }
   });
 }

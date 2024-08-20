@@ -63,12 +63,19 @@
             <div class="col">
                 <div class="card shadow-sm">
                     <div class="card-body">
-                        <a href="{% url 'job_detail' job_application.job.slug %}" class="post-link">
+                        <!--<a href="{% url 'job_detail' job_application.job.slug %}" class="post-link">-->
                             <h4>{{ job_application.job.title }}</h4>
                         </a>
                         <p>Applied on: {{ job_application.applied_on|date:"F d, Y" }}</p>
                         <br>
                         <p>Status: {{ job_application.get_status_display }}</p>
+                        
+                        {% if request.user == job_application.applicant %}
+                        <div class="mt-3">
+                            <a href="{% url 'job_detail' job_application.job.slug %}"><button class="btn btn-edit me_2" >Edit</button></a>
+                            <button class="btn btn-delete" data_id="{{ application.id }}">Delete</button>
+                        </div>
+                        {% endif %}
                     </div>
                 </div>
             </div>
@@ -79,4 +86,35 @@
     </div>
 </div>
 {% endif %}
+<!-- Delete confirmation modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1"
+  aria-labelledby="deleteModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"
+          id="deleteModalLabel">Delete Job Application?</h5>
+        <button type="button" class="btn-close"
+          data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Are you sure you want to delete your application?
+        This action cannot be undone.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary"
+          data-bs-dismiss="modal">Close</button>
+        <a id="deleteConfirm" href="#" class="btn
+          btn-danger">Delete</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}
+
+{% block extras %}
+
+<script src="{% static 'js/comments.js' %}"></script>
+
 {% endblock %}
