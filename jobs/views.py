@@ -77,7 +77,11 @@ def job_delete_view(request, pk):
 # Job detail view
 def job_detail_view(request, slug):
     job = get_object_or_404(Job, slug=slug)
-    existing_application = JobApplication.objects.filter(job=job, applicant=request.user).first()
+
+    if not request.user.is_authenticated:
+        messages.info(request, "You need an account to apply for jobs! Please Signup!")
+        # Redirect to the signup page if the user is not authenticated
+        return redirect('account_signup')
 
     if request.method == 'POST':
         if request.user.is_authenticated and request.user.profile.user_type == 'employer':
@@ -85,6 +89,7 @@ def job_detail_view(request, slug):
             return redirect('job_detail', slug=job.slug)
 
         #If a jobapplication exists we can update it
+        existing_application = JobApplication.objects.filter(job=job, applicant=request.user).first()
         form = JobApplicationForm(request.POST, request.FILES, instance=existing_application)
         if form.is_valid():
             application = form.save(commit=False)
