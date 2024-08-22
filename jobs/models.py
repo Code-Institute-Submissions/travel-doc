@@ -35,7 +35,7 @@ class Job(models.Model):
     slug = models.SlugField(max_length=200, unique=True)
     author = models.ForeignKey(
     CustomUser, on_delete=models.CASCADE, related_name="job_posts")
-    speciality = models.ForeignKey(Speciality, on_delete=models.PROTECT, default=4)
+    speciality = models.ForeignKey(Speciality, on_delete=models.PROTECT)
     location = models.CharField(max_length=100, unique=True)
     start_date = models.DateField()
     end_date = models.DateField()
@@ -58,7 +58,7 @@ class Job(models.Model):
 
 APPLICATION_STATUS = (
     (0, "Applied"),
-    (1, "Reviewed"),
+    (1, "Sent to Employer"),
     (2, "Accepted"),
     (3, "Rejected"),
 )
@@ -67,13 +67,13 @@ class JobApplication(models.Model):
     """job application"""
     job = models.ForeignKey('Job', on_delete=models.CASCADE, related_name="applications")
     applicant = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name="applications")
-    applicant_first_name = models.CharField(max_length=100, default=0)
-    applicant_last_name = models.CharField(max_length=100, default=0)
+    applicant_first_name = models.CharField(max_length=100)
+    applicant_last_name = models.CharField(max_length=100)
     applicant_email = models.EmailField(default=0)
-    applicant_phone = models.CharField(max_length=20, default=0)
-    cover_letter = models.TextField(null=True, blank=True)
+    applicant_phone = models.CharField(max_length=20)
+    message = models.TextField(null=True, blank=True)
     cv = CloudinaryField('file', blank=True)
-    status = models. IntegerField(choices=APPLICATION_STATUS, default=0)
+    status = models. IntegerField(choices=APPLICATION_STATUS)
     applied_on = models.DateTimeField(auto_now_add=True)
 
 

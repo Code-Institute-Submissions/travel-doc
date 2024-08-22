@@ -49,10 +49,10 @@ class JobApplicationForm(forms.ModelForm):
             'applicant_last_name', 
             'applicant_email', 
             'applicant_phone',  
-            'cover_letter', 
+            'message', 
             'cv']
         widgets = {
-            'cover_letter' : forms.Textarea(attrs={'rows':4}),
+            'message' : forms.Textarea(attrs={'rows':4}),
         }
 
         labels = {
@@ -60,7 +60,7 @@ class JobApplicationForm(forms.ModelForm):
             'applicant_last_name': "Enter last name",
             'applicant_email': "Email address", 
             'applicant_phone': "Phone number", 
-            'cover_letter':"Cover letter", 
+            'message':"Message", 
             'cv': "UPLOAD CV/RESUME(optional)",
         }
         

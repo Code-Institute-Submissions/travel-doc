@@ -78,6 +78,9 @@ def job_delete_view(request, pk):
 def job_detail_view(request, slug):
     job = get_object_or_404(Job, slug=slug)
 
+    # Initialize the variable to avoid UnboundLocalError
+    existing_application = None
+
     if not request.user.is_authenticated:
         messages.info(request, "You need an account to apply for jobs! Please Signup!")
         # Redirect to the signup page if the user is not authenticated
