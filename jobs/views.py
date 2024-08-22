@@ -80,6 +80,10 @@ def job_detail_view(request, slug):
     existing_application = JobApplication.objects.filter(job=job, applicant=request.user).first()
 
     if request.method == 'POST':
+        if request.user.is_authenticated and request.user.profile.user_type == 'employer':
+            messages.error(request, "You are not authorized to apply for jobs!")
+            return redirect('job_detail', slug=job.slug)
+
         #If a jobapplication exists we can update it
         form = JobApplicationForm(request.POST, request.FILES, instance=existing_application)
         if form.is_valid():
