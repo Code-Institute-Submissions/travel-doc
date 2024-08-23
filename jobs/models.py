@@ -31,12 +31,12 @@ class Job(models.Model):
     """
     Model to store jobs
     """
-    title = models.CharField(max_length=200, unique=True)
-    slug = models.SlugField(max_length=200, unique=True)
+    title = models.CharField(max_length=200)
+    slug = models.SlugField(max_length=200)
     author = models.ForeignKey(
     CustomUser, on_delete=models.CASCADE, related_name="job_posts")
     speciality = models.ForeignKey(Speciality, on_delete=models.PROTECT)
-    location = models.CharField(max_length=100, unique=True)
+    location = models.CharField(max_length=100)
     start_date = models.DateField()
     end_date = models.DateField()
     created_on = models.DateTimeField(auto_now_add=True)
