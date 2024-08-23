@@ -73,3 +73,13 @@ for (let button of document.querySelectorAll(".btn-delete[data-id]")) {
     }
   });
 }
+
+
+//For deletion of Posts
+for (let button of document.querySelectorAll(".btn-delete[post_id]")) {
+  button.addEventListener("click", (e) => {
+    let postId = e.target.getAttribute("post_id");
+    deleteConfirm.href = `/post/${postId}/delete/`;
+    deleteModal.show();
+  });
+}

@@ -1,6 +1,6 @@
-from django.shortcuts import render, get_object_or_404, reverse
+from django.shortcuts import render, get_object_or_404, reverse, redirect
 from django.views import generic, View
-from django.views.generic import ListView, CreateView
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from django.contrib import messages
 from django.http import HttpResponseRedirect
 from .models import Post, Comment, Category
@@ -12,40 +12,45 @@ from django.contrib.auth.mixins import(UserPassesTestMixin, LoginRequiredMixin)
 from django.core.mail import send_mail
 #from traveldoc.settings import EMAIL_HOST_USER
 
-# Create your views here.
 
-"""class AddCategoryView(CreateView):
-    model = Category
-    template_name = 'blog/add_category.html'
-    fields = ('name',)"""
 
-class AddPostView(LoginRequiredMixin, CreateView):
+# Create or edit a post.
+class PostCreateOrUpdateView(LoginRequiredMixin, UserPassesTestMixin, CreateView, UpdateView):
+    """View to add or edit a post for all registered users
+    """
     model = Post
     form_class = PostForm
     template_name = 'blog/add_post.html'
-    #fields = ('title', 'category','slug', 'author', 'featured_image','content') 
-    #summernote_fields = ('content',)
     success_url = reverse_lazy('home')
 
     def form_valid(self, form):
-        #messages.add_message(self.request, messages.SUCCESS, 'Your post has been submitted and is awaiting approval.')
-        #return super().form_valid(form)
-        form.instance.author = self.request.user
-        response = super().form_valid(form)
+        #Check if this is an update or a new creation
+        if self.get_object():
+            form.instance.author = self.request.user
+            response = super().form_valid(form)
+            messages.success(self.request, "Post updated successfully!")
+
+            return redirect(reverse_lazy('profile', kwargs={'pk': form.instance.author.profile.pk}))
+
+        else: #If no object exists, it´s a new job creation
+            form.instance.author = self.request.user
+            response = super().form_valid(form)           
 
 
-        if self.object.status == 0:
-            messages.info(
-                self.request, 'Your post has been submitted and is awaiting approval.')
-        #subject = "New Post is submitted"
-        #message = "Dear" + "" + data['user_name'] + "thank you for submitting your post. It will be reviewed and you will receive an email response soon."
-        #email = data['user_email']
-        #recipient_list = [email]
-        #send_mail(subject, message, EMAIL_HOST_USER, recipient_list, fail_silently=True)
+            if self.object.status == 0:
+                messages.info(
+                self.request, 'Your Post has been submitted and is awaiting approval.')
         
         return response
 
-    
+    def test_func(self):
+        return self.request.user.profile
+
+    def get_object(self, get_queryset=None):
+        post_id = self.kwargs.get('pk')
+        if post_id:
+            return Post.objects.get(pk=post_id)
+        return None
 
     #def form_invalid(self, form):
         #print("Form is invalid")
@@ -54,6 +59,24 @@ class AddPostView(LoginRequiredMixin, CreateView):
         #messages.error(self.request, "There was an error with your submission. Please check all the fields again.")
 
         #return self.render_to_response(self.get_context_data(form=form))
+
+
+#Post delete view for all registered users
+def post_delete_view(request, pk):
+    """ View to delete a post
+    """
+    # Fetch the post using the primary key(pk)
+    post = get_object_or_404(Post, pk=pk, author=request.user)
+
+    #check if the current user is the author of the Post
+    if post.author == request.user:
+        post.delete()
+        messages.success(request, "Post deleted successfully!")
+    else:
+        messages.error(request, "You can only delete your own post")
+
+    return redirect('profile', pk=request.user.pk)
+
 
 class PostList(generic.ListView):
     """
