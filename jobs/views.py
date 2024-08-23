@@ -80,7 +80,9 @@ def job_detail_view(request, slug):
 
     # Initialize the variable to avoid UnboundLocalError
     existing_application = None
-
+    if request.user.is_authenticated:
+        existing_application = JobApplication.objects.filter(job=job, applicant=request.user).first()
+    
     if not request.user.is_authenticated:
         messages.info(request, "You need an account to apply for jobs! Please Signup!")
         # Redirect to the signup page if the user is not authenticated
@@ -99,14 +101,19 @@ def job_detail_view(request, slug):
             application.job = job
             application.applicant = request.user
             application.speciality = job.speciality
-            application.save()
-            if existing_application:
-                messages.success(request, "Your application has been updated.")
 
+            
+            if existing_application:
+             # Reset status to 'Applied' when updating an existing application   
+                application.status = 0
+                application.save()
+                messages.success(request, "Your application has been updated and will be reviewed again.")
                 return redirect('profile', pk=request.user.pk)
             else:
-                messages.success(request, "Your application has been submitted. We will reach out to you shortly!")
-
+                # Set initial status for new applications
+                application.status = 0
+                application.save()
+                messages.success(request, "Thank you for your application. It will be reviewed shortly.")
             # Redirect back to the speciality view with the list of jobs    
     
             return redirect('speciality_jobs', speciality=job.speciality.name)

@@ -69,11 +69,11 @@ class JobApplication(models.Model):
     applicant = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name="applications")
     applicant_first_name = models.CharField(max_length=100)
     applicant_last_name = models.CharField(max_length=100)
-    applicant_email = models.EmailField(default=0)
+    applicant_email = models.EmailField()
     applicant_phone = models.CharField(max_length=20)
     message = models.TextField(null=True, blank=True)
     cv = CloudinaryField('file', blank=True)
-    status = models. IntegerField(choices=APPLICATION_STATUS)
+    status = models. IntegerField(choices=APPLICATION_STATUS, default=0)
     applied_on = models.DateTimeField(auto_now_add=True)
 
 
