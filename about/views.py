@@ -12,7 +12,7 @@ def about_me(request):
 
     return render(
         request,
-        "about/gmdhome.html",
+        "about/about.html",
         {"about": about},
     )
 

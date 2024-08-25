@@ -2,24 +2,91 @@
 {% block content %}
 {% load static %}
 
-<div class="bg-image ml-2 mr-2 mt-3" id="bg-pic">
-    <div class="container ml-0 img-overlay font-settings">
-        <div class="col">
-            <div class="col-sm-8 text-black">                             
-                <!-- Title and Content goes directly underneath this -->
-                <article class="text-black" style="font-size: 12px">
-                    <h2 class="mt-2">{{ about.title }}</h2>
-                    {{ about.content | safe }}
-                </article>
-            </div>
+<div class="container">
+    <div class="row no-gutters">
+        <div class="col-12 about-us-picture"></div>
+        <div class="col-sm-11 offset-sm-1 mt-48">
+            <h1>About Us</h1>
         </div>
-        <div class="col">
-            <div class="col text-left">
-            <!-- Updated on field goes in here -->
-
-            <p class="text-end"><em>Updated on: {{ about.updated_on }}</em></p>
+    </div>
+    <div class="row">
+        <div class="col-md-9 col-lg-7 offset-md-2 mt-48">
+            <h2 class="mb-8">Our history</h2>
+            <p class="mb-0">In the early 1990s, Australia and New Zealand had an urgent need for doctors. A need we were born to fill in the form of an unprecedented business. Since then, we’ve successfully matched thousands of doctors with clients around the world.</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-9 col-lg-7 offset-md-2 mt-48">
+            <h2 class="mb-8">Our position</h2>
+            <p class="mb-0">Today, we place doctors in New Zealand, Australia, Guam, the Caribbean, Canada, China, and of course, the US. Historically, we’ve had doctors in Singapore and the United Arab Emirates — and we regularly expand into new countries. This worldwide reach means that if a location is placeable, we’re probably there. And it makes us unique among locum tenens agencies.</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-9 col-lg-7 offset-md-2 mt-48">
+            <h2 class="mb-8">Our advantage(s)</h2>
+            <p>Our reach is global. But our service is personal. And our size allows us to move with both the speed and attention to detail our doctors and clients deserve.</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-9 col-lg-7 offset-md-2 mt-48">
+            <h2 class="mb-8">Our purpose</h2>
+            <p class="mb-0">Thanks to the opportunities and support we provide, doctors can experience the world and practice medicine in ways that benefit themselves and their patients. And through the Making a Difference Funding Programm, we give physicians additional opportunities to help where it’s needed most — in the U.S. and abroad.</p>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-md-6 mt-48 d-flex justify-content-center">
+            <div class="funding btn-con">
+                <a class="funding btn outline sunshine-border sunshine my-4" href="https://anjorinllc.com/" class="post-link">
+                    HOW WE MAKE A DIFFERENCE<div class="funding-arrow">
+                    <div class="funding-arrow">
+                        <span class="left-line sunshine-background"></span>
+                        <span class="right-line sunshine-background"></span>
+                        <span class="center-line sunshine-background"></span>
+                        <span class="d-line1 sunshine-background"></span>
+                        <span class="d-line2 sunshine-background"></span>
+                    </div>
+                    </div>          
+                </a>
             </div>
         </div>
     </div>
+    <div class="row">
+        <div class="col-md-9 col-lg-7 offset-md-2 mt-48">
+            <h2 class="mb-16">Our doctors</h2>
+            <p class="mb-0">Exceptional physicians are a huge part of who we are. And they tend to be a different breed. Many have worked in underserved populations, seek out unique or challenging assignments, and, in general, are more flexible and adaptable.</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-9 col-lg-7 offset-md-2 mt-48 mb-8">
+            <div>
+                <hr>
+                <p class="text-center my-0" style="font-style: italic;">"International locum tenens is oftentimes a once-in-a-lifetime chance. 
+                    Try to make it work for you, because it's a really great experience. And you get help from your agency for it too."</p>
+                <hr>
+                <span class="thirsty quoter px-4 body-grey-background">Dr. Mike Spertus; Perth, Australia</span>
+            </div>
+        </div>
+    </div>
+    <div class="row justify-content-center mb-5">
+        <div class="col-lg-10 mt-48">
+            <h2 class="mb-16">Where you’ll find us</h2>
+            <div class="row mt-16">
+                <div class="col-md-6 col-lg-5 d-flex justify-content-center">
+                    <div class="g-map">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3573.6439109635457!2d-80.11284942404113!3d26.402689581821416!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88d91e326304a12b%3A0xf3da7caf5bbfb8e7!2s1110%20S%20Rogers%20Cir%2C%20Boca%20Raton%2C%20FL%2033487%2C%20USA!5e0!3m2!1sde!2sde!4v1724610236094!5m2!1sde!2sde" 
+                            width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 d-flex align-items-center">
+                    <div>
+                        <h4>Contact</h4>
+                        <p><i class="fas fa-phone"></i> 0800 608 1407</p>
+                        <p><i class="far fa-envelope"></i> info@globaldoctors.com</p>
+                        <p><i class="fas fa-home"></i> 1110 S CIR Rogers Buca Raton FL</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>    
 </div>
 {% endblock content %}
