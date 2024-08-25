@@ -209,8 +209,8 @@ form{
 }
 /* Responsive styling */
 
-/* Media query for large or landscape phones (576px and up) */
-@media screen and (min-width: 576px) {
+/* Media query for large or landscape phones (1024 px and up)*/
+@media screen and (min-width: 1024px) {
     #bg-pic {
         background-image: url(../images/canyonandriver.webp);
         background-repeat: no-repeat;
@@ -220,3 +220,75 @@ form{
 
 
 }
+
+/*About page*/
+.about-us-picture {
+    background-image: url(../images/aboutuspic.webp);
+    background-size: cover;
+    background-position: center right;
+    background-repeat: no-repeat;
+    height: 180px;
+}
+
+@media (max-width: 420px) {
+    .row.no-gutters {
+        margin-right: 0;
+        margin-left: 0;
+    }
+}
+
+.col-12 {
+    flex: 0 0 100%;
+    max-width: 100%;
+}
+
+@media (min-width: 576px) {
+    .about-us-picture {
+        height: 250px;
+    }
+}
+
+@media (min-width: 768px) {
+    .about-us-picture {
+        height: 342px;
+    }
+}
+
+.mt-48 {
+    margin-top: 48px;
+}
+
+.btn-con {
+    width: 280px;
+}
+
+.btn:not(:disabled):not(.disabled) {
+    cursor: pointer;
+}
+
+.btn.outline {
+    position: relative;
+    border-width: 2px 2px 0;
+    background-color: transparent;
+}
+
+a.btn {
+    line-height: 30px;
+}
+
+.btn {
+    font-family: Forza A, Forza B;
+    font-size: 1.5rem;
+    height: 42px;
+    width: 100%;
+    border-radius: 0;
+    font-weight: 800;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+}
+
+.sunshine-border {
+    border-color:  #5d9857; 
+
+}
+
