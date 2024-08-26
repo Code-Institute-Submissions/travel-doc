@@ -204,8 +204,8 @@ def comment_delete(request, slug, comment_id):
 
 class PostLike(View):
     """
-    Toggles like status on submission of like form/button on posts.
-    Also sends notification to author
+    Toggles like status on submission of like button on posts.
+    Also sends success message to author
     Login required
     """
     def post(self, request, slug, *args, **kwargs):
@@ -224,24 +224,20 @@ class PostLike(View):
 class CatListView(ListView):
     """
      Returns all published posts in :model:`blog.Category`
-    and displays them on a page.
-
-    **Context**
-
-    ``post``
-        An instance of :model:`blog.Post`.
-    ``category``
-        Group of published posts in :model:`blog.Category`
-    displayed on a page.
+    and displays 6 maximum on a page.
     """
     template_name = 'blog/category.html'
     context_object_name = 'catlist'
+    paginate_by = 6
 
     def get_queryset(self):
         category_name = self.kwargs['category']
-        posts = Post.objects.filter(category__name=category_name, status=1)
-
-        return {'cat':category_name, 'posts':posts}
+        return Post.objects.filter(category__name=category_name, status=1)
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['category_name'] = self.kwargs['category']
+        return context
 
 
 def category_list(request):
