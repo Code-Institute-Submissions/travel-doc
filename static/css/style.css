@@ -1,6 +1,9 @@
 
 /* Default styling */
 
+a {
+    color: #212529;
+}
 body {
     background-color: whitesmoke;
 }
@@ -84,7 +87,7 @@ button,
 }
 
 .post-link:hover,
-.page-link .nav-link {
+.post-link .nav-link {
     color: #5d9857;
 }
 
