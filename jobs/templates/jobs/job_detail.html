@@ -49,9 +49,7 @@
         <div class="col-lg-4 col-md-5 d-none d-md-block pl-5 form-column">
             {% if request.user.is_authenticated %}
             {% if request.user.profile.user_type == 'employer' %}
-                <div class="alert alert-danger">
-                    You are not authorized to apply for jobs.
-                </div>
+               
             {% else %}
                 <!-- Show the job application form -->
             <div class="form-container">

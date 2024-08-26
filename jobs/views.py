@@ -46,10 +46,6 @@ class JobCreateOrUpdateView(LoginRequiredMixin,UserPassesTestMixin, CreateView, 
     def test_func(self):
         return self.request.user.profile.user_type == 'employer'
 
-    def handle_no_permission(self):
-        messages.error(self.request, "You do not have permission to add a job!")
-        return redirect('home')
-
     def get_object(self, get_queryset=None):
         job_id = self.kwargs.get('pk')
         if job_id:
