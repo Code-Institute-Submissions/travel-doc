@@ -2,6 +2,10 @@ from django import forms
 from .models import Job, JobApplication
 from slugify import slugify
 from django_summernote.widgets import SummernoteWidget
+from django.core.exceptions import ValidationError
+from django.utils import timezone
+import datetime
+
 
 
 class JobAddForm(forms.ModelForm):
@@ -17,6 +21,25 @@ class JobAddForm(forms.ModelForm):
         if commit:
             instance.save()
         return instance
+
+    def clean_start_date(self):
+        start_date = self.cleaned_data.get('start_date')
+        today = timezone.now().date()
+        if start_date < today:
+            raise ValidationError('Start date cannot be in the past.')
+        return start_date
+
+
+    def clean(self):
+        cleaned_data = super().clean()
+        start_date = cleaned_data.get('start_date')
+        end_date = cleaned_data.get('end_date')
+
+        if start_date and end_date:
+            if end_date < start_date:
+                raise ValidationError('End date cannot be before start date.')
+        return cleaned_data
+
 
     class Meta:
         model = Job
