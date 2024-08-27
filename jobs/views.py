@@ -8,7 +8,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.urls import reverse_lazy
 from .models import Job, Speciality, JobApplication
 from .forms import JobAddForm, JobApplicationForm
-#from django.db import IntegrityError
+from django.core.exceptions import PermissionDenied
 
 
 
@@ -22,9 +22,14 @@ class JobCreateOrUpdateView(LoginRequiredMixin,UserPassesTestMixin, CreateView, 
     success_url = reverse_lazy('home')
 
     def form_valid(self, form):
+        #Set the author to the current user
+        form.instance.author = self.request.user
+
+        #Set job´s status to published
+        form.instance.status = 1
+
         #Check if this is an update or a new creation
         if self.get_object(): #If an object exists, It´s an update
-            form.instance.author = self.request.user
             response = super().form_valid(form)
             messages.success(self.request, "Job updated successfully!")
 
@@ -32,19 +37,17 @@ class JobCreateOrUpdateView(LoginRequiredMixin,UserPassesTestMixin, CreateView, 
             return redirect(reverse_lazy('profile', kwargs={'pk': form.instance.author.profile.pk}))
 
         else: #If no object exists, it´s a new job creation
-            form.instance.author = self.request.user
             response = super().form_valid(form)
-            
-            if self.object.status == 0:
-                messages.info(
-                self.request, """Your Job was sent successfully <br>
-    and is awaiting approval."""
-                )
+            messages.success(
+                self.request, """Your Job is posted successfully!""")
+        
         return response
 
-
     def test_func(self):
-        return self.request.user.profile.user_type == 'employer'
+        if self.request.user.profile.user_type == 'employer':
+            return True
+        raise PermissionDenied("You are not authorized to add a job.")
+
 
     def get_object(self, get_queryset=None):
         job_id = self.kwargs.get('pk')

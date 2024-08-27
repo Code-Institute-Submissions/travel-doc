@@ -116,6 +116,18 @@ border-color: crimson;
     color: #fefefe;
     
 }
+
+.btn-error {
+    background-color: #8d9292;
+    color: #fff;
+    border-color:#2d3636; 
+}
+
+#error {
+    color:#fff;
+}
+
+
 .post_like{
     border:none;
 }
