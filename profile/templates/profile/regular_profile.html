@@ -1,9 +1,8 @@
 
 {% extends 'base.html' %}
 {% load static %}
-{% load crispy_forms_tags %}
 
-{% block title %}Profile - {{ profile.user.username|default:'User' }}{% endblock %}
+{% block title %}Profile - {{ profile.user.username }}{% endblock %}
 
 {% block content %}
 
@@ -11,15 +10,20 @@
     <div class="row py-lg-1">
         <div class="col-lg-6 col-md-8 mx-auto">
             <div class="profile-info text-center">
-                <h1 class="fw-light">Profile</h1>
-                <h2>{{ profile.display_name }}</h2>
-                <div class="mb-4">
-                    {% if "placeholder" in profile.profile.image.url %}
-                    <img class="profile-img rounded-circle" style="width: 100px;" src="{% static 'images/user_profile_placeholder (1).jpg' %}" alt="user_profile_placeholder">
+                <h1>Profile</h1>
+                <!-- Display username or display name -->
+                <h2>
+                    {% if profile.display_name %}
+                        {{ profile.display_name }}
                     {% else %}
-                    <img class="profile-img rounded-circle" style="width: 100px;" src="{{ profile.profile_image.url }}" alt="{{ profile.user.username }}'s profile image">
+                        {{ profile.user.username }}
                     {% endif %}
-                </div>
+                </h2>
+                <div class="mb-4">
+                    <img class="profile-img rounded-circle" style="width: 180px;" 
+                         src="{% if profile.profile_image.url %}{{ profile.profile_image.url }}{% else %}{% static 'images/user_profile_placeholder.jpg' %}{% endif %}" 
+                         alt="{% if profile.profile_image.url %}{{ profile.user.username }}'s profile image{% else %}user_profile_placeholder{% endif %}">
+                </div>                
                 {% if profile.bio %}
                 <p class="lead text-body-secondary">{{ profile.bio }}</p>
                 {% endif %}
@@ -32,41 +36,40 @@
         </div>
     </div>
 </section>
-
-<div class="album py-1 bg-body-tertiary">
-    <div class="container">
-        <!-- Job Applications Section -->
-        <h3 class="text-center section-title mb-4 mt-5">Job Applications</h3>
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+<!-- Job Applications Section -->
+<div class="container">
+    <h2 class="text-center mb-4 mt-5">Job Applications</h2>
+    <div class="row">
         {% for job_application in job_applications %}
-            <div class="col">
-                <div class="card shadow-sm">
-                    <div class="card-body">
-                        <h4>{{ job_application.job.title }}</h4>
-                        <p>Applied on: {{ job_application.applied_on|date:"F d, Y" }}</p>
-                        <br>
-                        <p>Status: {{ job_application.get_status_display }}</p>
+        <div class="col-md-6">
+            <div class="card shadow-sm mb-4">
+                <div class="card-body">
+                    <h4>{{ job_application.job.title }}</h4>
+                    <p>Applied on: {{ job_application.applied_on|date:"F d, Y" }}</p>
+                    <br>
+                    <p>Status: {{ job_application.get_status_display }}</p>
                         
+                    <div class="mt-3">
                         {% if request.user == job_application.applicant %}
-                            <div class="mt-3">
-                                <!--<a href="{% url 'delete_application' job_application.pk %}"><button class="btn btn-delete" >Delete</button></a>-->
-                                <button class="btn btn-delete" data-id="{{ job_application.pk }}">Delete</button>
-                                <a href="{% url 'edit_application' job_application.job.slug %}"><button class="btn btn-edit me_2" >Edit</button></a>
-                            </div>
+                            <button class="btn btn-delete" data-id="{{ job_application.pk }}">Delete</button>
+                            <a href="{% url 'edit_application' job_application.job.slug %}"><button class="btn btn-edit me_2" >Edit</button></a>
                         {% endif %}
                     </div>
                 </div>
             </div>
-            {% empty %}
-                <p>No job applications found.</p>
-        {% endfor %}
         </div>
-        <!-- Latest Posts Section -->
-        <h3 class="text-center section-title mb-4">Latest Posts</h3>
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+        {% empty %}
+        <p>No job applications found.</p>
+        {% endfor %}
+    </div>
+</div>
+<!-- Posts Section -->
+<div class="container">
+    <h2 class="text-center mb-4 mt-5">Posts</h2>
+    <div class="row">
         {% for post in posts %}
-        <div class="col">
-            <div class="card shadow-sm">
+        <div class="col-md-6">
+            <div class="card shadow-sm mb-4">
                 <div class="card-body">
                     <h4>{{ post.title }}</h4>
                     <p>{{ post.created_on|date:"F d, Y" }}</p>
@@ -85,7 +88,6 @@
         {% empty %}
         <p>No posts available.</p>
         {% endfor %}
-        </div>
     </div>
 </div>
 
