@@ -17,6 +17,10 @@ body {
     background-color: #dbd7d2;
 }
 
+.link {
+    color: #c2a01e;
+}
+
 ul {
     list-style: none;
 }
