@@ -73,7 +73,7 @@ class JobApplication(models.Model):
     applicant_phone = models.CharField(max_length=20)
     message = models.TextField(null=True, blank=True)
     cv = CloudinaryField('file', blank=True)
-    status = models. IntegerField(choices=APPLICATION_STATUS, default=0)
+    status = models.IntegerField(choices=APPLICATION_STATUS, default=0)
     applied_on = models.DateTimeField(auto_now_add=True)
 
 
@@ -83,3 +83,17 @@ class JobApplication(models.Model):
 
     def __str__(self):
         return f"{self.applicant.username} - {self.job.title}"
+
+
+class JobRating(models.Model):
+    """job star rating
+    """
+    job = models.ForeignKey(Job, on_delete=models.CASCADE, related_name='ratings')
+    rating = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(5)])
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+
+    class Meta:
+        unique_together = ("job", "user")
+
+    def __str__(self):
+        return f'{self.user} rated {self.job.title} with {self.rating} stars'

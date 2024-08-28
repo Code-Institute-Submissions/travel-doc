@@ -65,6 +65,9 @@ class JobAddForm(forms.ModelForm):
 
 
 class JobApplicationForm(forms.ModelForm):
+    """
+    Form for Jobapplication
+    """
     class Meta:
         model = JobApplication
         fields = [
@@ -101,3 +104,16 @@ class JobApplicationForm(forms.ModelForm):
             instance.applicant = self.user
             instance.save()
         return instance
+
+
+
+
+class JobRatingForm(forms.Form):
+    """
+    Form for Star Rating submission
+    """
+    rating = forms.IntegerField(
+        min_value=1,
+        max_value=5,
+        widget=forms.RadioSelect(choices=[(i, i) for i in range(1, 6)])
+    )

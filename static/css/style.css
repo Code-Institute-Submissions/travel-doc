@@ -152,6 +152,9 @@ border-color: crimson;
 }
 
 /*job detail*/
+.stars {
+    color: #c2a01e;
+}
 .job-detail{
     margin-top: 10px;
     padding: 20px;

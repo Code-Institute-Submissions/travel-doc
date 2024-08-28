@@ -8,26 +8,37 @@
         <!-- Job Details Column -->
         <div class="col-lg-8 col-md-7 job-detail">
             <h1>{{ job.title }}</h1>
+            <div class="stars mb-2 mt-3">
+                <span>
+                {% for i in star_range %}
+                    {% if i <= job.stars %}
+                        <i class="fas fa-star"></i> <!-- Filled star -->
+                    {% elif half_star and i == job.stars|add:"1" %}
+                        <i class="fas fa-star-half-alt"></i> <!-- Half star -->
+                    {% else %}
+                        <i class="far fa-star"></i> <!-- Unfilled star -->
+                    {% endif %}
+                {% endfor %}
+                </span>
+            </div>
             <div class="row">
                 <div class="col-md-4 col-12 quick-fact">
-                    <label>Date Posted:</label><br>
-                    <span>{{ job.created_on }}</span>
+                    <label>Date Posted:</label>
+                    <span>{{ job.created_on }}</span><br>
                 </div>
                 <div class="col-md-4 col-12 quick-fact">
-                    <label>Medical Specialty:</label><br>
-                    <span>{{ job.speciality }}</span>
+                    <label>Medical Specialty:</label>
+                    <span>{{ job.speciality }}</span><br>
                 </div>
                 <div class="col-md-4 col-12 quick-fact">
-                    <label>Location:</label><br>
-                    <span>{{ job.location }}</span>
+                    <label>Location:</label>
+                    <span>{{ job.location }}</span><br>
                 </div>
             </div>
 
             <br>
             <h4>Job Quick Facts</h4>
             <div>{{ job.description|safe }}</div>
-
-
             <br>
             <h4>Application Steps</h4>
             <div>

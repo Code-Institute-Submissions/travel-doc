@@ -7,7 +7,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.urls import reverse_lazy
 from .models import Job, Speciality, JobApplication
-from .forms import JobAddForm, JobApplicationForm
+from .forms import JobAddForm, JobApplicationForm, JobRatingForm
 from django.core.exceptions import PermissionDenied
 
 
@@ -39,7 +39,7 @@ class JobCreateOrUpdateView(LoginRequiredMixin,UserPassesTestMixin, CreateView, 
         else: #If no object exists, it´s a new job creation
             response = super().form_valid(form)
             messages.success(
-                self.request, """Your Job is posted successfully!""")
+                self.request, """Job posted successfully!""")
         
         return response
 
@@ -74,8 +74,11 @@ def job_delete_view(request, pk):
 
     
 # Job detail view
-def job_detail_view(request, slug):
-    job = get_object_or_404(Job, slug=slug)
+def job_detail_view(request, job_id):
+    job = get_object_or_404(Job, pk=job_id)
+
+    star_range = range(1, 6)
+    half_star = job.stars % 1 != 0  # To check if there should be a half star
 
     # Initialize the variable to avoid UnboundLocalError
     existing_application = None
@@ -90,7 +93,7 @@ def job_detail_view(request, slug):
     if request.method == 'POST':
         if request.user.is_authenticated and request.user.profile.user_type == 'employer':
             messages.error(request, "You are not authorized to apply for jobs!")
-            return redirect('job_detail', slug=job.slug)
+            return redirect('job_detail', job_id=job.id)
 
         #If a jobapplication exists we can update it
         existing_application = JobApplication.objects.filter(job=job, applicant=request.user).first()
@@ -113,9 +116,12 @@ def job_detail_view(request, slug):
                 application.status = 0
                 application.save()
                 messages.success(request, "Thank you for your application. It will be reviewed shortly.")
+                #Redirect to Star Rating page
+                return redirect('rate_job', job_id=job.id)
+
             # Redirect back to the speciality view with the list of jobs    
     
-            return redirect('speciality_jobs', speciality=job.speciality.name)
+            #return redirect('speciality_jobs', speciality=job.speciality.name)
             
     else:
         form = JobApplicationForm(instance=existing_application)
@@ -126,9 +132,34 @@ def job_detail_view(request, slug):
         {'job': job,
         'form': form,
         'is_editing': bool(existing_application),
+        'star_range': star_range,
+        'half_star': half_star,
         }
     )
 
+
+def rate_job_view(request, job_id):
+    job = get_object_or_404(Job, pk=job_id)
+
+    if request.method == 'POST':
+        rating_form = JobRatingForm(request.POST)
+        if rating_form.is_valid():
+            rating = rating_form.cleaned_data['rating']
+            job.stars = rating
+            job.save()
+            messages.success(request, "Thank you for rating the job!")
+            # Redirect back to the speciality view with the list of jobs
+            return redirect('speciality_jobs', speciality=job.speciality.name)
+
+    else:
+        rating_form = JobRatingForm()
+
+    return render(
+        request,
+        'jobs/rate_job.html',
+        {'job': job,
+         'rating_form': rating_form}
+    )
 
 
 def job_application_delete_view(request, pk):
@@ -161,6 +192,11 @@ class SpecialityView(ListView):
                 'speciality']).filter(status=1)
         }
         return content
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['star_range'] = range(1, 6)  # Range for star ratings (1-5)
+        return context
 
 
 def speciality_list(request):

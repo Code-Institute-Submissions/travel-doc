@@ -46,13 +46,27 @@
                 <div class="card-body">
                     <h4>{{ job_application.job.title }}</h4>
                     <p>Applied on: {{ job_application.applied_on|date:"F d, Y" }}</p>
-                    <br>
+                    <div class="stars">
+                        <span>
+                            {% with job_application.job.stars as stars %}
+                                {% for i in "12345"|slice:":5" %}
+                                    {% if i|add:"0" <= stars %}
+                                        <i class="fas fa-star"></i> <!-- Filled star -->
+                                    {% elif stars|add:"0.5"|floatformat:1 == i|add:"0" %}
+                                        <i class="fas fa-star-half-alt"></i> <!-- Half star -->
+                                    {% else %}
+                                        <i class="far fa-star"></i> <!-- Unfilled star -->
+                                    {% endif %}
+                                {% endfor %}
+                            {% endwith %}
+                        </span>
+                    </div>
                     <p>Status: {{ job_application.get_status_display }}</p>
                         
                     <div class="mt-3">
                         {% if request.user == job_application.applicant %}
                             <button class="btn btn-delete" data-id="{{ job_application.pk }}">Delete</button>
-                            <a href="{% url 'edit_application' job_application.job.slug %}"><button class="btn btn-edit me_2" >Edit</button></a>
+                            <a href="{% url 'edit_application' job_application.job.id %}"><button class="btn btn-edit me_2" >Edit</button></a>
                         {% endif %}
                     </div>
                 </div>

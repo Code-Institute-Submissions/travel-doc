@@ -10,9 +10,23 @@
         <div class="col-md-4">
             <div class="card mb-4">
                 <div class="card-body">
-                    <a href="{% url 'job_detail' job.slug %}" class="job-link">
+                    <a href="{% url 'job_detail' job.id %}" class="job-link">
                         <h2 class="card-title">{{ job.title }}</h2>
                     </a>
+                    <hr>
+                    <div class="stars">
+                        <span>
+                        {% for i in star_range %}
+                            {% if i <= job.stars %}
+                                <i class="fas fa-star"></i> <!-- Filled star -->
+                            {% elif half_star and i == job.stars|add:"1" %}
+                                <i class="fas fa-star-half-alt"></i> <!-- Half star -->
+                            {% else %}
+                                <i class="far fa-star"></i> <!-- Unfilled star -->
+                            {% endif %}
+                        {% endfor %}
+                        </span>
+                    </div>
                     <hr>
                     <p class="card-text text-muted h6">{{ job.created_on}} | {{ job.location}}</p>
                 

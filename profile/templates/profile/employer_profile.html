@@ -42,7 +42,21 @@
                 <div class="card-body">
                     <h4>{{ job.title }}</h4>
                     <p>{{ job.created_on|date:"F d, Y" }}</p>
-                    <br>
+                    <div class="stars">
+                        <span>
+                            {% with job.stars as stars %}
+                                {% for i in "12345"|slice:":5" %}
+                                    {% if i|add:"0" <= stars %}
+                                        <i class="fas fa-star"></i> <!-- Filled star -->
+                                    {% elif stars|add:"0.5"|floatformat:1 == i|add:"0" %}
+                                        <i class="fas fa-star-half-alt"></i> <!-- Half star -->
+                                    {% else %}
+                                        <i class="far fa-star"></i> <!-- Unfilled star -->
+                                    {% endif %}
+                                {% endfor %}
+                            {% endwith %}
+                        </span>
+                    </div>
                         <p>Status: {{ job.get_status_display }}</p>
 
                     <div class="mt-3">

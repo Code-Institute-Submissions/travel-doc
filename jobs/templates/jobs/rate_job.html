@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="container mt-3">
+    <h2>Thank you for applying for {{ job.title }}</h2>
+    <p>Your application has been sent successfully for review.</p>
+    <p>If you could, please take a moment to rate this job:</p>
+    
+    <form method="post">
+        {% csrf_token %}
+        {{ rating_form|crispy }}
+    
+        <button id="submitButton" type="submit"class="btn btn-signup btn-lg">Submit <i class="fa fa-stethoscope"></i></button>
+        
+    </form>
+</div>
+{% endblock %}
