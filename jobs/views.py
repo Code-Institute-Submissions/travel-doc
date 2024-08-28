@@ -1,7 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from django.contrib import messages
-#from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
@@ -118,10 +117,6 @@ def job_detail_view(request, job_id):
                 messages.success(request, "Thank you for your application. It will be reviewed shortly.")
                 #Redirect to Star Rating page
                 return redirect('rate_job', job_id=job.id)
-
-            # Redirect back to the speciality view with the list of jobs    
-    
-            #return redirect('speciality_jobs', speciality=job.speciality.name)
             
     else:
         form = JobApplicationForm(instance=existing_application)
@@ -180,21 +175,20 @@ def job_application_delete_view(request, pk):
 
 #Speciality View
 class SpecialityView(ListView):
-    """
+    """View to see all the jobs in a certain speciality
     """
     template_name = 'jobs/speciality.html'
-    context_object_name = 'speclist'
+    context_object_name = 'jobs'
+    paginate_by = 9
 
     def get_queryset(self):
-        content = {
-            'spec': self.kwargs['speciality'],
-            'jobs': Job.objects.filter(speciality__name=self.kwargs[
-                'speciality']).filter(status=1)
-        }
-        return content
+        speciality_name = self.kwargs['speciality']
+        return Job.objects.filter(speciality__name=speciality_name)
+        
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        context['speciality_name'] = self.kwargs['speciality']
         context['star_range'] = range(1, 6)  # Range for star ratings (1-5)
         return context
 

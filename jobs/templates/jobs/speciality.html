@@ -4,9 +4,9 @@
 {% block content %}
 
 <div class="col-12 left">
-    <h2>Speciality | {{speclist.spec}}</h2>
+    <h2>Speciality | {{ speciality_name }}</h2>
     <div class="row">
-        {% for job in speclist.jobs %}
+        {% for job in jobs %}
         <div class="col-md-4">
             <div class="card mb-4">
                 <div class="card-body">
