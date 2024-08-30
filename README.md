@@ -79,67 +79,69 @@ User stories and features recorded and managed on [GitHub Projects](https://gith
 
 | User Story | Priority |
 |----------------------------------------------------------------------------------------------------------------------------|---------------|
-| As a **user**, I would like to **view the websites home page** so that I can **learn about it and the services it offers** | **MUST HAVE** |
-| As a **user**, I can **find the websites navigation area** so that I **may easily navigate around the website** | **MUST HAVE** |
-| As a **user**, I can **see the sites social media links at the bottom of the webpage** so that I can **visit, contact the business and follow them online** | **MUST HAVE** |
-| As a **user**, I can **view any error pages with a 'Home' button** so that I **can get back to the homepage easily** | **MUST HAVE** |
-| As a **user**, I want **to see a message when I have successfully/unsuccessfully completed an action** so that I can **receive feedback from my interaction with the website** | **MUST HAVE** |
+| As a site user I can view a paginated list of posts so that I can choose which post I want to view| **MUST HAVE** |
+| As a site user/site admin I can view comments on an individual post so that ** I can read the conversation** | **MUST HAVE** |
+| As a site user I can view a miximum of 6 posts in each category so that I have a good overview and can browse throught the pages | **MUST HAVE** |
 
 ### Epic - User Profile
 
 | User Story | Priority |
 |----------------------------------------------------------------------------------------------------------------------------|---------------|    
-| As a **user**, I can **use my email and password to login to my profile account** so that I can **use my profile to connect to the websites features** | **MUST HAVE** |
-| As a **user**, I can **enter my email and password** so that I can **register an account with the website** | **MUST HAVE** |
-| As a **user**, I can **enter my personal details** so that I can **create an account with FreeFido** | **MUST HAVE** |
-| As a **user**, I can **receive feedback in the form of a logout page** so that **I can confirm that I have been logged out successfully** | **MUST HAVE** |
-| As a **user**, I can **edit my user profile** to **update my personal details** | **MUST HAVE** |
-| As a **user**, I can **click a delete button in my user profile setup** so that I **can delete all personal data, photos and bookings that are connected to me on the website** | **COULD HAVE** |
+| As a Site User I can register an account so that I can comment on a post | **MUST HAVE** |
+| As a User I want to be able to login and create a profile so that I can choose which user I am and what CRUD I want to do.| **MUST HAVE** |
+| As a User I can register my account and create my profile so that I can comment and like posts and submit a post to be published| **MUST HAVE** |
+| As a Regular User I can create a profile so that I can see all the jobs I have applied to and post that I have submitted that have been published and those awaiting approval| **MUST HAVE** |
+| As a User I can specify on the signup what kind of user I am so that I have certain accessibility and function on the site | **MUST HAVE** |
+| As an Employer I can create a profile so that I can see all the jobs I have published | **MUST HAVE** |
+| As a user I can signup with my email address so that I can receive email replies from the website| **WONT HAVE** |
+
 
 ### Epic - Blog
 
 | User Story | Priority |
 |----------------------------------------------------------------------------------------------------------------------------|---------------|
-| As an **user**, I want to be able to **create and view articles** so that I can **learn more about dog related topics** | **MUST HAVE** |
-| As a **user**, I would like to **move to the next page** so that I can **view all of the articles** | **SHOULD HAVE** |
-| As a **user**, I would like to **view an article's likes** so that I can **find the most interesting articles** | **COULD HAVE** |
-| As a **user**, I can **visit the articles page** so that I **can read and interact with the articles** | **MUST HAVE** |
-| As a **user**, I can **click on an article** so that I **can view it's contents** | **MUST HAVE** |
-| As a **user**, I can **click a button icon** so that I **can like/unlike and article** | **COULD HAVE** |
-| As a **user**, I can **comment on a post** so that I can **interact and get involved with the conversation** | **SHOULD HAVE** |
-| As a **user**, I can **fill-in, edit and save an article text field** so that I can **create and share an article from my profile** | **MUST HAVE** |
-| As a **user**, I can **click on the edit button of my article** so that I can **edit the article and save it again** | **MUST HAVE** |
-| As a **user**, I can **click on the delete button on my own article page** so that I can **delete the article** | **MUST HAVE** |
-| As a **user**, I can **enter a search term into the search bar** so that I can **search for particular articles and articles with information topics that I am interested in** | **SHOULD HAVE** |
-| As a **user**, I can **click a delete button** so that I **can remove a comment that I have made** | **COULD HAVE** |
+| As a user I can view the different categories of the blog post so that I get an overview of the different posts.| **MUST HAVE** |
+| As a User I can open a post so that I can read the content of the whole post on another page | **MUST HAVE** |
+| As a site admin I can create, read, update and delete posts so that I can manage my blog content| **MUST HAVE** |
+| As a logged in user I can create draft posts so that I can finish writing the content later | **MUST HAVE** |
+| As a site user I can write comments on individual posts so that ** I can be part of the conversation** | **MUST HAVE** |
+| As a logged in user I can like a post so that I can participate in showing my appreciation for the content of the post to others. | **SHOULD HAVE** |
+| As a site user I can view the likes on a post so that I can be informed about the amout of likes on a post. | **SHOULD HAVE** |
+| As a site user I can modify or delete my comment on a post so that I can be involved in the conversation. | **MUST HAVE** |
+| As a regular user I can add a post so that I can share my story or experience | **MUST HAVE** |
+| As a logged in site user I can use the post form so that I can submit a blog post for review and publication by the admin | **MUST HAVE** |
+| As a logged in user I can write a post in a nice form so that I can contribute to the blog | **MUST HAVE** |
+| As a site user (both regular und employer) I can modify or delete my post so that I can make changes if I want to. | **MUST HAVE** |
+
   
 ### Epic - Job
 
 | User Story | Priority |
 |----------------------------------------------------------------------------------------------------------------------------|---------------|
-| As a **user**, I can **view the booking home page** so that I can **learn about booking and see my active bookings** | **MUST HAVE** |
-| As a **user**, I can **use the bookings page** so that I can **make a booking at the dog park** | **MUST HAVE** |
-| As a **user**, I can **receive feedback via email when I make a booking** so that I **can confirm my booking and keep a copy of it in my email account** | **COULD HAVE** |
-| As a **user**, I can **edit my confirmed bookings** so that I **can choose a different day or time slot or add an extra dog** | **MUST HAVE** |
-| As a **user**, I can **click the 'Trash' icon under my booking** so that I can **delete that booking from my bookings list** | **MUST HAVE** |
-| As a **user**, I can **get feedback from the website** that will **explain that only four active bookings are allowed per person** | **SHOULD HAVE** |
+| As a user I can view all the jobs so that I can apply to a job if I qualify | **MUST HAVE** |
+| As an Admin I can aprrove the job posts so that the jobs can be published on the site to seek applicants | **MUST HAVE** |
+| As a site user I want to navigate to the about page to find out more information about the site. | **MUST HAVE** |
+| As a site user I can view 6 jobs in each speciality per page so that I have a good overview of the jobs | **COULD HAVE** |
+| As a regular user I can add a star rating to the jobs so that I can express my liking of the job.| **SHOULD HAVE** |
+| As a Regular or employer user I can delete my job applications or job posts so that I have full control over my respective posts. | **MUST HAVE** |
+| As an employer I can submit a job so that it is posted on the website | **MUST HAVE** |
 
 ### Epic - Job Application
 
 | User Story | Priority |
 |----------------------------------------------------------------------------------------------------------------------------|---------------|
-| As a **user**, I can **visit the gallery page** so that I can **view the gallery wall of photos** | **COULD HAVE** |
-| As a **user**, I can **click the upload image button on the Gallery page** so that I can **upload an image of my dog having fun in the park** | **COULD HAVE** |
-| As a **user**, I can **click the 'Trash' icon when I hover/click on a photo** so that I can **delete the photo** | **COULD HAVE** |
+| As a Regular User I can apply for a job so that I can eventually get the job | **MUST HAVE** |
+| As a user I can use the application form so that I can apply for jobs | **MUST HAVe** |
+| As a Regular user I can modify or delete my job applications so that I can make changes if I need to.| **MUST HAVE** |
 
-### Epic - About
+
+### Epic - About - Contact
 
 | User Story | Priority |
 |----------------------------------------------------------------------------------------------------------------------------|---------------|
-| As a **user**, I can **view the 'Visit Us' page** so that I can **see the businesses location and details** | **MUST HAVE** |
-| As a **user**, I can **fill out a review form** so that I can **leave feedback about my park visit** | **COULD HAVE** |
-| As a **user**, I can **edit my review** so that I can **correct a mistake or change my review** | **COULD HAVE** |
-| As a **user**, I can **click the delete button beside my review** so that I can **delete a review that I made** | **COULD HAVE** |
+| As a Site User I can click on the About link so that I can read about the site | **MUST HAVE** |
+| As a Site Admin I can create or update the about page content so that it is available on the site | **COULD HAVE** |
+| As a site user I can get all the contact information I need so that I can contact the site owners. | **SHOULD HAVE** |
     
     
 ## Scope Plane
