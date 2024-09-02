@@ -254,27 +254,27 @@ Users are able to Create, Read, Update and Delete their shared information on Gl
 
 
 **Home Page**
-
-
-**About Page**
-
+<details open>
+    <summary> Home Page</summary>  
+    <img src="documentation/readme_images/homepage.png">  
+</details>
 
 **Registration/SignUp**
 <details open>
-    <summary>Sign Up Page</summary>  
-    <img src="">  
+    <summary></summary>  
+    <img src="documentation/readme_images/register.png">  
 </details>
 
-Users are required to add their Email, Username and Password twice, to ensure the correct one is saved. If any field is not filled in appropriately then a display message is used to inform the user with how to procede to complete the form. The Sign up and Sign in pages are created with default templates available with the AllAuth package. These templates are combined with the power of Bootstraps Crispy Forms pack to give extra control over the forms' appearance.
+Users are required to add their Email(optional), Username and Password twice, to ensure the correct one is saved. If any field is not filled in appropriately then a display message is used to inform the user with how to procede to complete the form. The Register and Login pages are created with default templates available with the AllAuth package. These templates are combined with the power of Bootstraps Crispy Forms pack to give extra control over the forms' appearance.
 
-**Sign In**
+**Login**
 
 <details open>
-    <summary>Sign In Page</summary>  
+    <summary> Login Page</summary>  
     <img src="">  
 </details>
 
-On successful Sign In, the user is greeted with feedback through a message which confirms sign in. The 'open padlock' Log In icon now changes to a 'closed padlock' Log Out icon that the user can click to begin the Log Out process. A 'Forgot Password' page is also re-designed from the AllAuth templates but it's full functionality is not yet activated for this version.
+On successful login, the user is greeted with feedback through a message which confirms Login.  
 
 ![incorrect username/email warning]()  
 *User is given feedback if they submit incorrect details where one item is correct and the other is incorrect*  
@@ -288,11 +288,11 @@ On successful Sign In, the user is greeted with feedback through a message which
 *Sign In message and Log In icon change*
 
 
-**Sign Out**
+**Logout**
 
 <details open>
-    <summary>Sign Out Page</summary>  
-    <img src="">  
+    <summary>Logout Page</summary>  
+    <img src="documentation/readme_images/logout.png">  
 </details>
   
 A user may choose to return to the Home page and stay logged in or leave the site, logged out.
@@ -326,23 +326,34 @@ The user profile is created upon registration and displays a placeholder image a
 
 <details>
     <summary>Edit Profile Modal</summary>  
-    <img src="">  
+    <img src="documentation/readme_images/editprofileregular.png">  
 </details>
 
-An Edit Profile page once the edit button is clicked on the profile page allows users to edit their Profile Picture, Display Name and Bio (for regular users/applicants).
+An Edit Profile page appears once the edit button is clicked on the profile page allowing users to edit their Profile Picture, Display Name and Bio (for regular users/applicants).
+
+<details>
+    <summary>Edit Profile Modal</summary>  
+    <img src="documentation/readme_images/editedprofilewithimage.png">  
+</details>
 
 <hr>
 
 **Blog**
 
 <details open>
-    <summary>Blog Page - Unregistered User View (mobile/tablet), Registered User View with 'Add Post' icon (desktop)</summary>  
-    <img src="documentation/final_views/posts.png">  
+    <summary>Blog Page - registered User View with category dropdownmenu, Unregistered User View with 'Add Post' icon (desktop)</summary>  
+    <img src="documentation/readme_images/blogdropdowncategories.png"> 
+    <img src="documentation/readme_images/unregistereduser.png"> 
 </details>
 
 <details>
+    <summary>Blog- Category Page </summary>  
+    <img src="documentation/readme_images/categoryexample.png">  
+</details>  
+
+<details>
     <summary>Read Blog Page - Unregistered User View</summary>  
-    <img src="documentation/final_views/art_unregview.png">  
+    <img src="documentation/readme_images/postdetailview.png">  
 </details>  
   
 Unregistered Users have access to all blog posts available on Global Doctors. When registered and logged in, they may access the 'Add Post' button, 'Like/Unlike' icon and leave a comment. Articles created are displayed on individual 'cards' which display in rows for larger screens and columns for portrait, mobile view.
@@ -353,7 +364,7 @@ Unregistered Users have access to all blog posts available on Global Doctors. Wh
 
 Unregistered Users are free to read the articles and comments left on Global Doctors but they cannot 'Like/Comment' them until they have signed up and logged in. the comment section is a link to the signup page.
 
-![like/comment count under article](documentation/final_views/like_comment.png)  
+![like/comment count under blogpost](documentation/final_views/like_comment.png)  
 *A Likes and Comments counter is visible under every article. Logged-In Users can interact by clicking the heart outline to like. 'Heart outline' icon is replaced by filled Heart icon*  
 
 
@@ -424,7 +435,7 @@ If a user spots a typo, error or wants to add new information to their posts, th
 
 <details>
     <summary>Delete Post - Only accessible to the Post Author </summary>  
-    <img src="documentation/final_views/delete_article.png">  
+    <img src="documentation/readme_images/deleteconfirmationmodal.png">  
 </details>
 
 ![delete post successful message](documentation/final_views/del_art_msg.png)  
@@ -446,7 +457,7 @@ If a user spots a typo, error or wants to add new information to their posts, th
 
 For creating a job, the user is informed of the necessary fields to be filled in via feedback. Speciality is selectable via a dropdown menu. In the future authors can create new specialities if they need to. Start Date and End date are selectable for the duration of the jobs via a calendar widget. Neither dates can be in the past and the end date can´t be before the start date. A summornote widget is provided for the Job Description.
 
-![past booking warning](documentation/final_views/past_book.png)  
+![job date in the past warning](documentation/final_views/past_book.png)  
 *Warning shown to Users if they choose a date in the past.*  
  
   
@@ -454,8 +465,13 @@ For creating a job, the user is informed of the necessary fields to be filled in
 *If a end date is before the start date then the user is informed via warning message.
 
 
-![booking saved message](documentation/final_views/booking_saved_msg.png)  
+![job saved message](documentation/final_views/booking_saved_msg.png)  
 *User feedback is delivered by message once a job has been submitted through creation or edit- message disappears after 3 seconds*
+
+<details open>
+    <summary>Jobdetail Page</summary>  
+    <img src="documentation/readme_images/jobdetailpage.png">  
+</details>
 
 **Delete Job**
 
@@ -482,20 +498,21 @@ For creating a job, the user is informed of the necessary fields to be filled in
 
 <details>
     <summary>Job Speciality dropdown menu</summary>  
-    <img src="documentation/final_views/.png">  
+    <img src="documentation/readme_images/jobdropdownspecialitieslist.png">  
 </details>
 
 
 <details>
     <summary>All Jobs in a Speciality- Paginated by 9</summary>  
-    <img src="documentation/final_views/.png">  
+    <img src="documentation/readme_images/specialityradiologyjobs.png">  
 </details>
 
 **Job Application**
 
 <details open>
     <summary>Job Application- Registered, logged-in Regular Users only</summary>  
-    <img src="documentation/final_views/booking.png">  
+    <img src="documentation/readme_images/jobapplicationformfiled.png">  
+    <img src="documentation/readme_images/fileupload.png">  
 </details>
   
 ![Job Application submission successful message](documentation/final_views/del_art_msg.png)  
@@ -540,7 +557,7 @@ A user may delete thier job application.
 
 <details>
     <summary>About Us Page</summary>  
-    <img src="documentation/final_views/aboutus.png">  
+    <img src="documentation/readme_images/aboutus.png">  
 </details>
   
 This page offers the user business information including clickable telephone numbers and email address as well as the physical address. An embedded interactive Google Map allows the user to see Global Doctor's office location without leaving the site. 
@@ -549,7 +566,7 @@ This page offers the user business information including clickable telephone num
 
 <details>
     <summary>Contact</summary>  
-    <img src="documentation/final_views/aboutus.png">  
+    <img src="documentation/readme_images/contactus.png">  
 </details>
 
 This page offers the user business information including clickable telephone numbers and email address as well as the physical address. In addition there is a form for any user to fill out if they have enquires and are not yet ready to signup. Registered users can also use the form to send direct messages to the admin or site owners. In future iterations of the site, full email functionality will be added to this feature.
