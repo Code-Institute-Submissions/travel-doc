@@ -1,2 +1,4 @@
 {% load i18n %}
-{% blocktrans %}You have signed out.{% endblocktrans %}
+{% load account %}
+{% user_display user as name %}
+{% blocktrans %} {{name}}, you are successfully logged out.{% endblocktrans %}

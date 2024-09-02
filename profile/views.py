@@ -2,15 +2,28 @@ from django.views.generic import UpdateView
 from django.shortcuts import redirect, render, get_object_or_404
 from django.contrib.auth.mixins import UserPassesTestMixin, LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 from django.contrib import messages
-#from allauth.account.views import LogoutView
-from .models import Profile
+from allauth.account.views import SignupView
+from .models import Profile, CustomUser
 from .forms import RegularProfileForm, EmployerProfileForm
 from blog.models import Post
 from jobs.models import Job, JobApplication
 
 # Create your views here.
+class CustomSignupView(SignupView):
+    def form_valid(self, form):
+        response = super().form_valid(form)
+        
+        return response
+
+    def get_success_url(self):
+        if self.user and self.user.pk:
+            return reverse('profile', args=[self.user.pk])
+        else:
+            return reverse('account_signup')  
+
+
 @login_required
 def regular_profile(request, pk):
     profile = get_object_or_404(Profile, pk=pk)
