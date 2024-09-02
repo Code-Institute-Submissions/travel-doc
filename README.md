@@ -171,7 +171,7 @@ To allow for ease of responsiveness, each section was designed keeping in mind t
 
 ### Database Schema - Entity Relationship Diagram
 
-![ERD Image]()  
+![ERD Image](documentation/erd/erd-traveldoc.drawio.png)  
 *Database Schema (ERD) for Global Doctors displaying relationships between feature components saved within the database*
 
 This Entity Relationship Diagram(ERD) demonstrates how each feature interacts with each other and the connected PostgreSQL Database. Using Django's User Model, and Django AllAuth to carry out all user authentication, a user has to choose whether they are an employer or regular user with specific CRUD functionality allowed to the different groups. A user_id is then created when the user registers with their username and email. This allows the user to edit a blank profile, create new blogs and add comments and in the case of employers create new jobs and in the case of regular users apply for the jobs and rate the jobs.
@@ -622,7 +622,7 @@ Admin can control users comments via the Django Admin panel.
 * [Gitpod](https://gitpod.io/)
     * Gitpod was used to write my code.
 * [Draw.io:](https://app.diagrams.net/)
-    * Draw.io was used to draw the flowchart for the whole structure of the program.
+    * Draw.io was used to draw the ERD Diagram.
 * [Favicon](https://favicon.io/) 
     * Favicon was used for converting the stethoscope icon into a favicon.
 * [Cloudinary:](https://cloudinary.com/)
@@ -843,6 +843,7 @@ A copy of the original repository can be made through GitHub. Please follow the 
 - [Override Django's save method](https://www.sankalpjonna.com/learn-django/how-to-override-the-save-method-in-your-django-models)
 - Find the [parent form element](https://www.geeksforgeeks.org/difference-between-dom-parentnode-and-parentelement-in-javascript/) of delete confirm button
 - [Django cleaned data how to](https://overiq.com/django-1-10/django-form-basics/?utm_content=cmp-true)
+- [ERD with draw.io](https://medium.com/@macaulaymercy1/how-to-create-an-erd-diagram-using-draw-io-a5267c85d788)
 
 # Acknowledgements
  * Thanks to my Mentor Gareth McGirr for his assistance throughout the project.
