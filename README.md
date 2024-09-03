@@ -256,13 +256,14 @@ Users are able to Create, Read, Update and Delete their shared information on Gl
 **Home Page**
 <details open>
     <summary> Home Page</summary>  
-    <img src="documentation/readme_images/homepage.png">  
+    <img src="https://res.cloudinary.com/dzesjeplp/image/upload/v1725357693/READMEpp4/homepage_xs8fpv.png">  
 </details>
 
 **Registration/SignUp**
 <details open>
     <summary></summary>  
-    <img src="documentation/readme_images/register.png">  
+    <img src="https://res.cloudinary.com/dzesjeplp/image/upload/v1725357666/READMEpp4/register_rdiysn.png">  
+    <img src="https://res.cloudinary.com/dzesjeplp/image/upload/v1725358794/READMEpp4/errormsgregister_mjfhdd.png">  
 </details>
 
 Users are required to add their Email(optional), Username and Password twice, to ensure the correct one is saved. If any field is not filled in appropriately then a display message is used to inform the user with how to procede to complete the form. The Register and Login pages are created with default templates available with the AllAuth package. These templates are combined with the power of Bootstraps Crispy Forms pack to give extra control over the forms' appearance.
@@ -271,33 +272,33 @@ Users are required to add their Email(optional), Username and Password twice, to
 
 <details open>
     <summary> Login Page</summary>  
-    <img src="">  
+    <img src="https://res.cloudinary.com/dzesjeplp/image/upload/v1725357629/READMEpp4/login_pnt2q8.png">  
 </details>
 
 On successful login, the user is greeted with feedback through a message which confirms Login.  
+![Login message](https://res.cloudinary.com/dzesjeplp/image/upload/v1725357635/READMEpp4/msgloggedin_pn4wq2.png)  
+*Login message*
 
-![incorrect username/email warning]()  
+
+![incorrect username/email warning](https://res.cloudinary.com/dzesjeplp/image/upload/v1725357634/READMEpp4/msgerrorlogin_dntpjf.png)  
 *User is given feedback if they submit incorrect details where one item is correct and the other is incorrect*  
 
 
-![fill out field warning]()  
+![fill out field warning](https://res.cloudinary.com/dzesjeplp/image/upload/v1725358794/READMEpp4/msgfillouterrorlogin_xxvh8k.png)  
 *Django built in field warnings for incorrect/forgotten fields input*  
 
-
-![Sign In message and Log In icon change]()  
-*Sign In message and Log In icon change*
 
 
 **Logout**
 
 <details open>
     <summary>Logout Page</summary>  
-    <img src="documentation/readme_images/logout.png">  
+    <img src="https://res.cloudinary.com/dzesjeplp/image/upload/v1725357696/READMEpp4/logout_qen2mw.png">  
 </details>
   
 A user may choose to return to the Home page and stay logged in or leave the site, logged out.
 
-![sign out message]()  
+![sign out message](https://res.cloudinary.com/dzesjeplp/image/upload/v1725357636/READMEpp4/msgloggedout_euvyyy.png)  
 *User is given feedback in message format to confirm sign out, Profile icon no longer visible in navigation bar - message disappears after 3 seconds*  
 
 <hr>
@@ -305,35 +306,30 @@ A user may choose to return to the Home page and stay logged in or leave the sit
 **Profile**
 
 <details open>
-    <summary>Profile Page - Registered Users only- Employer Profile</summary>  
-    <img src="">  
+    <summary>Profile Page - Registered Users only- Employer Profile with Placeholder image for Profile</summary>  
+    <img src="https://res.cloudinary.com/dzesjeplp/image/upload/v1725357629/READMEpp4/employerprofilewithplaceholderpic_nrba0a.png">  
 </details>
 
 <details open>
-    <summary>Profile Page - Registered Users only- Regular User Profile</summary>  
-    <img src="">  
+    <summary>Profile Page - Registered Users only- Regular User Profile after updated picture and bio</summary>  
+    <img src="https://res.cloudinary.com/dzesjeplp/image/upload/v1725357631/READMEpp4/msgafterprofileupdate_zstn7w.png">  
 </details>
   
 The user profile is created upon registration and displays a placeholder image and 'Edit Profile' button to allow the user to personalise their view. With future releases this page will be accessible to other users and allow connection, currently it is only viewable to the user.
-  
-<details>
-    <summary>Profile Page - Placeholder image for Profile</summary>  
-    <img src="">  
-</details>
   
   
 **Profile Edit**
 
 <details>
     <summary>Edit Profile Modal</summary>  
-    <img src="documentation/readme_images/editprofileregular.png">  
+    <img src="https://res.cloudinary.com/dzesjeplp/image/upload/v1725357666/READMEpp4/editprofileregular_zin7ts.png">  
 </details>
 
 An Edit Profile page appears once the edit button is clicked on the profile page allowing users to edit their Profile Picture, Display Name and Bio (for regular users/applicants).
 
 <details>
     <summary>Edit Profile Modal</summary>  
-    <img src="documentation/readme_images/editedprofilewithimage.png">  
+    <img src="https://res.cloudinary.com/dzesjeplp/image/upload/v1725357640/READMEpp4/profilewithpic_xmiv6x.png">  
 </details>
 
 <hr>
@@ -457,15 +453,15 @@ If a user spots a typo, error or wants to add new information to their posts, th
 
 For creating a job, the user is informed of the necessary fields to be filled in via feedback. Speciality is selectable via a dropdown menu. In the future authors can create new specialities if they need to. Start Date and End date are selectable for the duration of the jobs via a calendar widget. Neither dates can be in the past and the end date can´t be before the start date. A summornote widget is provided for the Job Description.
 
-![job date in the past warning](documentation/final_views/past_book.png)  
+![Job date in the past warning](documentation/final_views/past_book.png)  
 *Warning shown to Users if they choose a date in the past.*  
  
   
-![unavaialable date/time](documentation/final_views/unavailable_datetime.png)  
+![Enddate not before startdate](documentation/final_views/unavailable_datetime.png)  
 *If a end date is before the start date then the user is informed via warning message.
 
 
-![job saved message](documentation/final_views/booking_saved_msg.png)  
+![Job posted message](documentation/final_views/booking_saved_msg.png)  
 *User feedback is delivered by message once a job has been submitted through creation or edit- message disappears after 3 seconds*
 
 <details open>
@@ -549,7 +545,7 @@ The status of thier job applications returns to applied after every update, so t
   
 A user may delete thier job application.
 
-![deleted booking message](documentation/final_views/booking_del_msg.png)  
+![deleted application message](documentation/final_views/booking_del_msg.png)  
 *User feedback is delivered by message once a job application has been deleted - message dissappears after 3 seconds*
 
 
