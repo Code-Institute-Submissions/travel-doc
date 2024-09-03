@@ -20,7 +20,7 @@
                 {% if profile.image.url %}
                 <img class="profile-img rounded-circle" src="{{ profile.image.url }}" alt="{{ profile.user.username }}'s profile image">
                 {% else %}
-                <img class="profile-img rounded-circle" style="width: 100px;" src="{% static '/images/user_profile_placeholder (1).jpg' %}" alt="user_profile_placeholder">
+                <img class="profile-img rounded-circle" style="width: 100px;" src="{% static '/images/user_profile_placeholder.jpg' %}" alt="user_profile_placeholder">
                 {% endif %}
             </div>
             <!--<p class="lead text-body-secondary">{{ profile.bio }}</p>-->
