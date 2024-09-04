@@ -315,7 +315,7 @@ A user may choose to return to the Home page and stay logged in or leave the sit
     <img src="https://res.cloudinary.com/dzesjeplp/image/upload/v1725357631/READMEpp4/msgafterprofileupdate_zstn7w.png">  
 </details>
   
-The user profile is created upon registration and displays a placeholder image and 'Edit Profile' button to allow the user to personalise their view. With future releases this page will be accessible to other users and allow connection, currently it is only viewable to the user.
+The user profile is created upon registration and displays a placeholder image and 'Edit Profile' button to allow the user to personalise their profile page. With future releases this page will be accessible to other users and allow connection, currently it is only viewable to the user.
   
   
 **Profile Edit**
@@ -338,50 +338,60 @@ An Edit Profile page appears once the edit button is clicked on the profile page
 
 <details open>
     <summary>Blog Page - registered User View with category dropdownmenu, Unregistered User View with 'Add Post' icon (desktop)</summary>  
-    <img src="documentation/readme_images/blogdropdowncategories.png"> 
-    <img src="documentation/readme_images/unregistereduser.png"> 
+    <img src="https://res.cloudinary.com/dzesjeplp/image/upload/v1725357688/READMEpp4/blogdropdowncategories_gztz5v.png"> 
+    View for unregistered users
+    <img src="https://res.cloudinary.com/dzesjeplp/image/upload/v1725357667/READMEpp4/unregistereduser_epqzod.png"> 
 </details>
 
 <details>
     <summary>Blog- Category Page </summary>  
-    <img src="documentation/readme_images/categoryexample.png">  
+    <img src="https://res.cloudinary.com/dzesjeplp/image/upload/v1725357689/READMEpp4/categoryexample_wtpnhf.png">  
 </details>  
 
 <details>
     <summary>Read Blog Page - Unregistered User View</summary>  
-    <img src="documentation/readme_images/postdetailview.png">  
+    <img src="https://res.cloudinary.com/dzesjeplp/image/upload/v1725433225/READMEpp4/postdetailview_1_wsyclx.png">  
 </details>  
   
-Unregistered Users have access to all blog posts available on Global Doctors. When registered and logged in, they may access the 'Add Post' button, 'Like/Unlike' icon and leave a comment. Articles created are displayed on individual 'cards' which display in rows for larger screens and columns for portrait, mobile view.
+Unregistered Users have access to all blog posts available on Global Doctors. When registered and logged in, they may access the 'Add Post' button, 'Like/Unlike' icon and leave a comment. Posts created are displayed on individual 'cards' which display in rows for larger screens and columns for portrait, mobile view.
 
-![site pagination of next or prev for moving page every 6 posts](documentation/final_views/site_pag.png)  
+![site pagination of next or prev for moving page every 6 posts](https://res.cloudinary.com/dzesjeplp/image/upload/v1725434796/READMEpp4/nextorprevbutton_ansitj.png)  
 *Site pagination kicks in to display 6 posts per page. Buttons with next or prev at the base of the posts section allow users to move forward and back*  
 
 
-Unregistered Users are free to read the articles and comments left on Global Doctors but they cannot 'Like/Comment' them until they have signed up and logged in. the comment section is a link to the signup page.
+Unregistered Users are free to read the posts and comments left on Global Doctors but they cannot 'Like/Comment' them until they have registered and logged in. The comment section has a link to the registration page.
 
-![like/comment count under blogpost](documentation/final_views/like_comment.png)  
-*A Likes and Comments counter is visible under every article. Logged-In Users can interact by clicking the heart outline to like. 'Heart outline' icon is replaced by filled Heart icon*  
+![like/comment count under blogpost](https://res.cloudinary.com/dzesjeplp/image/upload/v1725357642/READMEpp4/zerolikes_efgqck.png)  
+*A Likes and Comments counter is visible under every post. Logged-In Users can interact by clicking the heart outline to like. 'Heart outline' icon is replaced by filled Heart icon*  
 
 
-![zero likes icon](documentation/final_views/zerolikes.png)  
+![like message](https://res.cloudinary.com/dzesjeplp/image/upload/v1725357630/READMEpp4/msgaftelikingpost_trskzy.png)  
 *Likes icon is represented by an outlined heart icon. When it receives a like from the logged-in user, it becomes a filled heart icon and the user receives a success message,*  
   
 
 <details open>
-    <summary>Add a Comment - Registered User View</summary>  
-    <img src="documentation/final_views/comments.png">  
+    <summary>Add a Comment - Registered Users only</summary>  
+    <img src="https://res.cloudinary.com/dzesjeplp/image/upload/v1725357631/READMEpp4/msgcomment_jigmev.png">  
 </details>
 
-A comment box is visible to logged-in users only. Their comment appears on the website once submitted and they can then edit or delete it. This is a better user experience as having to wait for approval from the admin. If there are any inappropriate comments, the admin can delete them via the admin panel.
+A comment box is visible to all users but only logged-in users can leave a comment. Unregistered users can use the link in the comment box to register. Comments appear on the website once submitted and they can be edited or deleted only by thier authors. This is a better user experience as having to wait for approval from the admin. If there are any inappropriate comments, the admin can delete them via the admin panel.
 
-![comment submission success message](documentation/final_views/approval_comment.png)  
+![comment submission success message](https://res.cloudinary.com/dzesjeplp/image/upload/v1725357631/READMEpp4/msgcomment_jigmev.png)  
 *Comment is posted successfully message displayed after comment submit*
-  
+
+<details>
+    <summary>Edit Comment - Registered User View for Comment Author only</summary>  
+    <img src="https://res.cloudinary.com/dzesjeplp/image/upload/v1725357627/READMEpp4/editcomment_bq8m7q.png">  
+</details>
+
+For the author of the comment, when logged in, an edit button appears to allow them to edit the comment if they wish. The comment then reappers in the comment box where they can edit it and press the update button to submit the edited comment.
+
+![comment updated success message](https://res.cloudinary.com/dzesjeplp/image/upload/v1725357632/READMEpp4/msgcommentedited_izry6g.png)  
+*Comment is updated successfully message displayed after editing the comment*
 
 <details>
     <summary>Delete Comment - Registered User View for Comment Author only</summary>  
-    <img src="documentation/final_views/comm_del_icon.png">  
+    <img src="https://res.cloudinary.com/dzesjeplp/image/upload/v1725357632/READMEpp4/msgcommentdeleted_llnt7b.png">  
 </details>
 
 For the author of the comment, when logged in, a delete button will appear to allow them to delete the comment if they wish. 
@@ -391,39 +401,39 @@ For the author of the comment, when logged in, a delete button will appear to al
 
 <details open>
     <summary>Add Post Page - Registered, Logged In User View</summary>  
-    <img src="documentation/final_views/add_article.png">  
+    <img src="https://res.cloudinary.com/dzesjeplp/image/upload/v1725357626/READMEpp4/addapostfullpage_pj1jjt.png">  
 </details>  
   
-The user may create a post and include their own image or allow a placeholder image. Feedback is given to the user to guide them if they do not fill out the required sections appropriately. The Submit button saves the article for Admin approval. Once approved, the article will appear on the main page.  In thier profile the user can edit and delete thier posts irrespective of draft or published status.
+The logged in user may create a post and include their own image or allow a placeholder image. Feedback is given to the user to guide them if they do not fill out the required sections appropriately. The Submit button saves the post for Admin approval. Once approved, the post will appear on the main page.  In thier profile the user can edit and delete thier posts irrespective of draft or published status.
   
 
 <details>
     <summary>Placeholder image for Posts</summary>  
-    <img src="documentation/final_views/placeholder_img.png">  
+    <img src="https://res.cloudinary.com/dzesjeplp/image/upload/v1725435133/READMEpp4/placeholderimageposts_a9e4qa.png">  
 </details>
 
 
-![feedback that post is awaiting approval by Admin](documentation/final_views/art_approve.png)  
-*Admin approval is required for posts to keep FGlobal Doctors on topic. Feedback is provided to the user by message that the post is awaiting approval*
+![feedback that post is awaiting approval by Admin](https://res.cloudinary.com/dzesjeplp/image/upload/v1725357636/READMEpp4/msgpost_qn6qfq.png)  
+*Admin approval is required for posts to keep Global Doctors on topic. Feedback is provided to the user by message that the post is awaiting approval*
 
 
 **Edit Post**
 
 <details open>
     <summary>Edit Post Page - Registered, Logged In User View - post Author View - Edit/Delete buttons</summary>  
-    <img src="documentation/final_views/art_eddel_reg.png">  
+    <img src="https://res.cloudinary.com/dzesjeplp/image/upload/v1725357640/READMEpp4/profileemployer_fzgrfb.png">  
 </details>
 
 <details>
     <summary>Edit Post Page - Only accessible to the Post Author</summary>  
-    <img src="documentation/final_views/edit_article.png">  
+    <img src="https://res.cloudinary.com/dzesjeplp/image/upload/v1725357641/READMEpp4/updatepost_tbbyfx.png">  
 </details>
   
-If a user spots a typo, error or wants to add new information to their posts, then they may edit the post and submit for immediate reposting. A certain amount of trust exists between Admin and the Global Doctors community to hope that no inappropriate or off-topic content will be shared, which will result in an immediate deletion of the user's account by the Admin. These issues will be locked down in the future development of Global Doctors to allow certain content/words to be flagged and removed by the Admin or not allow the form to be submitted in the first place. Community guidelines will also be developed.
+If a user spots a typo, error or wants to add new information to their posts, then they may edit the post and submit. The posts that have draft status remain as drafts till the admin approves them. The posts that are already published can also be edited and resubmitted for immediate reposting. A certain amount of trust exists between Admin and the Global Doctors community to hope that no inappropriate or off-topic content will be shared, which will result in an immediate deletion of the user's account by the Admin. These issues will be locked down in the future development of Global Doctors to allow certain content/words to be flagged and removed by the Admin or not allow the form to be submitted in the first place. Community guidelines will also be developed.
 
 <details>
     <summary>Edit Post Message</summary>  
-    <img src="documentation/final_views/art_updated_msg.png">  
+    <img src="https://res.cloudinary.com/dzesjeplp/image/upload/v1725435651/READMEpp4/postupdatedmsg_f7pihd.png">  
 </details>
 
 
@@ -431,11 +441,11 @@ If a user spots a typo, error or wants to add new information to their posts, th
 
 <details>
     <summary>Delete Post - Only accessible to the Post Author </summary>  
-    <img src="documentation/readme_images/deleteconfirmationmodal.png">  
+    <img src="https://res.cloudinary.com/dzesjeplp/image/upload/v1725357627/READMEpp4/deletemodalpost_z59s7g.png">  
 </details>
 
-![delete post successful message](documentation/final_views/del_art_msg.png)  
-*User is informed that their article has been deleted - message disappears after 3 seconds*
+![delete post successful message](https://res.cloudinary.com/dzesjeplp/image/upload/v1725357637/READMEpp4/postdeleted_jqdrvs.png)  
+*User is informed that their post has been deleted - message disappears after 4.5 seconds*
 
 
 
@@ -445,115 +455,116 @@ If a user spots a typo, error or wants to add new information to their posts, th
 
 <details open>
     <summary>Add Job Page - Registered, logged-in Employer Users only</summary>  
-    <img src="documentation/final_views/booking.png">  
+    <img src="https://res.cloudinary.com/dzesjeplp/image/upload/v1725464821/READMEpp4/createjop_btfcc9.png">  
 </details>
   
-![Job created successful message](documentation/final_views/del_art_msg.png)  
-*User is informed that their article has been deleted - message disappears after 3 seconds*
+![Job created successful message](https://res.cloudinary.com/dzesjeplp/image/upload/v1725464835/READMEpp4/msgjobposted_prrmaj.png)  
+*User is informed that their job post has been published - message disappears after 4.5 seconds*
 
 For creating a job, the user is informed of the necessary fields to be filled in via feedback. Speciality is selectable via a dropdown menu. In the future authors can create new specialities if they need to. Start Date and End date are selectable for the duration of the jobs via a calendar widget. Neither dates can be in the past and the end date can´t be before the start date. A summornote widget is provided for the Job Description.
 
-![Job date in the past warning](documentation/final_views/past_book.png)  
-*Warning shown to Users if they choose a date in the past.*  
+![Job start date in the past warning](https://res.cloudinary.com/dzesjeplp/image/upload/v1725464840/READMEpp4/startdateinthepast_pgdgm3.png)  
+*Warning shown to Users if they choose a start date in the past.*  
  
   
-![Enddate not before startdate](documentation/final_views/unavailable_datetime.png)  
+![Enddate not before startdate](https://res.cloudinary.com/dzesjeplp/image/upload/v1725464826/READMEpp4/enddatenotbeforestartdate_pejrab.png)  
 *If a end date is before the start date then the user is informed via warning message.
 
 
-![Job posted message](documentation/final_views/booking_saved_msg.png)  
-*User feedback is delivered by message once a job has been submitted through creation or edit- message disappears after 3 seconds*
-
 <details open>
-    <summary>Jobdetail Page</summary>  
-    <img src="documentation/readme_images/jobdetailpage.png">  
+    <summary>Jobdetail Page with form for all other users apart from employers</summary>  
+    <img src="https://res.cloudinary.com/dzesjeplp/image/upload/v1725357694/READMEpp4/jobdetailpage_wjrdum.png">  
+    <img src="https://res.cloudinary.com/dzesjeplp/image/upload/v1725464829/READMEpp4/jobdetalviewforemployerwithoutapplicationform_rm9a4b.png"> 
 </details>
+
 
 **Delete Job**
 
 <details>
     <summary>Delete Job - Only accessible to the Job Author </summary>  
-    <img src="documentation/final_views/delete_article.png">  
+    <img src="https://res.cloudinary.com/dzesjeplp/image/upload/v1725464821/READMEpp4/deletejob_ogkece.png">  
 </details>
 
-![delete job successful message](documentation/final_views/del_art_msg.png)  
-*User is informed that their job has been deleted - message disappears after 3 seconds*
+![delete job successful message](https://res.cloudinary.com/dzesjeplp/image/upload/v1725464832/READMEpp4/msgjobdeleted_d15sfl.png)  
+*User is informed that their job has been deleted - message disappears after 4.5 seconds*
 
 
 **Edit Job**
 
 <details>
     <summary>Edit Job Page - Only accessible to the Job Author </summary>  
-    <img src="documentation/final_views/.png">  
+    <img src="https://res.cloudinary.com/dzesjeplp/image/upload/v1725464825/READMEpp4/editjob_ydg33f.png">  
 </details>
 
-![Edit job successful message](documentation/final_views/del_art_msg.png)  
-*User is informed that their job has been successfully edited - message disappears after 3 seconds*
+![Edit job successful message](https://res.cloudinary.com/dzesjeplp/image/upload/v1725464836/READMEpp4/msgjobupdated_wcwvkx.png)  
+*User is informed that their job has been successfully edited - message disappears after 4.5 seconds*
 
 <hr>
 
 <details>
     <summary>Job Speciality dropdown menu</summary>  
-    <img src="documentation/readme_images/jobdropdownspecialitieslist.png">  
+    <img src="https://res.cloudinary.com/dzesjeplp/image/upload/v1725357696/READMEpp4/jobdropdownspecialitieslist_ajvtks.png">  
 </details>
 
 
 <details>
     <summary>All Jobs in a Speciality- Paginated by 9</summary>  
-    <img src="documentation/readme_images/specialityradiologyjobs.png">  
+    <img src="https://res.cloudinary.com/dzesjeplp/image/upload/v1725357697/READMEpp4/specialityradiologyjobs_e5svra.png">  
 </details>
 
 **Job Application**
 
 <details open>
     <summary>Job Application- Registered, logged-in Regular Users only</summary>  
-    <img src="documentation/readme_images/jobapplicationformfiled.png">  
-    <img src="documentation/readme_images/fileupload.png">  
+    <img src="https://res.cloudinary.com/dzesjeplp/image/upload/v1725461281/READMEpp4/jobapplicationformfilled_vyxj34.png">  
 </details>
   
-![Job Application submission successful message](documentation/final_views/del_art_msg.png)  
-*User is informed that their ajob application has been submitted - message disappears after 3 seconds*
+![Job Application submission successful message](https://res.cloudinary.com/dzesjeplp/image/upload/v1725461298/READMEpp4/ratingpageafter_nlpylr.png)  
+*User is informed that their job application has been submitted - message disappears after 4.5 seconds*
 
 For applying to a job, the user is informed of the necessary fields to be filled in via feedback. The email address has to be a correct email address with the @ sign.
 They need to leave a short message to the employer. Adding thier CV as a file document is optional.
 After pressing the submission button they are redirected to a job review page.
 
 <details open>
-    <summary>Job Review Page- Only Job applicants after their first job application</summary>  
-    <img src="documentation/final_views/booking.png">  
+    <summary>Job Review Page- Only Job applicants after specific job application for the first time</summary>  
+    <img src="https://res.cloudinary.com/dzesjeplp/image/upload/v1725461166/READMEpp4/5starsrating_dnto3i.png">  
 </details>
 The applicant is asked to review the job with a staring system between 1-5. They are then redirected to the home page. Reviewing is optional, they can click away. 
 In the background the highest amount of stars (5) given to a job is updated and shown to all users, even non registered users. Employers can not delete or edit the star reviews. 
+
+![Job review submission successful message](https://res.cloudinary.com/dzesjeplp/image/upload/v1725461281/READMEpp4/msgafterrating_h8czmk.png) 
 
 **Edit Job Application**
 
 <details>
     <summary>Edit Job Application - Only accessible to the Job Applicant on their profile page</summary>  
-    <img src="documentation/final_views/.png">  
+    <img src="https://res.cloudinary.com/dzesjeplp/image/upload/v1725461173/READMEpp4/applicationupdatemsg_iecxe1.png">  
 </details>
 
-![Edit job application successful message](documentation/final_views/del_art_msg.png)  
-*User is informed that their job application has been successfully edited - message disappears after 3 seconds*
+![Edit job application successful message](https://res.cloudinary.com/dzesjeplp/image/upload/v1725461300/READMEpp4/updatedapplication_img8ys.png)  
+*User is informed that their job application has been successfully edited - message disappears after 4.5 seconds*
 The status of thier job applications returns to applied after every update, so that the admin can review the changes and forward the updated application to the employers.
 
 **Delete Job Application**
 
 <details>
     <summary>Delete Job Application - Only accessible to the Job Applicant on their profile page</summary>  
-    <img src="documentation/final_views/booking_d.png">  
+    <img src="https://res.cloudinary.com/dzesjeplp/image/upload/v1725461175/READMEpp4/deletejobapplication_anuutk.png">  
 </details>
   
 A user may delete thier job application.
 
-![deleted application message](documentation/final_views/booking_del_msg.png)  
-*User feedback is delivered by message once a job application has been deleted - message dissappears after 3 seconds*
+![deleted application message](https://res.cloudinary.com/dzesjeplp/image/upload/v1725461275/READMEpp4/applicationdeleted_kjxvni.png)  
+*User feedback is delivered by message once a job application has been deleted - message dissappears after 4.5 seconds*
 
 
 **About Us**
 
 <details>
     <summary>About Us Page</summary>  
-    <img src="documentation/readme_images/aboutus.png">  
+    <img src="https://res.cloudinary.com/dzesjeplp/image/upload/v1725357687/READMEpp4/aboutus_zdqqlz.png">
+    <img src="https://res.cloudinary.com/dzesjeplp/image/upload/v1725357687/READMEpp4/aboutuscontactdetails_h0undb.png">
 </details>
   
 This page offers the user business information including clickable telephone numbers and email address as well as the physical address. An embedded interactive Google Map allows the user to see Global Doctor's office location without leaving the site. 
@@ -562,7 +573,7 @@ This page offers the user business information including clickable telephone num
 
 <details>
     <summary>Contact</summary>  
-    <img src="documentation/readme_images/contactus.png">  
+    <img src="https://res.cloudinary.com/dzesjeplp/image/upload/v1725357692/READMEpp4/contactus_gqifos.png">  
 </details>
 
 This page offers the user business information including clickable telephone numbers and email address as well as the physical address. In addition there is a form for any user to fill out if they have enquires and are not yet ready to signup. Registered users can also use the form to send direct messages to the admin or site owners. In future iterations of the site, full email functionality will be added to this feature.
@@ -573,7 +584,7 @@ This page offers the user business information including clickable telephone num
 
 These templates were added to this project in order to give the user the functionality to return to the website by using the links in the navigation bar or the Back to Homepage button on the Error page.
 
-![403 error page](documentation/final_views/403error.png)
+![403 error page](https://res.cloudinary.com/dzesjeplp/image/upload/v1725357626/READMEpp4/403regularuseraddjob_xh9lxk.png)
 
 - They are triggered when a user tries to access:
   - information that is not theirs - 403,
@@ -584,26 +595,53 @@ These templates were added to this project in order to give the user the functio
 
 Through Django's built-in Administration Panel, the Admin has full access over the data submitted to the website by registered Users. To access the Admin panel the Admin user adds '/admin/' to the end of the URL to display [https://traveldoc-0a6dba7e37c3.herokuapp.com/admin/](https://traveldoc-0a6dba7e37c3.herokuapp.com/admin/). A username and password is requested. For Global Doctors, Admin approval is needed for blog posts to keep the site on topic and to prevent spamming. Registered, logged-in users' have instant access to add a pcomment and like/unlike posts. Additionally employers when logged in can add jobs and have full CRUD functionality over thier job posts. Applicatns once logged in can submit job Applications with full CRUD functionality and also optionally submit a review of the job whcih can be read or optionally created but not deleted or updated. Those features will be added in the future. 
 
-![django admin panel view](documentation/final_views/dj_adminpanel.png)  
+![django admin panel view](https://res.cloudinary.com/dzesjeplp/image/upload/v1725466076/READMEpp4/Site-administration-Django-site-admin_hrn3tr.png)  
 *Django Admin panel view for Global Doctors Administrator - content selection menu on left hand side*  
 
 
-Users posts require approval by the Admin of Global Doctors to keep the website content on topic. Admin can change the status of articles from 'Draft' to 'Published'.
+Users posts require approval by the Admin of Global Doctors to keep the website content on topic. Admin can change the status of posts from 'Draft' to 'Published'.
 
 <details>
     <summary>Dropdown menu allowing Admin to 'publish' a users post, 'Save' button must be clicked to confirm</summary>  
-    <img src="documentation/final_views/draft_art.png">  
+    <img src="https://res.cloudinary.com/dzesjeplp/image/upload/v1725466061/READMEpp4/Select-post-to-change-Django-site-admin_kdq7bc.png">  
 </details>  
 
-    
 
 Admin can control users comments via the Django Admin panel.  
 
 <details>
     <summary>All comments are made available to the Admin</summary>  
-    <img src="documentation/final_views/djbooking.png">  
+    <img src="https://res.cloudinary.com/dzesjeplp/image/upload/v1725466048/READMEpp4/Select-comment-to-change-Django-site-admin_smomtt.png">  
 </details>
 
+Admin can control users posted jobs via the Django Admin panel.  
+
+<details>
+    <summary>All jobs are made available to the Admin</summary>  
+    <img src="https://res.cloudinary.com/dzesjeplp/image/upload/v1725466057/READMEpp4/Select-job-to-change-Django-site-admin_mo0tl7.png">  
+</details>
+
+Admin can create job specialities and post categories via the Django Admin panel.  
+
+<details>
+    <summary>Admin can create specialites and categories</summary>  
+    <img src="https://res.cloudinary.com/dzesjeplp/image/upload/v1725466070/READMEpp4/Select-speciality-to-change-Django-site-admin_dcy4um.png">   
+</details>
+
+Admin can control users job applications via the Django Admin panel.  
+
+<details>
+    <summary>All jobapplications are made available to the Admin</summary>  
+    <img src="https://res.cloudinary.com/dzesjeplp/image/upload/v1725466051/READMEpp4/Select-job-application-to-change-Django-site-admin_spdx6w.png">
+    <img src="https://res.cloudinary.com/dzesjeplp/image/upload/v1725466051/READMEpp4/Select-job-application-to-change-Django-site-admin_spdx6w.png">   
+</details>
+
+Admin can control users profiles via the Django Admin panel.  
+
+<details>
+    <summary>All profiles are made available to the Admin</summary>  
+    <img src="https://res.cloudinary.com/dzesjeplp/image/upload/v1725466067/READMEpp4/Select-profile-to-change-Django-site-admin_a4qezo.pngg">  
+</details>
 
 ## Future Features
 
