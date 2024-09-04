@@ -14,5 +14,10 @@
         <button id="submitButton" type="submit"class="btn btn-signup btn-lg">Submit <i class="fa fa-stethoscope"></i></button>
         
     </form>
+    <hr>
+    <p> If not you can use the navbar to navigate to where you want.</p>
+    <p> Or press the button below to return to the joblist.</p>
+    <button class="btn btn-signup btn-lg"><a id=error href="{% url 'speciality_jobs' job.speciality.name %}">Return 
+    <i class="fa fa-stethoscope"></i></a></button>
 </div>
 {% endblock %}
