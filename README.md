@@ -28,21 +28,6 @@ Global Doctors is accessible via all browsers with full responsiveness on differ
 
 # UX - User Experience
 
-## Design Inspiration
-
-
-
-### Colour Scheme
-
-
-
-![screenshot of colour scheme]() 
-
-
-### Font
-  
-# Project Planning  
- 
 ## Strategy Plane
 
 The project goal was to build an interactive blog with job board to connect interested users. I aimed to create an easy, uncomplicated job posting system for employers and job application process for interested doctors. Through planning and design prep work, I realised that there was an opportunity to treat this service like a 'brand' and develop the idea further. A social element was born from this with an idea for users, both employers and doctors to be able to share advice and images of their experiences on the website. This would hopefully help to create an informative and motivational group of users who would recommend the site to others, share articles outside of the core group, and attract more users to sign up. Following common social-media design trends, I planned to use icons, high-quality, photographic images and an attractive, connected colour scheme.
@@ -142,8 +127,9 @@ User stories and features recorded and managed on [GitHub Projects](https://gith
 | As a Site User I can click on the About link so that I can read about the site | **MUST HAVE** |
 | As a Site Admin I can create or update the about page content so that it is available on the site | **COULD HAVE** |
 | As a site user I can get all the contact information I need so that I can contact the site owners. | **SHOULD HAVE** |
-    
-    
+
+<a href="#top">Back to the top.</a>
+
 ## Scope Plane
 
 As this would be a dual learning/building project using technologies that were new to me, such as Django, SQL and Bootstrap, I was cautious to maintain consistent control over the scope of the project and not let my idea grow too big. With the sheer amount of files, I needed to lockdown my project features early on into manageable blocks so as not to lose track of the MVP. Following my learning of the Django MVT framework I was able to identify how to change the templated structure to produce different website features from my base HTML. This allowed me to build upon my original idea of 'Global Doctors blog' only, and to add a social experience around blog posts and shared images and also to add a job section with addes features. Following Agile Planning Methodologies, I added my issues on my [GitHub project board](https://github.com/users/angelaanjorin/projects/3).
@@ -164,12 +150,19 @@ Planning my project thoroughly from the start allowed me to identify areas of im
 ## Structural Plane
 To allow for ease of responsiveness, each section was designed keeping in mind the switch from 'row' to 'column' when moving from Desktop to Mobile/Tablet view. This approach allowed me to add more features to the project early on by reusing and repurposing sections of code.
 
-## Skeleton & Surface Planes
+# Design
+## Colours
+![screenshot of colour scheme](https://res.cloudinary.com/dzesjeplp/image/upload/v1725521847/READMEpp4/colours_nysmxf.png) 
 
-### Wireframes
+Neutral colors were chosen for the background, navbar, footer and buttons to keep them simple and not distracting.The main feature should be the attractive pictures and the stories behind them.
 
+## Media 
+* The photographs used on the blog are from either <a href="https://www.pexels.com/" target="_blank"> Pexels.com </a> 
+or <a href="https://gmedical.com/blog/" target="_blank"> Global Medical Staffing.com </a>
 
-### Database Schema - Entity Relationship Diagram
+* All posts on the page are from<a href="https://gmedical.com/blog/" target="_blank"> Global Medical Staffing.com </a>
+
+## Database Schema - Entity Relationship Diagram
 
 ![ERD Image](documentation/erd/erd-traveldoc.drawio.png)  
 *Database Schema (ERD) for Global Doctors displaying relationships between feature components saved within the database*
@@ -184,7 +177,7 @@ My Jobapplication Model collects data from the user about them and giving them t
 
 Through the Admin Django Dashboard, the connected user_id to all data entered to the site means that the Admin can remove a User and their data completely through the additon of on_delete=models.CASCADE. At the moment, a user can remove any data they share with the site, but they cannot delete their account completely. This feature will come in the next version.
 
-### Security
+## Security
 
 A number of security steps were taken in this project in order to protect the user's submitted data. Unlike a strictly informative website, Global Doctors allows the user to become part of the community and avail of it's job board services. To meet the strict internet standards of protecting a user's data, the following processes were included in the project's development.
 
@@ -213,7 +206,8 @@ FGlobal Doctors was developed to ensure a smooth user experience, to the best of
 **CSRF Tokens** 
 
 CSRF (Cross-Site Request Forgery) tokens are included in every form to help authenticate the request with the server when the form is submitted. Absence of these tokens can leave a site vulnerable to attackers who may steal a users data.
-  
+
+<a href="#top">Back to the top.</a>
 
 # Features
 
@@ -246,12 +240,11 @@ Users are able to Create, Read, Update and Delete their shared information on Gl
 | Job Application(only for applicants/regular users) | Yes | Yes | Yes| Yes |
 | Job review(only for applicants) | Yes(optional) | Yes | No | No
 
+<a href="#top">Back to the top.</a>
+
 ## Feature Showcase 
   
 **Header/Navigation & Footer**
-
-*For features showcase, screenshots of the features in use were taken on Laptop/samsung S10
-
 
 **Home Page**
 <details open>
@@ -288,7 +281,6 @@ On successful login, the user is greeted with feedback through a message which c
 *Django built in field warnings for incorrect/forgotten fields input*  
 
 
-
 **Logout**
 
 <details open>
@@ -301,6 +293,7 @@ A user may choose to return to the Home page and stay logged in or leave the sit
 ![sign out message](https://res.cloudinary.com/dzesjeplp/image/upload/v1725357636/READMEpp4/msgloggedout_euvyyy.png)  
 *User is given feedback in message format to confirm sign out, Profile icon no longer visible in navigation bar - message disappears after 3 seconds*  
 
+<a href="#top">Back to the top.</a>
 <hr>
 
 **Profile**
@@ -332,6 +325,7 @@ An Edit Profile page appears once the edit button is clicked on the profile page
     <img src="https://res.cloudinary.com/dzesjeplp/image/upload/v1725357640/READMEpp4/profilewithpic_xmiv6x.png">  
 </details>
 
+<a href="#top">Back to the top.</a>
 <hr>
 
 **Blog**
@@ -447,8 +441,7 @@ If a user spots a typo, error or wants to add new information to their posts, th
 ![delete post successful message](https://res.cloudinary.com/dzesjeplp/image/upload/v1725357637/READMEpp4/postdeleted_jqdrvs.png)  
 *User is informed that their post has been deleted - message disappears after 4.5 seconds*
 
-
-
+<a href="#top">Back to the top.</a>
 <hr>
 
 **Jobs**
@@ -499,8 +492,6 @@ For creating a job, the user is informed of the necessary fields to be filled in
 ![Edit job successful message](https://res.cloudinary.com/dzesjeplp/image/upload/v1725464836/READMEpp4/msgjobupdated_wcwvkx.png)  
 *User is informed that their job has been successfully edited - message disappears after 4.5 seconds*
 
-<hr>
-
 <details>
     <summary>Job Speciality dropdown menu</summary>  
     <img src="https://res.cloudinary.com/dzesjeplp/image/upload/v1725357696/READMEpp4/jobdropdownspecialitieslist_ajvtks.png">  
@@ -511,6 +502,9 @@ For creating a job, the user is informed of the necessary fields to be filled in
     <summary>All Jobs in a Speciality- Paginated by 9</summary>  
     <img src="https://res.cloudinary.com/dzesjeplp/image/upload/v1725357697/READMEpp4/specialityradiologyjobs_e5svra.png">  
 </details>
+
+<a href="#top">Back to the top.</a>
+<hr>
 
 **Job Application**
 
@@ -558,6 +552,8 @@ A user may delete thier job application.
 ![deleted application message](https://res.cloudinary.com/dzesjeplp/image/upload/v1725461275/READMEpp4/applicationdeleted_kjxvni.png)  
 *User feedback is delivered by message once a job application has been deleted - message dissappears after 4.5 seconds*
 
+<a href="#top">Back to the top.</a>
+<hr>
 
 **About Us**
 
@@ -590,6 +586,8 @@ These templates were added to this project in order to give the user the functio
   - information that is not theirs - 403,
   - information that does not exist anymore - 404,
   - something has gone wrong with the server and cannot retrieve database - 500
+
+<a href="#top">Back to the top.</a>
 
 **Admin Panel**
 
@@ -643,6 +641,8 @@ Admin can control users profiles via the Django Admin panel.
     <img src="https://res.cloudinary.com/dzesjeplp/image/upload/v1725466067/READMEpp4/Select-profile-to-change-Django-site-admin_a4qezo.pngg">  
 </details>
 
+<a href="#top">Back to the top.</a>
+
 ## Future Features
 
 - **Email frontend functionality for Admin**: A frontend functionality for the Admin to send emails, without haviing to go to the admin panel.
@@ -654,7 +654,7 @@ Admin can control users profiles via the Django Admin panel.
 
 
 # Technologies Used
-
+<a href="#top">Back to the top.</a>
 ## Language Used
 
 * HTML
@@ -720,7 +720,7 @@ Further information is available in the [requirements.txt file](requirements.txt
 - For all testing, please refer to the [TESTING.md](TESTING.md) file.
 
 # Deployment
-  
+<a href="#top">Back to the top.</a>
 ## Connecting to GitHub  
 
 To begin this project from scratch, you must first create a new GitHub repository using the [Code Institute's Template](https://github.com/Code-Institute-Org/ci-full-template). This template provides the relevant tools to get you started. To use this template:
@@ -783,7 +783,7 @@ os.path.join(BASE_DIR, 'templates', 'allauth')
 
 ## Cloudinary API 
 
-Cloudinary provides a cloud hosting solution for media storage. All users uploaded images in the FreeFid project are hosted here.
+Cloudinary provides a cloud hosting solution for media storage. All users uploaded images in the Global Doctors project are hosted here.
 
 Set up a new account at [Cloudinary](https://cloudinary.com/) and add your Cloudinary API environment variable to your **env.py** and Heroku Config Vars.
 In your project workspace: 
@@ -811,6 +811,7 @@ In your project workspace:
 A new database instance can be created on [Code Institute´s PostgreSQL](https://dbs.ci-dbs.net/) or your database provider of choice for your project. 
 - From your user dashboard, retrieve the important 'postgres://....' value. Place the value within your **DATABASE_URL**  in your **env.py** file and follow the below instructions to place it in your Heroku Config Vars.
 
+<a href="#top">Back to the top.</a>
 
 ## Heroku deployment
 
@@ -861,7 +862,7 @@ A copy of the original repository can be made through GitHub. Please follow the 
 5. Follow the above Django Project Steps if you wish to work on the project.
 
 # Credits
-
+<a href="#top">Back to the top.</a>
 ## Information Sources/Resources
 
 * [Git tower](https://www.git-tower.com/learn/git/commands/git-rm).
@@ -900,4 +901,4 @@ A copy of the original repository can be made through GitHub. Please follow the 
  * Thanks to my Mentor Gareth McGirr for his assistance throughout the project.
  * Special thanks to my partner and alumni of Code Institute Eric Jones for his assistance throughout this project.
 
-  
+<a href="#top">Back to the top.</a>
