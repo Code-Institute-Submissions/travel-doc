@@ -60,7 +60,7 @@ Lighthouse was used to test Performance, Best Practices, Accessibility and SEO o
 ![Lighthouse Mobile Result](https://res.cloudinary.com/dzesjeplp/image/upload/v1725551779/READMEpp4/TESTINGpp4/testingblog/testingjobs/testingprofile/testingtraveldoc/Lighthouse-Report-Viewermobile_eu95ep.png).
 
 ### HTML Validation
-![HTML Validation Result]().
+![HTML Validation Result](https://res.cloudinary.com/dzesjeplp/image/upload/v1725561446/READMEpp4/TESTINGpp4/testingblog/testingjobs/testingprofile/testingtraveldoc/Showing-results-for-https-traveldoc-0a6dba7e37c3-herokuapp-com-Nu-Html-Checker_xovgrp.png).
 
 ### CSS Validation
 
@@ -80,51 +80,42 @@ Lighthouse was used to test Performance, Best Practices, Accessibility and SEO o
   interactive message to the users.
 * The Profile Page is working properly. It updates the user information and uploads/updates the 
   user profile image. It shows the interactive message to the user once the update is complete.
-* The user profile image in the navbar and Post Details page has no issues and shows the user image 
-  when it is uploaded by the user on the Profile Page.
 * All the internal links are working and bring the user to the right page on the website.
 * All the external links are working and bring the user to the right social media page by 
   opening a new browser tab.
-* The Categories Page shows the recipes filtered by category without issues.
+* The Categories Page shows the blog posts filtered by category without issues.
 * The drop-down menu in the navbar shows a list of categories on every page of the website.
-* The contact form on the Contact Page is working without any errors.  It sends an email, 
-  to the info@tastyblog, once the user fills in the form and clicks on the send button. 
-  Both interactive messages for email success or failure are also displayed on the screen.
+* The contact form on the Contact Page is working without any errors.  
 * The pagination system is working. It adds another page after 6 posts on the page.
 * On the Post Details Page, the Like/unlike functionality is working without issues and shows 
   the right interactive message to the user when the heart icon is clicked.
 * The comment form has no issues and it submits a new comment once the form is completed by a
   registered user. 
-  The comment is displayed once the submit button is pressed. The two interactive messages for 
+  The comment is displayed once the submit button is pressed. The interactive message for 
   this action are working without errors. 
-* The functionality to delete a message, previously sent by the user or by the superuser, is 
-  working without issues. The Bootstrap model is open to asking the user if they want to delete 
-  the message. Once the action is complete, the interactive message is displayed at the top of the page.
-* The functionality to update a message, previously sent by the user or by the superuser, is 
-  working without issues. A new page is open, to update the comment when the button edit is 
+* The functionality to delete a comment, previously sent by the user or by the superuser, is 
+  working without issues. The Bootstrap model opens to ask the user if they want to delete 
+  the comment. Once the action is complete, the interactive message is displayed at the top of the page.
+* The functionality to update a comment, previously sent by the user or by the superuser, is 
+  working without issues. The comment appears in the comment box so that the comment can be updated when the update button is 
   pressed. Once the action is complete, the interactive message is displayed at the top of the page. 
-* On the Books Page, the CRUD functionality is working without issues. Logged in users can create a new 
-  post such as update or delete their own posts, also any post can be updated or deleted on this page by the Superuser.  
+* On the jobdetail´s Page, the CRUD functionality is working without issues. Logged in employers can create a new 
+  job, as well as update or delete their jobs, also any job can be updated or deleted by the Superuser. 
+* The job application has also CRUD functionality that is working without issues. Applicants can submit a job application, rate the job if they choose and later editor  
+  delete their job applications.
 
 ### Backend/Admin Panel
 * I have tested the Admin Panel repeatedly since the start of the project development. All the models are working without issues.  
   I have created, deleted, and updated data in all models without errors. The models have the behavior expected for what they were built for.
-* Whenever a user comments on a post or submits a book post the Superuser has to approve it before it will be displayed on the website. This functionality is 
+* Whenever a user submits a post the Superuser has to approve it before it will be displayed on the website. This functionality is 
   working without issues.
-* When the author is posting a new recipe all the required fields have to be filled otherwise the author can't submit the post to the database.
+* When the author is posting a new recippost or job all the required fields have to be filled otherwise the author can't submit the post or job to the database.
 
 ### Manual Test Case
-The Test case for this project can be found [here](TEST_CASE.md)
+The Test case for this project can be found [](TEST_CASE.md)
 
 ## Bugs
 ### Terminal Bug
-#### Comment Model 
-![Comment Model]()
 #### Terminal Error
-![Comment Model - Terminal]()
-
-* 
-
 ### Fixed Bug
 
-* 
