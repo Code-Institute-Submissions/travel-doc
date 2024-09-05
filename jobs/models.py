@@ -12,7 +12,6 @@ STATUS = ((0, "Draft"), (1, "Published"))
 CustomUser = get_user_model()
 
 
-# Create your models here.
 class Speciality(models.Model):
     """
     Model for Speciality
@@ -34,7 +33,7 @@ class Job(models.Model):
     title = models.CharField(max_length=200)
     slug = models.SlugField(max_length=200)
     author = models.ForeignKey(
-    CustomUser, on_delete=models.CASCADE, related_name="job_posts")
+        CustomUser, on_delete=models.CASCADE, related_name="job_posts")
     speciality = models.ForeignKey(Speciality, on_delete=models.PROTECT)
     location = models.CharField(max_length=100)
     start_date = models.DateField()
@@ -49,6 +48,7 @@ class Job(models.Model):
             MinValueValidator(1),
             MaxValueValidator(5)]
     )
+
     class Meta:
         ordering = ["-created_on"]
 
@@ -63,10 +63,13 @@ APPLICATION_STATUS = (
     (3, "Rejected"),
 )
 
+
 class JobApplication(models.Model):
     """job application"""
-    job = models.ForeignKey('Job', on_delete=models.CASCADE, related_name="applications")
-    applicant = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name="applications")
+    job = models.ForeignKey(
+        'Job', on_delete=models.CASCADE, related_name="applications")
+    applicant = models.ForeignKey(
+        CustomUser, on_delete=models.CASCADE, related_name="applications")
     applicant_first_name = models.CharField(max_length=100)
     applicant_last_name = models.CharField(max_length=100)
     applicant_email = models.EmailField()
@@ -75,7 +78,6 @@ class JobApplication(models.Model):
     cv = CloudinaryField('file', blank=True)
     status = models.IntegerField(choices=APPLICATION_STATUS, default=0)
     applied_on = models.DateTimeField(auto_now_add=True)
-
 
     class Meta:
         ordering = ["-applied_on"]
@@ -88,8 +90,10 @@ class JobApplication(models.Model):
 class JobRating(models.Model):
     """job star rating
     """
-    job = models.ForeignKey(Job, on_delete=models.CASCADE, related_name='ratings')
-    rating = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(5)])
+    job = models.ForeignKey(
+        Job, on_delete=models.CASCADE, related_name='ratings')
+    rating = models.IntegerField(
+        validators=[MinValueValidator(1), MaxValueValidator(5)])
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
 
     class Meta:

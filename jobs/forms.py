@@ -7,7 +7,6 @@ from django.utils import timezone
 import datetime
 
 
-
 class JobAddForm(forms.ModelForm):
     """
     Form for Jobsubmission
@@ -16,7 +15,7 @@ class JobAddForm(forms.ModelForm):
 
     def save(self, commit=True):
         instance = super().save(commit=False)
-        #Set the slug value from the title
+        # Set the slug value from the title
         instance.slug = slugify(instance.title)
         if commit:
             instance.save()
@@ -29,7 +28,6 @@ class JobAddForm(forms.ModelForm):
             raise ValidationError('Start date cannot be in the past.')
         return start_date
 
-
     def clean(self):
         cleaned_data = super().clean()
         start_date = cleaned_data.get('start_date')
@@ -40,17 +38,19 @@ class JobAddForm(forms.ModelForm):
                 raise ValidationError('End date cannot be before start date.')
         return cleaned_data
 
-
     class Meta:
         model = Job
-        fields = ['title', 'speciality', 'location', 'start_date', 'end_date', 'description']
+        fields = ['title', 'speciality', 'location',
+                  'start_date', 'end_date', 'description']
 
         widgets = {
             'title': forms.TextInput(attrs={'class': 'form-control'}),
             'speciality': forms.Select(attrs={'class': 'form-control'}),
-            'location': forms.TextInput(attrs={'class':'form-control'}),
-            'start_date': forms.DateInput(attrs={'type': 'date', 'placeholder': '01.12.2024'}),
-            'end_date': forms.DateInput(attrs={'type': 'date', 'placeholder': '31.12.2024'}),
+            'location': forms.TextInput(attrs={'class': 'form-control'}),
+            'start_date': forms.DateInput(
+                attrs={'type': 'date', 'placeholder': '01.12.2024'}),
+            'end_date': forms.DateInput(
+                attrs={'type': 'date', 'placeholder': '31.12.2024'}),
             'description': SummernoteWidget(attrs={'class': 'form-control'}),
         }
 
@@ -71,31 +71,31 @@ class JobApplicationForm(forms.ModelForm):
     class Meta:
         model = JobApplication
         fields = [
-            'applicant_first_name', 
-            'applicant_last_name', 
-            'applicant_email', 
-            'applicant_phone',  
-            'message', 
+            'applicant_first_name',
+            'applicant_last_name',
+            'applicant_email',
+            'applicant_phone',
+            'message',
             'cv']
         widgets = {
-            'message' : forms.Textarea(attrs={'rows':4}),
+            'message': forms.Textarea(attrs={'rows': 4}),
         }
 
         labels = {
-            'applicant_first_name': "Enter first name", 
+            'applicant_first_name': "Enter first name",
             'applicant_last_name': "Enter last name",
-            'applicant_email': "Email address", 
-            'applicant_phone': "Phone number", 
-            'message':"Message", 
+            'applicant_email': "Email address",
+            'applicant_phone': "Phone number",
+            'message': "Message",
             'cv': "UPLOAD CV/RESUME(optional)",
         }
-        
+
     def __init__(self, *args, **kwargs):
         self.job = kwargs.pop('job', None)
         self.user = kwargs.pop('user', None)
         super().__init__(*args, **kwargs)
         if self.job:
-            self.fields['cv'].required =False
+            self.fields['cv'].required = False
 
     def save(self, commit=True):
         instance = super().save(commit=False)
@@ -104,8 +104,6 @@ class JobApplicationForm(forms.ModelForm):
             instance.applicant = self.user
             instance.save()
         return instance
-
-
 
 
 class JobRatingForm(forms.Form):

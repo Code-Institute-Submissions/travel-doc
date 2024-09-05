@@ -10,7 +10,6 @@ STATUS = ((0, "Draft"), (1, "Published"))
 CustomUser = get_user_model()
 
 
-# Create your models here.
 class Category(models.Model):
     """
     Model for Category
@@ -33,7 +32,7 @@ class Post(models.Model):
     category = models.ForeignKey(Category, on_delete=models.PROTECT, default=4)
     slug = models.SlugField(max_length=200, unique=True)
     author = models.ForeignKey(
-    CustomUser, on_delete=models.CASCADE, related_name="blog_posts")
+        CustomUser, on_delete=models.CASCADE, related_name="blog_posts")
     featured_image = CloudinaryField('image', default='placeholder')
     content = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)

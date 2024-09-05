@@ -101,7 +101,7 @@
                    <!-- User authentication -->
                    <li class="nav-item">
                         {% if request.user.profile.user_type == 'employer' %}
-                            <a class="nav-link active" href="{% url 'employer_profile' %}">
+                            <a class="nav-link active" href="{% url 'employer_profile' user.profile.pk %}">
                                 <i class="fa fa-user" aria-hidden="true"></i> {{ user.username | slice:":10" }}
                             </a>
                         {% else %}

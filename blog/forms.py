@@ -4,6 +4,7 @@ from slugify import slugify
 from django_summernote.widgets import SummernoteWidget
 from cloudinary.forms import CloudinaryInput
 
+
 class CommentForm(forms.ModelForm):
     class Meta:
         model = Comment
@@ -16,7 +17,7 @@ class PostForm(forms.ModelForm):
 
     def save(self, commit=True):
         instance = super().save(commit=False)
-        #Set the slug value from the title
+        # Set the slug value from the title
         instance.slug = slugify(instance.title)
         if commit:
             instance.save()
@@ -24,12 +25,13 @@ class PostForm(forms.ModelForm):
 
     class Meta:
         model = Post
-        fields = ['title', 'category', 'featured_image','content']
+        fields = ['title', 'category', 'featured_image', 'content']
 
         widgets = {
             'title': forms.TextInput(attrs={'class': 'form-control'}),
             'category': forms.Select(attrs={'class': 'form-control'}),
-            'featured_image': forms.ClearableFileInput(attrs={'class':'form-control'}),
+            'featured_image': forms.ClearableFileInput(
+                attrs={'class': 'form-control'}),
             'content': SummernoteWidget(attrs={'class': 'form-control'}),
         }
 
