@@ -43,40 +43,35 @@ were entered into the online checker and no errors were found in any of the cust
 * [views.py](https://res.cloudinary.com/dzesjeplp/image/upload/v1725537065/READMEpp4/TESTINGpp4/testingblog/testingjobs/testingprofile/CI-Python-Linter-profile-views_hsizqu.png)
 
 #### traveldoc
-* [asgi.py]()
-* [settings.py]()
-* [urls.py]()
-* [wsgi.py]()
-* [manage.py]()
+* [asgi.py](https://res.cloudinary.com/dzesjeplp/image/upload/v1725545888/READMEpp4/TESTINGpp4/testingblog/testingjobs/testingprofile/testingtraveldoc/CI-Python-Linter-asgi_c6jqa6.png)
+* [settings.py](https://res.cloudinary.com/dzesjeplp/image/upload/v1725545889/READMEpp4/TESTINGpp4/testingblog/testingjobs/testingprofile/testingtraveldoc/CI-Python-Linter-settings_uptmec.png)
+* [urls.py](https://res.cloudinary.com/dzesjeplp/image/upload/v1725545889/READMEpp4/TESTINGpp4/testingblog/testingjobs/testingprofile/testingtraveldoc/CI-Python-Linter-urls_cawtml.png)
+* [wsgi.py](https://res.cloudinary.com/dzesjeplp/image/upload/v1725545890/READMEpp4/TESTINGpp4/testingblog/testingjobs/testingprofile/testingtraveldoc/CI-Python-Linter-wsgi_z8ctcc.png)
+* [manage.py](https://res.cloudinary.com/dzesjeplp/image/upload/v1725545888/READMEpp4/TESTINGpp4/testingblog/testingjobs/testingprofile/testingtraveldoc/CI-Python-Linter-manage_tecbnj.png)
 
 
 ### Lighthouse
 Lighthouse was used to test Performance, Best Practices, Accessibility and SEO on Desktop.
 
 ##### Desktop Results:
-![Lighthouse Mobile Result]().
+![Lighthouse Desktop Result](https://res.cloudinary.com/dzesjeplp/image/upload/v1725551779/READMEpp4/TESTINGpp4/testingblog/testingjobs/testingprofile/testingtraveldoc/Lighthouse-Report-Viewer-desktop_kddojm.png).
 
 ###### Mobile Results:
-![Lighthouse Desktop Result]().
+![Lighthouse Mobile Result](https://res.cloudinary.com/dzesjeplp/image/upload/v1725551779/READMEpp4/TESTINGpp4/testingblog/testingjobs/testingprofile/testingtraveldoc/Lighthouse-Report-Viewermobile_eu95ep.png).
 
 ### HTML Validation
 ![HTML Validation Result]().
 
 ### CSS Validation
 
-![CSS Validation Result]().
-![CSS Validation Result]().
-* Custom CSS was validated using W3C Jigsaw validation service. Forty-three warnings were displayed, however, 
-  these are related to Google Fonts and vendor extension prefixes which will not affect the CSS performance.
+![CSS Validation Result](https://res.cloudinary.com/dzesjeplp/image/upload/v1725552616/READMEpp4/TESTINGpp4/testingblog/testingjobs/testingprofile/testingtraveldoc/W3C-CSS-Validator-results-for-TextArea-CSS-level-3-SVG-_zvyles.png).
+* Custom CSS was validated using W3C Jigsaw validation service.
 
 ### JavaScript Validation
 ![CSS Validation Result]().
 
-### jQuery Validation
-![CSS Validation Result]().
-
 ### Console Results:
-![Console Result](g).
+![Console Result]().
 * The browser console is clean, no errors are  showing.
 
 ## Manual Testing
