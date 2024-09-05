@@ -68,11 +68,11 @@ Lighthouse was used to test Performance, Best Practices, Accessibility and SEO o
 * Custom CSS was validated using W3C Jigsaw validation service.
 
 ### JavaScript Validation
-![CSS Validation Result]().
+![JSHint Result](https://res.cloudinary.com/dzesjeplp/image/upload/v1725554781/READMEpp4/TESTINGpp4/testingblog/testingjobs/testingprofile/testingtraveldoc/JSHint-a-JavaScript-Code-Quality-Tool_f6hgck.png).
 
 ### Console Results:
-![Console Result]().
-* The browser console is clean, no errors are  showing.
+![Console Result](https://res.cloudinary.com/dzesjeplp/image/upload/v1725555560/READMEpp4/TESTINGpp4/testingblog/testingjobs/testingprofile/testingtraveldoc/consolelog_fpntwb.png).
+* The browser console shows no major errors with my code .
 
 ## Manual Testing
 ### Frontend

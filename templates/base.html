@@ -45,10 +45,10 @@
            <div class="collapse navbar-collapse" id="navbarSupportedContent" style="background-color: #dbd7d2">
                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                    <li class="nav-item">
-                       <a class="nav-link active" aria-current="page" href="/" aria-label="Go to the home page">Home</a>
+                       <a class="nav-link active" aria-current="page" href="{% url 'home' %}" aria-label="Go to the home page">Home</a>
                    </li>
-                   <li>
-                       <a class="nav-link active" aria-current="page" href="/about" aria-label="Go to the about page">About</a>
+                   <li class="nav-item">
+                       <a class="nav-link active" aria-current="page" href="{% url 'about' %}"  aria-label="Go to the about page">About</a>
                    </li>
                    <li class="nav-item">
                        <a class="nav-link active" href="{% url 'contact' %}" aria-label="Go to the contact page">Contact</a>
@@ -59,14 +59,12 @@
                         Blog
                     </a>
                     <ul class="dropdown-menu light" aria-labelledby="navbarDropdownMenuLink">
-                        <li class="nav-item" style="text-align: center;"> Categories</li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
+                        <li class="nav-item text-center"> Categories</li>
+                        <li><hr class="dropdown-divider"></li>
                       {% for category in category_list %}
-                      <a class="dropdown-item" href="/category/{{ category.name}}">
+                      <li><a class="dropdown-item" href="/category/{{ category.name}}">
                         {{ category.name|title }}
-                      </a>
+                      </a></li>
                       {% endfor %}
                     </ul>
                 </li> 
@@ -76,15 +74,13 @@
                             Jobs
                         </a>
                         <ul class="dropdown-menu light" aria-labelledby="navbarDropdownMenuLink">
-                            <li class="nav-item" style="text-align: center;"> Specialities</li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                          {% for speciality in speciality_list %}
-                          <a class="dropdown-item" href="/speciality/{{ speciality.name}}">
+                            <li class="nav-item text-center"> Specialities</li>
+                            <li><hr class="dropdown-divider"></li>
+                            {% for speciality in speciality_list %}
+                            <li><a class="dropdown-item" href="/speciality/{{ speciality.name}}">
                             {{ speciality.name|title }}
-                          </a>
-                          {% endfor %}
+                            </a></li>
+                            {% endfor %}
                         </ul>
                     </li> 
                         {% if user.is_authenticated %}   
