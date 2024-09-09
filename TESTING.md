@@ -22,6 +22,7 @@ were entered into the online checker and no errors were found in any of the cust
 * [apps.py](https://res.cloudinary.com/dzesjeplp/image/upload/v1725527566/READMEpp4/TESTINGpp4/testingblog/CI-Python-Linter-blog-apps_m7qokv.png)
 * [forms.py](https://res.cloudinary.com/dzesjeplp/image/upload/v1725527566/READMEpp4/TESTINGpp4/testingblog/CI-Python-Linter-blog-forms_gemou9.png)
 * [models.py](https://res.cloudinary.com/dzesjeplp/image/upload/v1725527725/READMEpp4/TESTINGpp4/testingblog/CI-Python-Linter-blog-model_vqaopz.png)
+* [run.py](https://res.cloudinary.com/dzesjeplp/image/upload/v1725620400/READMEpp4/TESTINGpp4/testingblog/CI-Python-Linter-run_zh0kdd.png)
 * [urls.py](https://res.cloudinary.com/dzesjeplp/image/upload/v1725527566/READMEpp4/TESTINGpp4/testingblog/CI-Python-Linter-blog-urls_ah6ami.png)
 * [views.py](https://res.cloudinary.com/dzesjeplp/image/upload/v1725527566/READMEpp4/TESTINGpp4/testingblog/CI-Python-Linter-blog-views_floarf.png)
 
@@ -112,7 +113,7 @@ Lighthouse was used to test Performance, Best Practices, Accessibility and SEO o
 * When the author is posting a new recippost or job all the required fields have to be filled otherwise the author can't submit the post or job to the database.
 
 ### Manual Test Case
-The Test case for this project can be found [](TEST_CASE.md)
+The Test case for this project can be found [Test Cases](https://docs.google.com/spreadsheets/d/1tZ669fc7kGioveRR7f4MxRvTSzsaiUpqkPg0tNpNJUM/edit?usp=sharing)
 
 ## Bugs
 ### Terminal Bug
