@@ -1,7 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import ListView, CreateView, UpdateView
 from django.contrib import messages
-from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.urls import reverse_lazy
@@ -77,30 +76,39 @@ def job_detail_view(request, job_id):
     star_range = range(1, 6)
     half_star = job.stars % 1 != 0  # To check if there should be a half star
 
-    # Initialize the variable to avoid UnboundLocalError
+    # If the user is authenticated, check for existing application
     existing_application = None
     if request.user.is_authenticated:
         existing_application = JobApplication.objects.filter(
             job=job, applicant=request.user).first()
 
-    if not request.user.is_authenticated:
-        messages.info(
-            request,
+    # If the form is submitted
+    if request.method == 'POST':
+      
+        if not request.user.is_authenticated:
+            # Redirect to the Registration if the user is not authenticated
+            messages.info(
+                request,
             "You need an account to apply for jobs! Please Register!"
-        )
-        # Redirect to the Registration page if the user is not authenticated
-        return redirect('account_signup')
+            )
+        
+            return redirect('account_signup')
 
-        # If a jobapplication exists we can update it
-        existing_application = JobApplication.objects.filter(
-            job=job, applicant=request.user).first()
-        form = JobApplicationForm(
-            request.POST, request.FILES, instance=existing_application)
+        # Process the form for authenticated users
+        if existing_application:
+            form = JobApplicationForm(
+                    request.POST, request.FILES,
+                    instance=existing_application
+                    )
+        else:
+            form = JobApplicationForm(request.POST, request.FILES)
+
         if form.is_valid():
             application = form.save(commit=False)
             application.job = job
             application.applicant = request.user
             application.speciality = job.speciality
+
 
             if existing_application:
                 # Reset status to 'Applied'
@@ -111,8 +119,9 @@ def job_detail_view(request, job_id):
                     request,
                     "Your application has been updated" +
                     "and will be reviewed again."
-                )
+                    )
                 return redirect('profile', pk=request.user.pk)
+
             else:
                 # Set initial status for new applications
                 application.status = 0
@@ -124,8 +133,13 @@ def job_detail_view(request, job_id):
                 )
                 # Redirect to Star Rating page
                 return redirect('rate_job', job_id=job.id)
+
     else:
-        form = JobApplicationForm(instance=existing_application)
+        # If it´s a GET request, show the form (pre-Fill if editing)
+        if existing_application:
+            form = JobApplicationForm(instance=existing_application)
+        else:
+            form = JobApplicationForm()
 
     return render(
         request,
@@ -134,7 +148,8 @@ def job_detail_view(request, job_id):
          'form': form,
          'is_editing': bool(existing_application),
          'star_range': star_range,
-         'half_star': half_star, }
+         'half_star': half_star,
+         }
     )
 
 

@@ -59,29 +59,16 @@
         <!-- Form Column -->
         <div class="col-lg-4 col-md-5 d-none d-md-block pl-5 form-column">
             {% if request.user.is_authenticated %}
-            {% if request.user.profile.user_type == 'employer' %}
-               
+                {% if request.user.profile.user_type != 'employer' %}
+               <!-- Show the job application form -->
+                    {% include "jobs/application_form.html" %}
+                {% else %}
+                    <p class="ALERT">Employers cannot apply for this job.</p>
+                {% endif %}
             {% else %}
-                <!-- Show the job application form -->
-            <div class="form-container">
-                <h2 class="text-center">Nex<span>t</span> s<span>t</span>ep:</h2>
-                <p class="text-center">Fill out this form to<br>apply for this job.</p>
-                <form method="POST" enctype="multipart/form-data">
-                    {% csrf_token %}
-                    {{ form|crispy }}
-                    <div class="text-center">
-                        <button id="submitButton" type="submit" class="btn btn-signup btn-lg">
-                            Submit <i class="fa fa-stethoscope"></i>
-                        </button>
-                    </div>
-                </form>
-            </div>
-            <h3 class="text-center">Or give us a call at 
-                <a class="text-center h3 m-auto" href="#">0800.608.1407</a>
-            </h3>
+                {% include "jobs/application_form.html" %}
             {% endif %}
         </div>
     </div>       
 </div>   
-{% endif %}
 {% endblock %}
