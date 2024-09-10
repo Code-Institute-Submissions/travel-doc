@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<div class="container text-center">
+    <h1 class="section-title" id="auth">404 Error</h1>
+    <p class="section-p">Page not found - Whoops! Something is missing...</p>
+    <div class="text-center">
+        <button class="btn btn-error"><a id=error href="{% url 'home' %}">Go Back to Home <i class="fa fa-stethoscope"></i></a></button>
+    </div>
+</div>
+
+{% endblock %}

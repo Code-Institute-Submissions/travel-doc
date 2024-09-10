@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<div class="container text-center">
+    <h1 class="section-title" id="auth">500 Server Error</h1>
+    <p class="section-p">Internal server error - we can't find what you were looking for...</p>
+    <div class="text-center">
+        <button class="btn btn-error"><a id=error href="{% url 'home' %}">Go Back to Home <i class="fa fa-stethoscope"></i></a></button>
+    </div>
+</div>
+
+{% endblock %}
