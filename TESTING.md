@@ -148,7 +148,8 @@ The Test case for this project can be found in [Test Cases](https://docs.google.
 ![Category display error](https://res.cloudinary.com/dzesjeplp/image/upload/v1725959580/READMEpp4/TESTINGpp4/Bugs/KeyError-at-category-Doctors-Stories-_bl5fkg.png).
 ![Category display fix](https://res.cloudinary.com/dzesjeplp/image/upload/v1725959580/READMEpp4/TESTINGpp4/Bugs/-views-py-travel-doc-Gitpod-Code_hchu9j.png).
 * In my initial code for the Catlistview which was to show all the posts in a specific category with a pagination of 6, I had not defined the context_data that Django was to get. It was not showing any of the posts until I defined the get function to tell Django to get all the posts with the same category_name and display them accordingly. 
-![Profile image fix](https://res.cloudinary.com/dzesjeplp/image/upload/v1726055982/READMEpp4/TESTINGpp4/Bugs/fixofprofileimage_t8frkw.png)
+![Regular profile image fix](https://res.cloudinary.com/dzesjeplp/image/upload/v1726056857/READMEpp4/TESTINGpp4/Bugs/regularprofilefix_x26eeg.png).
+![Employer profile image fix](https://res.cloudinary.com/dzesjeplp/image/upload/v1726056857/READMEpp4/TESTINGpp4/Bugs/employerprofilefix_nese06.png).
 * In the initial code in the regular profile template only the profile.profile_image.url was being rendered even if no image was uploaded which resulted in a broken link. The default image was never rendered. In the initial employer profile template only the placeholder picture was rendered even if an image was uploaded from the user. The fix in the code was similar to the working code in the templates for the blog posts which first checked in the 'if' statement if there was a placeholder. If there was a placeholder it would be displayed if not then the uploaded image was displayed.
 
 <a href="#top">Back to the top.</a>
