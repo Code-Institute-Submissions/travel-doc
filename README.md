@@ -719,6 +719,8 @@ Admin can control users' profiles via the Django Admin panel.
     * Django was used as the Python framework for the site.
 * [Code Institute´s PostgreSQL](https://dbs.ci-dbs.net/) 
     * This was used to host the PostgreSQL database needed to collect and recall the user's data.
+* [Markdown TOC generator](https://derlin.github.io/bitdowntoc/)
+    * This was used to generate the table of content(TOC) from the README content.
 
 
 ## Libraries 
@@ -898,6 +900,7 @@ A copy of the original repository can be made through GitHub. Please follow the 
 
 # Credits
 <a href="#top">Back to the top.</a>
+
 ## Information Sources/Resources
 
 * [Git tower](https://www.git-tower.com/learn/git/commands/git-rm).
@@ -912,6 +915,7 @@ A copy of the original repository can be made through GitHub. Please follow the 
 * Code Institute "I think therefore I blog" walkthrough helped me understand and set up the base code for Global Doctors.
 
 * Posts and images are from <a href="https://gmedical.com/blog/" target="_blank"><strong>Global Medical Staffing</strong></a>
+* Additional images were from <a href="https://www.pexels.com/de-de/suche/arzt/" target="_blank"><strong>Pexels</strong></a>
 
 * I got additional inspiration from the following :
     1. [Portfolio Project 4 by Madeleine2086](https://github.com/madeleine2086/pp4)
