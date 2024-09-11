@@ -118,7 +118,7 @@ def job_detail_view(request, job_id):
                 messages.success(
                     request,
                     "Your application has been updated" +
-                    "and will be reviewed again."
+                    " and will be reviewed again."
                     )
                 return redirect('profile', pk=request.user.pk)
 

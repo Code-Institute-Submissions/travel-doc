@@ -17,10 +17,12 @@
                 {% endif %}
             </h2>
             <div class="mb-4">
-                {% if profile.image.url %}
-                <img class="profile-img rounded-circle" src="{{ profile.image.url }}" alt="{{ profile.user.username }}'s profile image">
+                {% if "placeholder" in profile.profile_image.url %}
+                <img class="profile-img rounded-circle" style="width: 120px;" src="{% static '/images/user_profile_placeholder.jpg' %}" 
+                alt="user_profile_placeholder">
                 {% else %}
-                <img class="profile-img rounded-circle" style="width: 100px;" src="{% static '/images/user_profile_placeholder.jpg' %}" alt="user_profile_placeholder">
+                <img class="profile-img rounded-circle" style="width: 120px;" src="{{ profile.profile_image.url }}" 
+                alt="{{ profile.user.username }}'s profile image">
                 {% endif %}
             </div>
             <!--<p class="lead text-body-secondary">{{ profile.bio }}</p>-->
