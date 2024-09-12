@@ -102,6 +102,8 @@ User stories and features recorded and managed on [GitHub Projects](https://gith
 | As a site user I can view a paginated list of posts so that I can choose which post I want to view| **MUST HAVE** |
 | As a site user/site admin I can view comments on an individual post so that ** I can read the conversation** | **MUST HAVE** |
 | As a site user I can view a maximum of 6 posts in each category so that I have a good overview and can browse through the pages | **MUST HAVE** |
+| As a site user/visitor I can view the jobs details so that I know when the job starts, ends and when it was created. | **MUST HAVE** |
+
 
 ### Epic - User Profile
 

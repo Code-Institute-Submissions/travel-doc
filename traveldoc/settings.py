@@ -15,8 +15,6 @@ import os
 from django.contrib.messages import constants as messages
 import dj_database_url
 
-DEVELOPMENT = os.environ.get('DEVELOPMENT')
-
 if os.path.isfile('env.py'):
     import env
 
@@ -25,16 +23,16 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
-DEBUG = DEVELOPMENT
+DEBUG = False
 
 ALLOWED_HOSTS = [
-    '8000-angelaanjorin-traveldoc-k5c9g3m132z.ws-eu116.gitpod.io',
+    '8000-angelaanjorin-traveldoc-2ljnfrga7jx.ws-eu116.gitpod.io',
     '.herokuapp.com',
     '127.0.0.1',
 ]
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://8000-angelaanjorin-traveldoc-k5c9g3m132z.ws-eu116.gitpod.io',
+    'https://8000-angelaanjorin-traveldoc-2ljnfrga7jx.ws-eu116.gitpod.io',
     "https://*.gitpod.io",
     "https://*.herokuapp.com",
     "http://127.0.0.1",
