@@ -688,6 +688,8 @@ Admin can control users' profiles via the Django Admin panel.
 - **Using email and an email provider like Gmail or Mailgun to automatically send emails**: This feature is very important and will immensely help the process of managing the site. 
 - **Create an Event manager section of the site**: The Community could share upcoming events involving locum doctors or other interesting events for doctors and employers. Global Doctors could host an Event and have a booking system for key talkers at the event or allow participation from members for different aspects of organizing the event.
 - **Funding is a big issue**: I would like to utilize the website to connect doctors who want to work locum around the world with funding programs so that they can fulfill their dreams.
+- **Jobs sorted also with geographic location**: In the future it would be beneficial to sort the jobs also into a list of different regions. 
+- **Search feature**: A search feature functionality for the posts and also for the jobs would be very helpful. For example users can then search for jobs with tags for speciality or regions. 
 
 
 # Technologies Used
