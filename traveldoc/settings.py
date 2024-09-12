@@ -15,7 +15,7 @@ import os
 from django.contrib.messages import constants as messages
 import dj_database_url
 
-DEVELOPMENT = os.environ.get('DEVELOPMENT', False)
+DEVELOPMENT = os.environ.get('DEVELOPMENT')
 
 if os.path.isfile('env.py'):
     import env
@@ -25,7 +25,7 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
-DEBUG = False
+DEBUG = DEVELOPMENT
 
 ALLOWED_HOSTS = [
     '8000-angelaanjorin-traveldoc-k5c9g3m132z.ws-eu116.gitpod.io',
