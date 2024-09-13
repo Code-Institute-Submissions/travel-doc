@@ -29,6 +29,7 @@ ALLOWED_HOSTS = [
     '8000-angelaanjorin-traveldoc-x0u2jvj9orq.ws-eu116.gitpod.io',
     '.herokuapp.com',
     '127.0.0.1',
+    'traveldoc-0a6dba7e37c3.herokuapp.com'
 ]
 
 CSRF_TRUSTED_ORIGINS = [
