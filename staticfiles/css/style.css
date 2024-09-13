@@ -2,7 +2,8 @@
 /* Default styling */
 
 a {
-    color: #212529;
+    color: #5f5757;
+    text-decoration: none;
 }
 
 a:hover {
@@ -52,8 +53,6 @@ button,
 
 /* Messaging */
 
-
-
 #msg {
     position: fixed;
     top: 80px;
@@ -95,8 +94,19 @@ border-color: crimson;
 .btn-signup:hover,
 .btn-signup:active {
     background-color: #363535;
+    color: #fefefe;   
+}
+
+.btn-edit:hover,
+.btn-edit:active {
+    background-color: #363535;
+    color: #fefefe;  
+}
+
+.btn-delete:hover,
+.btn-delete:active {
+    background-color: #920f0f;
     color: #fefefe;
-    
 }
 
 .btn-error {
@@ -108,7 +118,6 @@ border-color: crimson;
 #error {
     color:#fff;
 }
-
 
 .post_like{
     border:none;
