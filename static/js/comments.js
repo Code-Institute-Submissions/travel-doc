@@ -33,7 +33,6 @@ document.addEventListener("DOMContentLoaded", function() {
         e.preventDefault();
         const jobId = e.target.getAttribute("job_id");
         deleteConfirm.href = `/job/${jobId}/delete/`;
-        console.log(`Set delete link for job: ${deleteConfirm.href}`);  // Debugging log
         deleteModal.show();
       });
     });
@@ -58,5 +57,10 @@ document.addEventListener("DOMContentLoaded", function() {
         deleteConfirm.href = `/post/${postId}/delete/`;
         deleteModal.show();
       });
+    });
+
+
+    document.getElementById('deleteModal').addEventListener('hidden.bs.modal', function () {
+      document.querySelector('.modal-backdrop').remove();
     });
   });
